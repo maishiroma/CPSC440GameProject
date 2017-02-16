@@ -13,6 +13,18 @@ public class GunShoot : MonoBehaviour {
     private bool isTriggerDown;
     private bool isTriggerHolding;
 
+    //Ammo Stuff
+    public float startAmmo = 100f;
+    public float maxAmmo = 100f;
+    public float ammoPerShoot = 2f;
+    private bool outOfAmmo = false;
+    private float currentAmmo;
+
+    public AmmoClip currentClip;
+    public Animator currentClipAnims;
+
+
+
     public TrapMenu trapMenu;
 
     //gun vars
@@ -27,6 +39,9 @@ public class GunShoot : MonoBehaviour {
     {
         mainCam = Camera.main;
         gunAnims = GetComponent<Animator>();
+        currentAmmo = startAmmo;
+        //currentClip = GameObject.Find("AmmoClip").GetComponent<AmmoClip>();
+        currentClipAnims = currentClip.gameObject.GetComponent<Animator>();
 	}
 
     // Update is called once per frame
@@ -136,10 +151,56 @@ public class GunShoot : MonoBehaviour {
 
     void Shoot()
     {
-        Vector3 shootDir = getShootDirection();
-        
+        if (!outOfAmmo)
+        {
+            Vector3 shootDir = getShootDirection();
+            GameObject _bullet = (GameObject)Instantiate(bullet, shootPoint.position, Quaternion.LookRotation(shootDir), GameObject.Find("AllBullets").transform);
+            gunAnims.SetTrigger("Shoot");
+            currentAmmo -= ammoPerShoot;
+            currentClip.ResizeClip(currentAmmo, maxAmmo);
+            if(currentAmmo <= 0 && currentClip != null && !outOfAmmo)
+            {
+                outOfAmmo = true;
+                DropAmmoClip();
+            }
+        }
+        else
+        {
+            //tries to shoot without ammo
+            //misfire
+            gunAnims.SetTrigger("Misfire");
+        }
 
-        GameObject _bullet = (GameObject)Instantiate(bullet, shootPoint.position, Quaternion.LookRotation(shootDir), GameObject.Find("AllBullets").transform);
-        gunAnims.SetTrigger("Shoot");
     }
+
+    public void ReloadClip(GameObject clip)
+    {
+        currentClip = clip.GetComponent<AmmoClip>();
+        currentClipAnims = currentClip.GetComponent<Animator>();
+        currentAmmo = startAmmo;
+        outOfAmmo = false;
+    }
+
+    public void DropAmmoClip()
+    {
+        if (!outOfAmmo)
+        {
+            outOfAmmo = true;
+        }
+
+        if (currentClip != null)
+        {
+            currentClipAnims.SetTrigger("Remove");
+            Invoke("Drop", .4f);
+        }
+    }
+
+    void Drop()
+    {
+        currentClip.gameObject.transform.parent = null;
+        currentClip.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        currentClipAnims.enabled = false;
+        currentClip = null;
+    }
+
 }
