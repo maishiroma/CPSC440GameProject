@@ -22,6 +22,7 @@
 
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.VR;
 
 #if UNITY_HAS_GOOGLEVR && (UNITY_ANDROID || UNITY_EDITOR)
 using UnityEngine.VR;
@@ -66,6 +67,11 @@ public class GvrPointerInputModule : BaseInputModule {
   [Tooltip("Whether pointer input is active in VR Mode only (true), or all the time (false).")]
   public bool vrModeOnly = false;
 
+  public bool unityVRModeEnabled;
+
+  private Vector2 centerOfScreen;
+
+
   private PointerEventData pointerData;
   private Vector2 lastHeadPose;
 
@@ -75,10 +81,22 @@ public class GvrPointerInputModule : BaseInputModule {
   /// Time in seconds between the pointer down and up events sent by a trigger.
   /// Allows time for the UI elements to make their state transitions.
   private const float clickTime = 0.1f;
-  // Based on default time for a button to animate to Pressed.
+    // Based on default time for a button to animate to Pressed.
 
-  /// The IGvrPointer which will be responding to pointer events.
-  private IGvrPointer pointer {
+    protected override void Start()
+    {
+        if(unityVRModeEnabled == true)
+        {
+            centerOfScreen = new Vector2((float)VRSettings.eyeTextureWidth / 2, (float)VRSettings.eyeTextureHeight / 2);
+        }
+        else
+        {
+            centerOfScreen = new Vector2(Screen.width / 2, Screen.height / 2);
+        }
+    }
+
+    /// The IGvrPointer which will be responding to pointer events.
+    private IGvrPointer pointer {
     get {
       return GvrPointerManager.Pointer;
     }
@@ -177,7 +195,8 @@ public class GvrPointerInputModule : BaseInputModule {
 
     // Cast a ray into the scene
     pointerData.Reset();
-    pointerData.position = GetPointerPosition();
+    //pointerData.position = GetPointerPosition();
+    pointerData.position = centerOfScreen;
     eventSystem.RaycastAll(pointerData, m_RaycastResultCache);
     RaycastResult raycastResult = FindFirstRaycast(m_RaycastResultCache);
     if (raycastResult.worldPosition == Vector3.zero) {
@@ -378,7 +397,7 @@ public class GvrPointerInputModule : BaseInputModule {
 
     pointer.OnInputModuleDisabled();
   }
-
+    /*
   private Vector2 GetPointerPosition() {
     int viewportWidth = Screen.width;
     int viewportHeight = Screen.height;
@@ -392,4 +411,5 @@ public class GvrPointerInputModule : BaseInputModule {
 
     return new Vector2(0.5f * viewportWidth, 0.5f * viewportHeight);
   }
+  */
 }

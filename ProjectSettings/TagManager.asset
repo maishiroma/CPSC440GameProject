@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Alive
   - Projectile
+  - MenuBounds
   layers:
   - Default
   - TransparentFX
@@ -21,8 +22,8 @@ TagManager:
   - Interactable
   - Button
   - NoForces
-  - 
-  - 
+  - Clip
+  - Bounds
   - 
   - 
   - 
