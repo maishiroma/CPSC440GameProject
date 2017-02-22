@@ -7,6 +7,8 @@ TagManager:
   - Alive
   - Projectile
   - MenuBounds
+  - BGM
+  - SoundEffects
   layers:
   - Default
   - TransparentFX
