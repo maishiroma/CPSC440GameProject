@@ -22,7 +22,7 @@ public class GunShoot : MonoBehaviour {
 
     public AmmoClip currentClip;
     public Animator currentClipAnims;
-
+	public AudioClip gunFireSound;
 
 
     public TrapMenu trapMenu;
@@ -156,7 +156,12 @@ public class GunShoot : MonoBehaviour {
         {
             Vector3 shootDir = getShootDirection();
             GameObject _bullet = (GameObject)Instantiate(bullet, shootPoint.position, Quaternion.LookRotation(shootDir), GameObject.Find("AllBullets").transform);
-            gunAnims.SetTrigger("Shoot");
+            
+			// Here, sound is played when firing
+			AudioSource playSound = GameObject.FindGameObjectWithTag("SoundEffects").GetComponent<AudioSource>();
+			playSound.PlayOneShot(gunFireSound,.15f);
+
+			gunAnims.SetTrigger("Shoot");
             currentAmmo -= ammoPerShoot;
             currentClip.ResizeClip(currentAmmo, maxAmmo);
             if(currentAmmo <= 0 && currentClip != null && !outOfAmmo)
