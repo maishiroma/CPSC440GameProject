@@ -8,6 +8,8 @@ TagManager:
   - Projectile
   - MenuBounds
   - Alien
+  - SoundEffects
+  - Unlockables
   layers:
   - Default
   - TransparentFX
