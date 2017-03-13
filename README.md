@@ -15,7 +15,7 @@ This is the source code for our CPSC 440 VR game, tenatively called Grim Galaxy.
 - IEEE Submission -> TBD, but sometime in May.
 
 ## Important Links
-[Trello Board](https://trello.com/b/hhc44wkO/grim-galaxy)
-[Google Drive Folder](https://drive.google.com/open?id=0B52HgFnVbxeHUlJYdGZKVGp3Mms)
-[IEEE GameSig Page](http://gamesigshowcase.org)
-[Master Repository Link](https://github.com/shiro105/CPSC440GameProject)
+- [Trello Board](https://trello.com/b/hhc44wkO/grim-galaxy)
+- [Google Drive Folder](https://drive.google.com/open?id=0B52HgFnVbxeHUlJYdGZKVGp3Mms)
+- [IEEE GameSig Page](http://gamesigshowcase.org)
+- [Master Repository Link](https://github.com/shiro105/CPSC440GameProject)
