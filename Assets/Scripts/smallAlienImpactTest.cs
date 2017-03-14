@@ -31,7 +31,7 @@ public class smallAlienImpactTest : MonoBehaviour {
             if (hit)
             {
                 hitAgain = true;
-                gameObject.GetComponent<Animator>().SetBool("HitAgain", true);
+                gameObject.GetComponent<Animator>().SetTrigger("HitAgain");
             }
             else
             {
@@ -54,7 +54,6 @@ public class smallAlienImpactTest : MonoBehaviour {
         if (hitAgain)
         {
             hitAgain = false;
-            gameObject.GetComponent<Animator>().SetBool("HitAgain", false);
         }
         else
         {
