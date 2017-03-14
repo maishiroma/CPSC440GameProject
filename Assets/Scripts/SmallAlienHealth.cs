@@ -14,6 +14,12 @@ public class SmallAlienHealth : Health {
     float startY;
     float startDrag;
 
+    public float impactForce = 10f;
+    bool hit = false;
+    bool hitAgain = false;
+    SmallAlienAI ai;
+
+    private bool lerp = false;
 
 	// Use this for initialization
 	void Start ()
@@ -24,13 +30,24 @@ public class SmallAlienHealth : Health {
         currentHealth = health;
         startY = transform.position.y;
         startDrag = gameObject.GetComponent<Rigidbody>().drag;
+        ai = gameObject.GetComponent<SmallAlienAI>();
 	}
+
+    private void Update()
+    {
+
+        if (lerp)
+        {
+            Vector3 lookRotation = (Vector3.zero - transform.position);
+            lookRotation.Set(lookRotation.x, 0, lookRotation.z);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookRotation), Time.deltaTime);
+        }
+    }
 
     public override void impact(Collision collision)
     {    
             mesh.GetComponent<SkinnedMeshRenderer>().material.SetColor("_Emission", damageColor);
             Invoke("resetEmission", flashTime);
-            Debug.Log("flash");
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -42,14 +59,55 @@ public class SmallAlienHealth : Health {
         if(collision.gameObject.layer == 8 && !dead)
         {
             impact(collision);
+            Vector3 pushDirection = collision.contacts[0].normal;
+            pushDirection.Set(pushDirection.x, 0, pushDirection.z);
+            ReactToPhysics();
+            gameObject.GetComponent<Rigidbody>().AddForce(pushDirection * impactForce);
+            gameObject.GetComponent<Animator>().SetBool("Hit", true);
+
+            if(ai.currentState != SmallAlienAI.States.Hit)
+            {
+
+                ai.SetState(SmallAlienAI.States.Hit);
+            }
+
+            lerp = true;
+            Invoke("StopReactingToPhysics", 1.5f);
+            Invoke("hitDelay", .5f);
+            if (hit)
+            {
+                hitAgain = true;
+                gameObject.GetComponent<Animator>().SetTrigger("HitAgain");
+            }
+            else
+            {
+                hit = true;
+            }
+        }
+    }
+
+
+    void hitDelay()
+    {
+        if (hitAgain)
+        {
+            hitAgain = false;
+        }
+        else
+        {
+            gameObject.GetComponent<Animator>().SetBool("Hit", false);
+            hit = false;
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.layer == 10)
+        if (collision.gameObject.layer == 10 && !hit)
         {
             grounded = false;
+            //anims.SetTrigger("ForceToAir");
+            //anims.SetBool("IsInAir", true);
+            StartCoroutine(CheckIfGrounded(0.5f));
         }
     }
 
@@ -61,12 +119,22 @@ public class SmallAlienHealth : Health {
     public void ReactToPhysics(float delay = 0.5f)
     {
         anims.applyRootMotion = false;
-        anims.SetTrigger("ForceToAir");
-        anims.SetBool("IsInAir", true);
         gameObject.GetComponent<Rigidbody>().isKinematic = false;
-        StartCoroutine(CheckIfGrounded(delay));
-        gameObject.GetComponent<Rigidbody>().drag = 0.3f;
+        //gameObject.GetComponent<Rigidbody>().drag = 0.3f;
     }
+
+    public void StopReactingToPhysics()
+    {
+        gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        //gameObject.GetComponent<Rigidbody>().drag = startDrag;
+        anims.applyRootMotion = true;
+        gameObject.GetComponent<Animator>().SetBool("Hit", false);
+        lerp = false;
+        ai.SetState(SmallAlienAI.States.Navigating);
+    }
+
+
+
 
     public bool grounded;
     
@@ -94,9 +162,7 @@ public class SmallAlienHealth : Health {
     {
         transform.rotation= Quaternion.Euler(0, transform.eulerAngles.y, 0);
         transform.position = new Vector3(transform.position.x, startY, transform.position.z);
-        gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        gameObject.GetComponent<Rigidbody>().drag = startDrag;
-        anims.applyRootMotion = true;
+        StopReactingToPhysics();
         anims.SetBool("IsInAir", false);
         dealDamage(10);
         Collision collision = new Collision();
@@ -128,6 +194,7 @@ public class SmallAlienHealth : Health {
     void Destroy()
     {
         Destroy(gameObject);
+        Destroy(gameObject.GetComponent<AlienNavMeshInterface>()._SmallAlienAgent.gameObject);
     }
 
    
