@@ -1638,6 +1638,7 @@ MonoBehaviour:
   healthRate: 10
   healthRateMultiplier: 1
   dead: 0
+  currentHealth: 0
 --- !u!114 &114152850868995724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1671,7 +1672,7 @@ MonoBehaviour:
   range: 12
   targetLayers:
     serializedVersion: 2
-    m_Bits: 2049
+    m_Bits: 65536
   health: {fileID: 0}
 --- !u!135 &135707860283983198
 SphereCollider:

@@ -158,8 +158,8 @@ public class GunShoot : MonoBehaviour {
             GameObject _bullet = (GameObject)Instantiate(bullet, shootPoint.position, Quaternion.LookRotation(shootDir), GameObject.Find("AllBullets").transform);
             
 			// Here, sound is played when firing
-			AudioSource playSound = GameObject.FindGameObjectWithTag("SoundEffects").GetComponent<AudioSource>();
-			playSound.PlayOneShot(gunFireSound,.15f);
+			//AudioSource playSound = GameObject.FindGameObjectWithTag("SoundEffects").GetComponent<AudioSource>();
+			//playSound.PlayOneShot(gunFireSound,.15f);
 
 			gunAnims.SetTrigger("Shoot");
             currentAmmo -= ammoPerShoot;
