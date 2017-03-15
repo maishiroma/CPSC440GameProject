@@ -277,7 +277,7 @@ MonoBehaviour:
   explosionRange: 6
   explosionMask:
     serializedVersion: 2
-    m_Bits: 2049
+    m_Bits: 65537
   maxDamage: 60
   minDamage: 10
   damageFalloff:
@@ -298,8 +298,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  maxExplosionForce: 5
-  minExplosionForce: 1
+  maxExplosionForce: 11
+  minExplosionForce: 3
   rotationalForce: 60
   explosionForceFalloff:
     serializedVersion: 2
@@ -311,8 +311,8 @@ MonoBehaviour:
       outSlope: -0.12653863
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.94096214
-      value: 0.012500072
+      time: 0.95039123
+      value: 0.0024498198
       inSlope: -2.2431788
       outSlope: -2.2431788
       tangentMode: 0

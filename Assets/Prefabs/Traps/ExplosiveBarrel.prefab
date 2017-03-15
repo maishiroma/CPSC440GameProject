@@ -149,7 +149,7 @@ MonoBehaviour:
   rotationalForce: 60
   explosionMask:
     serializedVersion: 2
-    m_Bits: 2049
+    m_Bits: 67585
   impactParticles: {fileID: 1664966848565472, guid: 6f49f68d88344c941bfb14f8288eed43,
     type: 2}
   explosionParticles: {fileID: 1623538531801624, guid: cbaca0ab895447749a599456fd039348,

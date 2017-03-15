@@ -47,14 +47,12 @@ public class ExplosiveHealth : Health
 
             float dist = Vector3.Distance(go.transform.position, transform.position);
             float t = 1 - dist / explosionRange;
-            float force = Mathf.Lerp(maxExplosionForce, minExplosionForce, t);
+            float force = Mathf.Lerp(minExplosionForce, maxExplosionForce, t);
 
-            if (go.tag == "Alien")
+            if (go.layer == 16)
             {
-                go.transform.parent.GetComponent<SmallAlienHealth>().ReactToPhysics(.5f);
+                go.transform.parent.GetComponent<SmallAlienPhysicsManager>().InAir(true);
                 go.transform.parent.GetComponent<SmallAlienHealth>().dealDamage(30f);
-                Collision collision = new Collision();
-                go.transform.parent.GetComponent<SmallAlienHealth>().impact(collision);
                 AddExplosiveForce(go.transform.parent.gameObject, Vector3.Scale(dir, new Vector3(.25f,7,.25f)), force * 1.33f);
             }
             else

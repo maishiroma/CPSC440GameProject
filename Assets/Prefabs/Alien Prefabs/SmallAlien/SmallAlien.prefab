@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4213190709748482}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: B_L_PV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4634812500823654}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: B_L_PV1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4258931109242314}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: FL_Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4290990131132036}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4684185659630528}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4948263844542568}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4152585603559164}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: FL_Knee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4272586384299782}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: FR_Hip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4240294960092146}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4970232097567486}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: BL_Knee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4451085301037132}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: F_L_PV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4704782030067274}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: BR_Knee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4218723119615630}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: FR_Knee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4295243006903516}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: FR_Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4884927755547366}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: BL_foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4101850051757620}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: BL_Hip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4895843500493162}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: PoleVector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4314972858062016}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: BR_Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4233076338125458}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: group57
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -304,7 +304,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4820591211005474}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: F_R_PV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,7 +319,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4744789051634606}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4741444182635198}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: FL_Hip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 137394197494931678}
   - component: {fileID: 64770673714889354}
   - component: {fileID: 114029590533928706}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: SmallAlienMesh
   m_TagString: Alien
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4917510170348026}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: BR_Hip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -388,7 +388,8 @@ GameObject:
   - component: {fileID: 114618875927064886}
   - component: {fileID: 114696290530727340}
   - component: {fileID: 114363191357607118}
-  m_Layer: 0
+  - component: {fileID: 114996100099174500}
+  m_Layer: 16
   m_Name: SmallAlien
   m_TagString: Alive
   m_Icon: {fileID: 0}
@@ -751,14 +752,14 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1933553262101548}
   serializedVersion: 2
-  m_Mass: 0.5
+  m_Mass: 0.7
   m_Drag: 4
-  m_AngularDrag: 0.33
+  m_AngularDrag: 0.5
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!64 &64770673714889354
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -842,10 +843,6 @@ MonoBehaviour:
   healthRateMultiplier: 0
   dead: 0
   currentHealth: 0
-  damageColor: {r: 0.19117647, g: 0.13073097, b: 0.13073097, a: 0.416}
-  flashTime: 0.1
-  impactForce: 10
-  grounded: 0
 --- !u!114 &114696290530727340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -861,6 +858,30 @@ MonoBehaviour:
     type: 2}
   _SmallAlienAgent: {fileID: 0}
   usingNavmeshAgent: 0
+--- !u!114 &114996100099174500
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1933553262101548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ffe2e224cb1dd488c40b6285dcd509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpToPlayerOnImpactact: 1
+  flashDamage: 1
+  impactSlideTime: 1.5
+  damageColor: {r: 0.25, g: 0.1985294, b: 0.1985294, a: 1}
+  flashTime: 0.2
+  impactForce: 10
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  inAirDrag: 0.3
+  mesh: {fileID: 0}
+  grounded: 0
+  isInAir: 0
 --- !u!137 &137394197494931678
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

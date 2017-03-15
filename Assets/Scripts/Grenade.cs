@@ -46,12 +46,10 @@ public class Grenade : MonoBehaviour
         foreach(Collider col in hitColliders)
         {
             GameObject go = col.gameObject;
-            if (go.tag == "Alien")
+            if (go.tag == "Alive")
             {
-                go.transform.parent.GetComponent<SmallAlienHealth>().ReactToPhysics(.5f);
-                go.transform.parent.GetComponent<SmallAlienHealth>().dealDamage(20f);
-                Collision collision = new Collision();
-                go.transform.parent.GetComponent<SmallAlienHealth>().impact(collision);
+                go.transform.parent.GetComponent<SmallAlienPhysicsManager>().InAir();
+                //go.transform.parent.GetComponent<SmallAlienHealth>().dealDamage(20f);
                 AddExplosiveForce(col.gameObject.transform.parent.gameObject);
             }
             else
@@ -64,21 +62,44 @@ public class Grenade : MonoBehaviour
     
     void AddExplosiveForce(GameObject Obj)
     {
-        
-        Rigidbody rb = Obj.GetComponent<Rigidbody>();
-        rb.velocity = Vector3.zero;
-        float distance = Vector3.Distance(transform.position, Obj.transform.position);
+
+        Vector3 myPos = transform.position;
+        myPos.Set(myPos.x, 0, myPos.z);
+        Vector3 ObjPos = Obj.transform.position;
+        ObjPos.Set(ObjPos.x, 0, ObjPos.z);
+        float distance = Vector3.Distance(myPos, ObjPos);
 
         Vector3 direction = (Obj.transform.position - transform.position).normalized;
-        direction.y = Mathf.Clamp(direction.y, 0.5f, 1);
-        float force = Mathf.Lerp(minExplosionForce, maxExplosionForce,explosionForceFalloff.Evaluate(distance / explosionRange));
         
-        Vector3 newForce = Vector3.Scale(direction, new Vector3(.75f, 4f, .75f)) * force;
-        //newForce.y = Mathf.Clamp(newForce.y, 0.5f, 7f);
-        rb.AddForce(newForce, ForceMode.VelocityChange);
+        //float force = Mathf.Lerp(minExplosionForce, maxExplosionForce,explosionForceFalloff.Evaluate(distance / explosionRange));
+        float t = 1 - (distance / explosionRange);
+        float force = Mathf.Lerp(minExplosionForce, maxExplosionForce, t);
+        //direction.y *= force;
+        if (Obj.layer == 16)
+        {
+            Obj.transform.parent.position.Set(Obj.transform.parent.position.x, Obj.transform.parent.position.y + 0.1f, Obj.transform.parent.position.z);
+            Obj.transform.parent.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            Obj.transform.parent.GetComponent<SmallAlienPhysicsManager>().InAir(true);
+            //Obj.transform.parent.GetComponent<SmallAlienHealth>().dealDamage(30f);
+            //Vector3 newForce = Vector3.Scale(direction, new Vector3(.25f, 7f, .25f)) * force;
+            //newForce.Set(newForce.x, Mathf.Clamp(newForce.y, .2f, 4), newForce.z);
+            //Debug.Log(Vector3.up * force + direction);
+            Obj.transform.parent.GetComponent<Rigidbody>().velocity = Vector3.up * force + direction;
+            Vector3 torque = new Vector3(Random.Range(-rotationalForce * t, rotationalForce * t), Random.Range(-rotationalForce * t, rotationalForce * t), Random.Range(-rotationalForce * t, rotationalForce * t));
+            Obj.transform.parent.GetComponent<Rigidbody>().AddTorque(torque, ForceMode.Impulse);
+        }
+        else
+        {
+            Obj.transform.position.Set(Obj.transform.parent.position.x, Obj.transform.parent.position.y + 0.1f, Obj.transform.parent.position.z);
+            Obj.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            //Vector3 newForce = Vector3.Scale(direction, new Vector3(.75f, 7f, .75f)) * force;
+           // newForce.Set(newForce.x, Mathf.Clamp(newForce.y, 0, 3.5f), newForce.z);
+            Obj.GetComponent<Rigidbody>().velocity = Vector3.up * force + direction * (force / 2);
+            Vector3 torque = new Vector3(Random.Range(-rotationalForce * t, rotationalForce * t), Random.Range(-rotationalForce * t, rotationalForce * t), Random.Range(-rotationalForce * t, rotationalForce * t));
+            Obj.GetComponent<Rigidbody>().AddTorque(torque, ForceMode.Impulse);
+        }
+
         
-        Vector3 torque = new Vector3(Random.Range(-rotationalForce, rotationalForce), Random.Range(-rotationalForce, rotationalForce), Random.Range(-rotationalForce, rotationalForce));
-        Obj.GetComponent<Rigidbody>().AddTorque(torque, ForceMode.Impulse);
     }    
 
 }
