@@ -44,6 +44,7 @@ public class ExplosiveHealth : Health
             GameObject go = col.gameObject;
             Vector3 dir = go.transform.position - transform.position;
             dir.Normalize();
+            dir.y = 0;
 
             float dist = Vector3.Distance(go.transform.position, transform.position);
             float t = 1 - dist / explosionRange;
@@ -77,12 +78,12 @@ public class ExplosiveHealth : Health
         //clamp to minimum upward force
         if (dir.y < upwardExplosionForceNormalized)
         {
-            dir.y = upwardExplosionForceNormalized;
+            //dir.y = upwardExplosionForceNormalized;
         }
 
         if (go.GetComponent<Rigidbody>())
         {
-            go.GetComponent<Rigidbody>().AddForce(forceDir * force, ForceMode.Impulse);
+            go.GetComponent<Rigidbody>().velocity = Vector3.up * force + dir * force / 2f;
 
             Vector3 torque = new Vector3(Random.Range(-rotationalForce, rotationalForce), Random.Range(-rotationalForce, rotationalForce), Random.Range(-rotationalForce, rotationalForce));
             go.GetComponent<Rigidbody>().AddTorque(torque, ForceMode.Impulse);

@@ -152,7 +152,6 @@ MonoBehaviour:
   sceneName: AlienDefense_Prototype
   screenFade: {fileID: 0}
   fadeIn: 0
-  selectLevelSound: {fileID: 8300000, guid: 2be39c336621a4137b3a78a47e4522c1, type: 3}
 --- !u!114 &8005211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1595,10 +1594,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa5641bd3257734bad20e25bd7b1be5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Boxes
+  sceneName: Level2
   screenFade: {fileID: 0}
   fadeIn: 0
-  selectLevelSound: {fileID: 0}
 --- !u!1 &537866362 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000010223836760, guid: 5cbfd3102cf9012429dddfc34d042edf,
@@ -5571,6 +5569,10 @@ Prefab:
       propertyPath: m_ScaleInLightmap
       value: 0.01
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 2e789a030eb23454f9f78dce3994c8ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2641fb4322b1a124c982c6861efaa379, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2e789a030eb23454f9f78dce3994c8ee, type: 3}
   m_IsPrefabParent: 0
@@ -6072,7 +6074,6 @@ MonoBehaviour:
   sceneName: SmallAlienAI
   screenFade: {fileID: 0}
   fadeIn: 0
-  selectLevelSound: {fileID: 0}
 --- !u!1 &1770805089 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000010339236004, guid: 5cbfd3102cf9012429dddfc34d042edf,

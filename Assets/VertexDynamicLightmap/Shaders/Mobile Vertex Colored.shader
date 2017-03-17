@@ -18,7 +18,7 @@ SubShader {
 
         ColorMaterial AmbientAndDiffuse
         Lighting On
-		SeparateSpecular On
+		SeparateSpecular Off
         Fog { Mode Off }
         SetTexture [_MainTex] {
             //constantColor [_Color]
