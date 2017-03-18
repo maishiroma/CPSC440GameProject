@@ -1,16 +1,55 @@
 fileFormatVersion: 2
-guid: 2e789a030eb23454f9f78dce3994c8ee
-timeCreated: 1486349615
+guid: 3c3106debb3e67647930a6c908ff7aa9
+timeCreated: 1489627819
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: SkyDome
-    6400000: //RootNode
+    100000: pCone1
+    100002: pCone2
+    100004: pCone3
+    100006: pCylinder1
+    100008: pCylinder2
+    100010: pCylinder3
+    100012: pSphere1
+    100014: //RootNode
+    400000: pCone1
+    400002: pCone2
+    400004: pCone3
+    400006: pCylinder1
+    400008: pCylinder2
+    400010: pCylinder3
+    400012: pSphere1
+    400014: //RootNode
+    2300000: pCone1
+    2300002: pCone2
+    2300004: pCone3
+    2300006: pCylinder1
+    2300008: pCylinder2
+    2300010: pCylinder3
+    2300012: pSphere1
+    3300000: pCone1
+    3300002: pCone2
+    3300004: pCone3
+    3300006: pCylinder1
+    3300008: pCylinder2
+    3300010: pCylinder3
+    3300012: pSphere1
+    4300000: pSphere1
+    4300002: pCylinder1
+    4300004: pCone1
+    4300006: pCylinder2
+    4300008: pCone2
+    4300010: pCone3
+    4300012: pCylinder3
+    6400000: pCone1
+    6400002: pCone2
+    6400004: pCone3
+    6400006: pCylinder1
+    6400008: pCylinder2
+    6400010: pCylinder3
+    6400012: pSphere1
+    9500000: //RootNode
   materials:
     importMaterials: 0
     materialName: 0
@@ -35,7 +74,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 50
     meshCompression: 0
     addColliders: 1
     importBlendShapes: 1
@@ -73,7 +112,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

@@ -143,8 +143,8 @@ MonoBehaviour:
   dead: 0
   currentHealth: 0
   explosionRange: 6
-  minExplosionForce: 1
-  maxExplosionForce: 6
+  minExplosionForce: 2
+  maxExplosionForce: 8
   upwardExplosionForceNormalized: 1
   rotationalForce: 60
   explosionMask:
