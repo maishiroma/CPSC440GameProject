@@ -18095,8 +18095,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114546476225152092, guid: c33779e1f48386249a13f5de00bf851b, type: 2}
+    - target: {fileID: 114996100099174500, guid: c33779e1f48386249a13f5de00bf851b,
+        type: 2}
+      propertyPath: inAirDrag
+      value: 0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c33779e1f48386249a13f5de00bf851b, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1370331893

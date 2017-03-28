@@ -84,7 +84,7 @@ public class Grenade : MonoBehaviour
             Obj.transform.parent.position.Set(Obj.transform.parent.position.x, Obj.transform.parent.position.y + 0.1f, Obj.transform.parent.position.z);
             Obj.transform.parent.GetComponent<Rigidbody>().velocity = Vector3.zero;
             Obj.transform.parent.GetComponent<SmallAlienPhysicsManager>().InAir(true);
-            Obj.transform.parent.GetComponent<Rigidbody>().velocity = Vector3.up * force + direction;
+            Obj.transform.parent.GetComponent<Rigidbody>().velocity = Vector3.up * force + direction * 3f;
             Vector3 torque = new Vector3(Random.Range(-rotationalForce * t, rotationalForce * t), Random.Range(-rotationalForce * t, rotationalForce * t), Random.Range(-rotationalForce * t, rotationalForce * t));
             Obj.transform.parent.GetComponent<Rigidbody>().AddTorque(torque, ForceMode.Impulse);
         }

@@ -28,6 +28,14 @@ public class SmallAlienHealth : Health {
         {
             currentHealth += 10f;
         }
+        else if (!Physics.grounded)
+        {
+            
+            anims.SetTrigger("FallToDeath");
+            Invoke("disableCollider", 1);
+            dead = true;
+            GameObject.Find("AlienSpawners").GetComponent<test_AlienSpawner>().currSpawendAliens--;
+        }
         else
         {
             anims.SetTrigger("Dead");

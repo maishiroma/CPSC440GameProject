@@ -384,7 +384,6 @@ GameObject:
   - component: {fileID: 4925520896747532}
   - component: {fileID: 95414686003740302}
   - component: {fileID: 54118602487188944}
-  - component: {fileID: 114546476225152092}
   - component: {fileID: 114618875927064886}
   - component: {fileID: 114696290530727340}
   - component: {fileID: 114363191357607118}
@@ -707,7 +706,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1933553262101548}
   m_LocalRotation: {x: -0, y: -0.99893427, z: -0, w: -0.046156343}
-  m_LocalPosition: {x: -1.35527, y: -0.80000806, z: 16.878723}
+  m_LocalPosition: {x: -1.740036, y: -0.80509573, z: 10.572601}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4240294960092146}
@@ -753,7 +752,7 @@ Rigidbody:
   m_GameObject: {fileID: 1933553262101548}
   serializedVersion: 2
   m_Mass: 0.7
-  m_Drag: 4
+  m_Drag: 1
   m_AngularDrag: 0.5
   m_UseGravity: 1
   m_IsKinematic: 1
@@ -772,7 +771,7 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 1
   m_InflateMesh: 0
-  m_SkinWidth: 0.01
+  m_SkinWidth: 0.04
   m_Mesh: {fileID: 4300000, guid: 6c845d5535c8fe6408dbb41afd96d7ed, type: 3}
 --- !u!95 &95414686003740302
 Animator:
@@ -815,18 +814,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
---- !u!114 &114546476225152092
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1933553262101548}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7570500266dce5c459718c50b5752a14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: 8
 --- !u!114 &114618875927064886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -875,13 +862,13 @@ MonoBehaviour:
   impactSlideTime: 1.5
   damageColor: {r: 0.25, g: 0.1985294, b: 0.1985294, a: 1}
   flashTime: 0.2
-  impactForce: 10
+  impactForce: 3.5
   groundMask:
     serializedVersion: 2
     m_Bits: 1024
   inAirDrag: 0.3
   mesh: {fileID: 0}
-  grounded: 0
+  grounded: 1
   isInAir: 0
   reactingToPhysics: 0
 --- !u!137 &137394197494931678
@@ -916,9 +903,9 @@ SkinnedMeshRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   serializedVersion: 2
-  m_Quality: 0
+  m_Quality: 1
   m_UpdateWhenOffscreen: 0
-  m_SkinnedMotionVectors: 1
+  m_SkinnedMotionVectors: 0
   m_Mesh: {fileID: 4300000, guid: 06ee1d9fb6f5e5a4c8b7e0093d75feec, type: 3}
   m_Bones:
   - {fileID: 4240294960092146}

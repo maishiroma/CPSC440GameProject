@@ -35,6 +35,8 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
     float startY;
     float explosionStartY;
     public bool reactingToPhysics = false;
+    private bool hitInAir = false;
+    private float inAirTime;
 
     bool foundLandPos;
     Vector3 landPos;
@@ -58,7 +60,7 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
     {
         Vector3 pushDirection = collision.contacts[0].normal;
         pushDirection.Set(pushDirection.x, 0, pushDirection.z);
-        gameObject.GetComponent<Rigidbody>().AddForce(pushDirection * impactForce);
+        gameObject.GetComponent<Rigidbody>().velocity = (pushDirection * impactForce);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -76,7 +78,7 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
         {
             impactFlash();
             //SHOT WITH BULLET
-            if (!touchingGround)
+            if (grounded)
             {
                 
                 ReactToPhysics();
@@ -88,8 +90,26 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
                 lerp = true;
                 Invoke("ProjectileReactionTime", impactSlideTime);
             }
+            else if(!hitInAir)
+            {
+                anims.SetBool("InAirHit", true);
+                hitInAir = true;
+                Invoke("resetHitInAir", 0.1f);
+                Invoke("resetAirHit", 0.01f);
+            }
+
 
         }
+    }
+
+    void resetHitInAir()
+    {
+        hitInAir = false;
+    }
+
+    void resetAirHit()
+    {
+        anims.SetBool("InAirHit", false);
     }
 
     void ProjectileReactionTime()
@@ -109,6 +129,7 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
             {
                 ReactToPhysics();
             }
+            inAirTime = Time.time;
             grounded = false;
             isInAir = true;
             health.dealDamage(20f);
@@ -127,11 +148,12 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
 
     void LandOnGround()
     {
+        anims.applyRootMotion = true;
         transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
         RaycastHit hit;
         if(Physics.Raycast(transform.position, Vector3.down, out hit, 2f, groundMask))
         {
-            transform.position = new Vector3(transform.position.x, startY + hit.point.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x, 10f + startY + hit.point.y, transform.position.z);
         }
 
 
@@ -149,7 +171,7 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
     {
         if (collision.gameObject.layer == 10 && !hit)
         {
-            touchingGround = false;
+            //touchingGround = false;
         }
     }
 
@@ -225,6 +247,11 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
         if (isInAir && rb.velocity.y <= 0)
         {
             CheckForGround();
+        }
+
+        if (isInAir)
+        {
+            anims.SetFloat("InAirTime", Mathf.Lerp(0, 1, (Time.time - inAirTime) / 1.5f));
         }
 	}
 

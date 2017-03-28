@@ -1,0 +1,143 @@
+fileFormatVersion: 2
+guid: 511577ce9407ada41958679d0589102e
+timeCreated: 1490742436
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: B_L_PV
+    100002: B_L_PV1
+    100004: Back
+    100006: BackMid
+    100008: BL_foot
+    100010: BL_Hip
+    100012: BL_Knee
+    100014: BR_Foot
+    100016: BR_Hip
+    100018: BR_Knee
+    100020: F_L_PV
+    100022: F_R_PV
+    100024: FL_Foot
+    100026: FL_Hip
+    100028: FL_Knee
+    100030: FR_Foot
+    100032: FR_Hip
+    100034: FR_Knee
+    100036: Front
+    100038: group57
+    100040: group58
+    100042: Head
+    100044: locator3
+    100046: locator4
+    100048: locator5
+    100050: locator6
+    100052: locator7
+    100054: PoleVector
+    100056: Root
+    100058: //RootNode
+    100060: SmallAlienMesh
+    100062: Tail
+    400000: B_L_PV
+    400002: B_L_PV1
+    400004: Back
+    400006: BackMid
+    400008: BL_foot
+    400010: BL_Hip
+    400012: BL_Knee
+    400014: BR_Foot
+    400016: BR_Hip
+    400018: BR_Knee
+    400020: F_L_PV
+    400022: F_R_PV
+    400024: FL_Foot
+    400026: FL_Hip
+    400028: FL_Knee
+    400030: FR_Foot
+    400032: FR_Hip
+    400034: FR_Knee
+    400036: Front
+    400038: group57
+    400040: group58
+    400042: Head
+    400044: locator3
+    400046: locator4
+    400048: locator5
+    400050: locator6
+    400052: locator7
+    400054: PoleVector
+    400056: Root
+    400058: //RootNode
+    400060: SmallAlienMesh
+    400062: Tail
+    4300000: SmallAlienMesh
+    7400000: InAirHit2
+    9500000: //RootNode
+    13700000: SmallAlienMesh
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 50
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 80
+    normalImportMode: 1
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
