@@ -7,6 +7,7 @@ public class AlienNavMeshInterface : MonoBehaviour {
 
     public GameObject SmallAlienNavmeshAgentPrefab;
     public NavMeshAgent _SmallAlienAgent;
+    public float stoppingDistFromTarget = 3f;
     private Animator anims;
     public bool usingNavmeshAgent;
     private bool trackingTarget = false;
@@ -39,10 +40,14 @@ public class AlienNavMeshInterface : MonoBehaviour {
         anims = gameObject.GetComponent<Animator>();
         usingNavmeshAgent = true;
 
+        target = GameObject.Find("VRMain");
+        SetNavMeshAgentDestination(target.transform.position);
+
+        /*
         //debug target
        target = GameObject.Find("debugNavmeshtarget");
         SetNavMeshAgentDestination(target.transform.position, true, target);
-
+        */    
 	}
 	
     public void SetNavMeshAgentDestination(Vector3 target, bool track = false, GameObject targetGO = null)

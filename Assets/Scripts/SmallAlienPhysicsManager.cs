@@ -34,6 +34,7 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
     public bool isInAir = false;
     float startY;
     float explosionStartY;
+    public bool reactingToPhysics = false;
 
     bool foundLandPos;
     Vector3 landPos;
@@ -64,6 +65,7 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
     {
         if (collision.gameObject.layer == 10)
         {
+            //Debug.Log("touchingGround");
             touchingGround = true;
             if (isInAir)
             {
@@ -72,46 +74,46 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
         }
         if (collision.gameObject.layer == 8 && !health.dead)
         {
-            //SHOT WITH BULLET
             impactFlash();
-            ReactToPhysics();
-            ProjectileImpact(collision);
-            anims.SetBool("Hit", true);
-
-            if (ai.currentState != SmallAlienAI.States.Hit)
+            //SHOT WITH BULLET
+            if (!touchingGround)
             {
-                ai.SetState(SmallAlienAI.States.Hit);
-            }
-
-            lerp = true;
-            Invoke("ProjectileReactionTime", impactSlideTime);
-            Invoke("hitDelay", .5f);
-            if (hit)
-            {
-                hitAgain = true;
-                anims.SetTrigger("HitAgain");
-            }
-            else
-            {
+                
+                ReactToPhysics();
+                ProjectileImpact(collision);
+                anims.SetTrigger("Hit");
                 hit = true;
+
+
+                lerp = true;
+                Invoke("ProjectileReactionTime", impactSlideTime);
             }
+
         }
     }
 
     void ProjectileReactionTime()
     {
-        StopReactingToPhysics(true);
+        if (!isInAir && touchingGround)
+        {
+            StopReactingToPhysics();
+        }
+        hit = false;
     }
 
     public void InAir(bool _isInAir = true)
     {
         if (_isInAir)
         {
-            ReactToPhysics();
+            if (!reactingToPhysics)
+            {
+                ReactToPhysics();
+            }
             grounded = false;
             isInAir = true;
             health.dealDamage(20f);
             impactFlash();
+            lerp = false;
             ai.SetState(SmallAlienAI.States.InAir);
             anims.SetBool("IsInAir", true);
             anims.SetTrigger("ForceToAir");
@@ -132,6 +134,7 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
             transform.position = new Vector3(transform.position.x, startY + hit.point.y, transform.position.z);
         }
 
+
         StopReactingToPhysics();
         anims.SetBool("IsInAir", false);
         isInAir = false;
@@ -141,19 +144,6 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
         rb.drag = startDrag;
     }
 
-
-    void hitDelay()
-    {
-        if (hitAgain)
-        {
-            hitAgain = false;
-        }
-        else
-        {
-            gameObject.GetComponent<Animator>().SetBool("Hit", false);
-            hit = false;
-        }
-    }
 
     private void OnCollisionExit(Collision collision)
     {
@@ -182,41 +172,23 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
         mesh.GetComponent<SkinnedMeshRenderer>().material.SetColor("_Emission", startEmission);
     }
 
-    public void ReactToPhysics(float delay = 0.5f)
+    public void ReactToPhysics()
     {
         anims.applyRootMotion = false;
         gameObject.GetComponent<Rigidbody>().isKinematic = false;
         nav.ToggleNavmeshAgent(false);
+        reactingToPhysics = true;
     }
 
-    public void StopReactingToPhysics(bool checkForHit = false)
+    public void StopReactingToPhysics()
     {
-        if (!checkForHit)
-        {
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        anims.applyRootMotion = true;
-        gameObject.GetComponent<Animator>().SetBool("Hit", false);
+        //anims.applyRootMotion = true;
         lerp = false;
         //Add AI idle choose state
         ai.SetState(SmallAlienAI.States.Navigating);
-        }
-        else
-        {
-            if(!hit || hitAgain)
-            {
-                gameObject.GetComponent<Rigidbody>().isKinematic = true;
-                anims.applyRootMotion = true;
-                gameObject.GetComponent<Animator>().SetBool("Hit", false);
-                lerp = false;
-                //Add AI idle choose state
-                ai.SetState(SmallAlienAI.States.Navigating);
-                nav.ToggleNavmeshAgent(true);
-            }
-        }
+        reactingToPhysics = false;
     }
-
-
-
 
 
     void lerpToPlayer()

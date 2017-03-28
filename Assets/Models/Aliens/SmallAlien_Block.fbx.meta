@@ -79,7 +79,85 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Block
+      takeName: Block
+      firstFrame: 116
+      lastFrame: 130
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/Back
+        weight: 1
+      - path: Root/Back/BL_Hip
+        weight: 1
+      - path: Root/Back/BL_Hip/BL_Knee
+        weight: 1
+      - path: Root/Back/BL_Hip/BL_Knee/BL_foot
+        weight: 1
+      - path: Root/Back/BR_Hip
+        weight: 1
+      - path: Root/Back/BR_Hip/BR_Knee
+        weight: 1
+      - path: Root/Back/BR_Hip/BR_Knee/BR_Foot
+        weight: 1
+      - path: Root/Back/Tail
+        weight: 1
+      - path: Root/Front
+        weight: 1
+      - path: Root/Front/FL_Hip
+        weight: 1
+      - path: Root/Front/FL_Hip/FL_Knee
+        weight: 1
+      - path: Root/Front/FL_Hip/FL_Knee/FL_Foot
+        weight: 1
+      - path: Root/Front/FR_Hip
+        weight: 1
+      - path: Root/Front/FR_Hip/FR_Knee
+        weight: 1
+      - path: Root/Front/FR_Hip/FR_Knee/FR_Foot
+        weight: 1
+      - path: Root/Front/Head
+        weight: 1
+      - path: Root/group57
+        weight: 1
+      - path: Root/PoleVector
+        weight: 1
+      - path: Root/PoleVector/B_L_PV
+        weight: 1
+      - path: Root/PoleVector/B_L_PV1
+        weight: 1
+      - path: Root/PoleVector/F_L_PV
+        weight: 1
+      - path: Root/PoleVector/F_R_PV
+        weight: 1
+      - path: SmallAlienMesh
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

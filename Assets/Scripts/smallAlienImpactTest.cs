@@ -31,7 +31,7 @@ public class smallAlienImpactTest : MonoBehaviour {
             if (hit)
             {
                 hitAgain = true;
-                gameObject.GetComponent<Animator>().SetTrigger("HitAgain");
+                //gameObject.GetComponent<Animator>().SetTrigger("HitAgain");
             }
             else
             {
