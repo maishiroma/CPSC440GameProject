@@ -784,8 +784,8 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 06ee1d9fb6f5e5a4c8b7e0093d75feec, type: 3}
   m_Controller: {fileID: 9100000, guid: 1eb841005b430644a953172a3b2381d0, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 1
+  m_CullingMode: 0
+  m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -857,6 +857,7 @@ MonoBehaviour:
   SmallAlienNavmeshAgentPrefab: {fileID: 1829474774205572, guid: e24c8fcba1c62074ea8add15707768a9,
     type: 2}
   _SmallAlienAgent: {fileID: 0}
+  stoppingDistFromTarget: 3
   usingNavmeshAgent: 0
 --- !u!114 &114996100099174500
 MonoBehaviour:
@@ -882,6 +883,7 @@ MonoBehaviour:
   mesh: {fileID: 0}
   grounded: 0
   isInAir: 0
+  reactingToPhysics: 0
 --- !u!137 &137394197494931678
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

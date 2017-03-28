@@ -1,64 +1,54 @@
 fileFormatVersion: 2
-guid: f3fdf3a81f330da479dfb81ccec6bf51
-timeCreated: 1488253047
+guid: f418a9c013d61404f8769fdc475ffd13
+timeCreated: 1490306807
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: B_L_PV
-    100002: B_L_PV1
-    100004: Back
-    100006: BL_foot
-    100008: BL_Hip
-    100010: BL_Knee
-    100012: BR_Foot
-    100014: BR_Hip
-    100016: BR_Knee
-    100018: F_L_PV
-    100020: F_R_PV
-    100022: FL_Foot
-    100024: FL_Hip
-    100026: FL_Knee
-    100028: FR_Foot
-    100030: FR_Hip
-    100032: FR_Knee
-    100034: Front
-    100036: group57
-    100038: Head
-    100040: PoleVector
-    100042: Root
-    100044: //RootNode
-    100046: SmallAlienMesh
-    100048: Tail
-    400000: B_L_PV
-    400002: B_L_PV1
-    400004: Back
-    400006: BL_foot
-    400008: BL_Hip
-    400010: BL_Knee
-    400012: BR_Foot
-    400014: BR_Hip
-    400016: BR_Knee
-    400018: F_L_PV
-    400020: F_R_PV
-    400022: FL_Foot
-    400024: FL_Hip
-    400026: FL_Knee
-    400028: FR_Foot
-    400030: FR_Hip
-    400032: FR_Knee
-    400034: Front
-    400036: group57
-    400038: Head
-    400040: PoleVector
-    400042: Root
-    400044: //RootNode
-    400046: SmallAlienMesh
-    400048: Tail
-    4300000: SmallAlienMesh
-    7400000: Front_Hit
-    9500000: //RootNode
-    13700000: SmallAlienMesh
+    100000: LeftButton
+    100002: LeftButtonCollider
+    100004: polySurface1
+    100006: //RootNode
+    100008: RightButton
+    100010: RightButtonCollider
+    100012: TopButton
+    100014: TopButtonCollider
+    100016: transform1
+    100018: transform2
+    400000: LeftButton
+    400002: LeftButtonCollider
+    400004: polySurface1
+    400006: //RootNode
+    400008: RightButton
+    400010: RightButtonCollider
+    400012: TopButton
+    400014: TopButtonCollider
+    400016: transform1
+    400018: transform2
+    2300000: LeftButton
+    2300002: LeftButtonCollider
+    2300004: RightButton
+    2300006: RightButtonCollider
+    2300008: TopButton
+    2300010: TopButtonCollider
+    3300000: LeftButton
+    3300002: LeftButtonCollider
+    3300004: RightButton
+    3300006: RightButtonCollider
+    3300008: TopButton
+    3300010: TopButtonCollider
+    4300000: RightButton
+    4300002: RightButtonCollider
+    4300004: LeftButton
+    4300006: LeftButtonCollider
+    4300008: TopButton
+    4300010: TopButtonCollider
+    6400000: LeftButton
+    6400002: LeftButtonCollider
+    6400004: RightButton
+    6400006: RightButtonCollider
+    6400008: TopButton
+    6400010: TopButtonCollider
   materials:
     importMaterials: 1
     materialName: 0
@@ -83,9 +73,9 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 50
+    globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -115,13 +105,13 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    rootMotionBoneName: Root
+    rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

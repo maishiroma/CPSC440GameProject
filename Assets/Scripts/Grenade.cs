@@ -19,6 +19,8 @@ public class Grenade : MonoBehaviour
 
     private bool hitGround = false;
 
+    public GameObject explosionParticles;
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == 10)
@@ -63,6 +65,8 @@ public class Grenade : MonoBehaviour
     void AddExplosiveForce(GameObject Obj)
     {
 
+        GameObject _explosionParticles = (GameObject)Instantiate(explosionParticles, transform.position, Quaternion.identity);
+
         Vector3 myPos = transform.position;
         myPos.Set(myPos.x, 0, myPos.z);
         Vector3 ObjPos = Obj.transform.position;
@@ -80,10 +84,6 @@ public class Grenade : MonoBehaviour
             Obj.transform.parent.position.Set(Obj.transform.parent.position.x, Obj.transform.parent.position.y + 0.1f, Obj.transform.parent.position.z);
             Obj.transform.parent.GetComponent<Rigidbody>().velocity = Vector3.zero;
             Obj.transform.parent.GetComponent<SmallAlienPhysicsManager>().InAir(true);
-            //Obj.transform.parent.GetComponent<SmallAlienHealth>().dealDamage(30f);
-            //Vector3 newForce = Vector3.Scale(direction, new Vector3(.25f, 7f, .25f)) * force;
-            //newForce.Set(newForce.x, Mathf.Clamp(newForce.y, .2f, 4), newForce.z);
-            //Debug.Log(Vector3.up * force + direction);
             Obj.transform.parent.GetComponent<Rigidbody>().velocity = Vector3.up * force + direction;
             Vector3 torque = new Vector3(Random.Range(-rotationalForce * t, rotationalForce * t), Random.Range(-rotationalForce * t, rotationalForce * t), Random.Range(-rotationalForce * t, rotationalForce * t));
             Obj.transform.parent.GetComponent<Rigidbody>().AddTorque(torque, ForceMode.Impulse);

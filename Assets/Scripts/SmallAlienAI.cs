@@ -33,12 +33,6 @@ public class SmallAlienAI : MonoBehaviour {
                 _navMeshInterface.ToggleNavmeshAgent(true);
             }
         }
-        else if(state == States.Hit)
-        {
-            currentState = States.Hit;
-            _navMeshInterface.ToggleNavmeshAgent(false);
-
-        }
         else if(state == States.InAir)
         {
             currentState = States.InAir;
