@@ -298,7 +298,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  maxExplosionForce: 11
+  maxExplosionForce: 12.3
   minExplosionForce: 3
   rotationalForce: 60
   explosionForceFalloff:
