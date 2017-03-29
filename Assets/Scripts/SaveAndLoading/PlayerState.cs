@@ -27,6 +27,26 @@ public class PlayerState : MonoBehaviour
 	public float currWeaponShotRate;
 	public float currWeaponReloadRate;
 
+	/* 	This variable keeps track of what traps the player has currently equipped.
+		This will store the current weapons that the player will have. This will be a type GameObject that will hold traps.
+		The traps will be set in the menu screen.
+		Once the player selects the trap menu, the radial menu should be updated to reflect what's in the GameObject[] array.
+		(which is done in the PageScript)
+
+		The player simply selects a slot on the radial menu and chooses which trap to put in there. (as well as vice versa)
+		If the player selects a trap in the radial menu and clicks on a trap in the selection, that selected trap will replace
+		the trap being highlighted.
+		If the player selects a trap and selects an empty trap spot, the trap will be removed from the radial menu.
+		If the player selexts a slot with a trap and selects another trap in the radial menu, they swap places.
+
+		Selecting a radial spot can use the event system that Cameron already implemeted for selecting a spot in the actual game.
+		
+
+		In the actual game, the radial menu will use this list to determine what traps the player has.
+	*/ 
+
+	public GameObject[] equippedTraps = new GameObject[3];
+
 	// Singleton method, so that only one of these exist.
 	void Awake()
 	{
