@@ -3281,7 +3281,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
-  - {fileID: 1016898782}
+  - {fileID: 575600481}
   m_Father: {fileID: 431829544}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7190,6 +7190,35 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 575498721}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &575600480
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 575600481}
+  m_Layer: 19
+  m_Name: Scale
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &575600481
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 575600480}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.017, y: 0.036, z: -0.07}
+  m_LocalScale: {x: 1, y: 1, z: 1.1}
+  m_Children:
+  - {fileID: 1016898782}
+  m_Father: {fileID: 314420884}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &578688212
 GameObject:
   m_ObjectHideFlags: 0
@@ -12337,7 +12366,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 1000
-  field of view: 80
+  field of view: 68
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -14105,6 +14134,7 @@ GameObject:
   - component: {fileID: 1016898782}
   - component: {fileID: 1016898784}
   - component: {fileID: 1016898783}
+  - component: {fileID: 1016898785}
   m_Layer: 19
   m_Name: Gun
   m_TagString: Untagged
@@ -14144,7 +14174,7 @@ Transform:
   - {fileID: 2049697261}
   - {fileID: 1942616786}
   - {fileID: 1389026988}
-  m_Father: {fileID: 314420884}
+  m_Father: {fileID: 575600481}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1016898783
@@ -14189,6 +14219,26 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &1016898785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1016898781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 482278256b3b2f04886a83c6940c6193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeColor: {r: 1, g: 1, b: 1, a: 0}
+  otherStartColor: {r: 1, g: 1, b: 1, a: 0.666}
+  distanceFromGun: 10
+  radius: 1
+  minThreshold: 0.004
+  maxThreshold: 0.05
+  minRotation: 0.1
+  maxRotation: 3
+  lookXMaxRotation: 30
 --- !u!1 &1019059954
 GameObject:
   m_ObjectHideFlags: 0
@@ -18095,11 +18145,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114996100099174500, guid: c33779e1f48386249a13f5de00bf851b,
-        type: 2}
-      propertyPath: inAirDrag
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c33779e1f48386249a13f5de00bf851b, type: 2}
   m_IsPrefabParent: 0
@@ -20756,6 +20801,10 @@ Prefab:
     - target: {fileID: 1509610912256190, guid: 603571d5555e017438e2d83c482ab7e4, type: 2}
       propertyPath: m_Layer
       value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509610912256190, guid: 603571d5555e017438e2d83c482ab7e4, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 603571d5555e017438e2d83c482ab7e4, type: 2}

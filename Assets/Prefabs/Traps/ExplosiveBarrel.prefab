@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114885481857296506}
   - component: {fileID: 54197266438302720}
   - component: {fileID: 64739190374757522}
+  - component: {fileID: 114983522886525490}
   m_Layer: 11
   m_Name: ExplosiveBarrel
   m_TagString: Alive
@@ -165,3 +166,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f6b5207f2f15ca4a8dc12f24bf5ca24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114983522886525490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1904342659408870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd73f6649c2e73f4097e84e8654e8ed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 1
+  cost: 0
+  purchased: 1
+  icon: {fileID: 1002845935568296, guid: 2df75285d4a2f0f419a297a6341899d3, type: 2}
+  slot: 1

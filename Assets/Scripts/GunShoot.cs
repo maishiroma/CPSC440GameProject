@@ -189,6 +189,7 @@ public class GunShoot : MonoBehaviour {
 
     public void DropAmmoClip()
     {
+
         if (!outOfAmmo)
         {
             outOfAmmo = true;
@@ -207,6 +208,8 @@ public class GunShoot : MonoBehaviour {
         currentClip.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         currentClipAnims.enabled = false;
         currentClip = null;
+
+
     }
 
 }
