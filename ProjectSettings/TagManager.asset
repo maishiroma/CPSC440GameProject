@@ -10,7 +10,6 @@ TagManager:
   - Alien
   - SoundEffects
   - Unlockables
-  - SaveLoad
   layers:
   - Default
   - TransparentFX

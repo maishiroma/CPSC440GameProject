@@ -37,7 +37,7 @@ public class MenuControl : MonoBehaviour {
 		}
 	}
 
-	// This is here for debugging purposes.
+	// This is here for debugging purposes. In the actual game, these functions are tied to button clicks.
 	void Update () {
 		if(Input.GetKey(KeyCode.I))
 			SaveGame();
