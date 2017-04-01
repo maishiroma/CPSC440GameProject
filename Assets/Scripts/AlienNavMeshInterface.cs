@@ -21,14 +21,14 @@ public class AlienNavMeshInterface : MonoBehaviour {
         {
             usingNavmeshAgent = true;
             SetNavMeshAgentDestination(target.transform.position, true, target);
-            //_SmallAlienAgent.gameObject.SetActive(true);
-            //_SmallAlienAgent.transform.position = transform.position;
+            _SmallAlienAgent.gameObject.SetActive(true);
+            _SmallAlienAgent.transform.position = transform.position;
             _SmallAlienAgent.transform.rotation = transform.rotation;
         }
         else if (!useNavMesh)
         {
             usingNavmeshAgent = false;
-            //_SmallAlienAgent.gameObject.SetActive(false);
+            _SmallAlienAgent.gameObject.SetActive(false);
         }
     }
 
@@ -53,7 +53,7 @@ public class AlienNavMeshInterface : MonoBehaviour {
     public void SetNavMeshAgentDestination(Vector3 target, bool track = false, GameObject targetGO = null)
     {
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(target, out hit, 2.0f, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(target, out hit, 2.0f, NavMesh.AllAreas) && _SmallAlienAgent.gameObject.activeSelf)
         {
             _SmallAlienAgent.SetDestination(hit.position);
             lastTargetPos = hit.position;
