@@ -13404,6 +13404,7 @@ GameObject:
   - component: {fileID: 900917917}
   - component: {fileID: 900917916}
   - component: {fileID: 900917915}
+  - component: {fileID: 900917918}
   - component: {fileID: 900917914}
   - component: {fileID: 900917913}
   - component: {fileID: 900917912}
@@ -13734,6 +13735,22 @@ Transform:
   m_Father: {fileID: 739503509}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &900917918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 900917902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1156c073149742478887bb24456f32d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalGainDb: 0
+  occlusionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  quality: 2
 --- !u!1 &906559556
 GameObject:
   m_ObjectHideFlags: 0
@@ -15426,6 +15443,7 @@ GameObject:
   - component: {fileID: 1016898782}
   - component: {fileID: 1016898784}
   - component: {fileID: 1016898783}
+  - component: {fileID: 1016898785}
   m_Layer: 9
   m_Name: Gun
   m_TagString: Untagged
@@ -15488,6 +15506,7 @@ MonoBehaviour:
   currentClip: {fileID: 1994317051}
   currentClipAnims: {fileID: 0}
   gunFireSound: {fileID: 8300000, guid: 7b8e5a88fa1904691bb7d3674bee9372, type: 3}
+  gunSoundSource: {fileID: 0}
   trapMenu: {fileID: 2138808022}
   shootPoint: {fileID: 324230315}
   bullet: {fileID: 1000013753647018, guid: 765529aea65d1b74387ad855e948f828, type: 2}
@@ -15510,6 +15529,38 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &1016898785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1016898781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbca64e524ea44f9b26142ec59aca8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bypassRoomEffects: 0
+  directivityAlpha: 0
+  directivitySharpness: 1
+  listenerDirectivityAlpha: 0
+  listenerDirectivitySharpness: 1
+  gainDb: 0
+  occlusionEnabled: 0
+  playOnAwake: 1
+  sourceClip: {fileID: 0}
+  sourceLoop: 0
+  sourceMute: 0
+  sourcePitch: 1
+  sourcePriority: 128
+  sourceDopplerLevel: 1
+  sourceSpread: 0
+  sourceVolume: 1
+  sourceRolloffMode: 0
+  sourceMaxDistance: 500
+  sourceMinDistance: 1
+  hrtfEnabled: 1
+  audioSource: {fileID: 0}
 --- !u!1 &1016906533
 GameObject:
   m_ObjectHideFlags: 0
@@ -27130,6 +27181,8 @@ MonoBehaviour:
   sceneName: Main Menu
   screenFade: {fileID: 1246943151}
   fadeIn: 0
+  levelSelectSound: {fileID: 0}
+  levelSelectSource: {fileID: 0}
 --- !u!114 &1692599803
 MonoBehaviour:
   m_ObjectHideFlags: 0

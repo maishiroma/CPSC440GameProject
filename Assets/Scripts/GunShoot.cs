@@ -22,8 +22,10 @@ public class GunShoot : MonoBehaviour {
 
     public AmmoClip currentClip;
     public Animator currentClipAnims;
-	public AudioClip gunFireSound;
 
+	// Google VR sounds
+	public AudioClip gunFireSound;
+	public GvrAudioSource gunSoundSource;
 
     public TrapMenu trapMenu;
 
@@ -43,6 +45,8 @@ public class GunShoot : MonoBehaviour {
         currentAmmo = startAmmo;
         //currentClip = GameObject.Find("AmmoClip").GetComponent<AmmoClip>();
         currentClipAnims = currentClip.gameObject.GetComponent<Animator>();
+
+		gunSoundSource = GetComponent<GvrAudioSource>();
 	}
 
     // Update is called once per frame
@@ -158,8 +162,7 @@ public class GunShoot : MonoBehaviour {
             GameObject _bullet = (GameObject)Instantiate(bullet, shootPoint.position, Quaternion.LookRotation(shootDir), GameObject.Find("AllBullets").transform);
             
 			// Here, sound is played when firing
-			//AudioSource playSound = GameObject.FindGameObjectWithTag("SoundEffects").GetComponent<AudioSource>();
-			//playSound.PlayOneShot(gunFireSound,.15f);
+			gunSoundSource.PlayOneShot(gunFireSound,.15f);
 
 			gunAnims.SetTrigger("Shoot");
             currentAmmo -= ammoPerShoot;
