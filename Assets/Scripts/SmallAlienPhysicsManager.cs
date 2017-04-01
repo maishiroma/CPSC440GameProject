@@ -37,6 +37,7 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
     public bool reactingToPhysics = false;
     private bool hitInAir = false;
     private float inAirTime;
+    public float airImpactRotation = 15f;
 
     bool foundLandPos;
     Vector3 landPos;
@@ -92,10 +93,12 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
             }
             else if(!hitInAir)
             {
+                anims.SetFloat("HitNum", UnityEngine.Random.Range(0, 1));
                 anims.SetBool("InAirHit", true);
                 hitInAir = true;
-                Invoke("resetHitInAir", 0.1f);
-                Invoke("resetAirHit", 0.01f);
+                Invoke("resetHitInAir", 0.3f);
+                Invoke("resetAirHit", 0.25f);
+                rb.AddTorque(new Vector3(UnityEngine.Random.Range(-airImpactRotation, airImpactRotation), UnityEngine.Random.Range(-airImpactRotation, airImpactRotation), UnityEngine.Random.Range(-airImpactRotation, airImpactRotation)));
             }
 
 
@@ -153,7 +156,7 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
         RaycastHit hit;
         if(Physics.Raycast(transform.position, Vector3.down, out hit, 2f, groundMask))
         {
-            transform.position = new Vector3(transform.position.x, 10f + startY + hit.point.y, transform.position.z);
+            //transform.position = new Vector3(transform.position.x, 10f + startY + hit.point.y, transform.position.z);
         }
 
 

@@ -866,11 +866,12 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 1024
-  inAirDrag: 0.3
+  inAirDrag: 0.5
   mesh: {fileID: 0}
   grounded: 1
   isInAir: 0
   reactingToPhysics: 0
+  airImpactRotation: 22
 --- !u!137 &137394197494931678
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
