@@ -35,10 +35,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4973584208469514}
   - component: {fileID: 33253804086729180}
+  - component: {fileID: 64536651203033996}
   - component: {fileID: 65714379896532890}
   - component: {fileID: 23179403495927578}
   - component: {fileID: 114270575294591600}
   - component: {fileID: 114946844818538042}
+  - component: {fileID: 114840420879464968}
   m_Layer: 0
   m_Name: Trap Card
   m_TagString: Untagged
@@ -111,6 +113,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1929536329781792}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!64 &64536651203033996
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1929536329781792}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &65714379896532890
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -119,7 +135,7 @@ BoxCollider:
   m_GameObject: {fileID: 1929536329781792}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -135,6 +151,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HologramMaskTag: MenuBounds
+--- !u!114 &114840420879464968
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1929536329781792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114946844818538042}
+          m_MethodName: EquipTrap
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!114 &114946844818538042
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -149,3 +195,4 @@ MonoBehaviour:
   visible: 0
   equipped: 0
   trapIconPos: {fileID: 4342417168458894}
+  displayedTrap: {fileID: 0}

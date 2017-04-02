@@ -22,10 +22,14 @@ public class PlayerState : MonoBehaviour
 	public float currXP;
 	public float currCurrency;
 
+	// The current Player weapon data
 	public int currWeaponDamage;
 	public int currWeaponAmmo;
 	public float currWeaponShotRate;
 	public float currWeaponReloadRate;
+
+	// The current Player traps that they equipped.
+	public GameObject[] currEquippedTraps = new GameObject[3];
 
 	// Singleton method, so that only one of these exist.
 	void Awake()
