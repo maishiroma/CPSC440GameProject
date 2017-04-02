@@ -12,7 +12,7 @@ using System.Collections.Generic;
  * - Weapon damage level, reload speed, ammo size, and fire rate.
  * - Level highscores
  * 
- * When the player reloads the game, they start out in the space ship. 
+ * When the player reloads the game, they start out in the space ship, which occurs when they boot up the app. 
 */ 
 
 [Serializable]
@@ -29,6 +29,9 @@ public class PlayerStatistics
 	public int WeaponAmmo;
 	public float WeaponShotRate;
 	public float WeaponReloadRate;
+
+	// What traps do the player currently have equipped?
+	public GameObject[] EquippedTraps = new GameObject[3];
     
 	// Traps that are currently unlocked. This will be a filled array that has a bool for each one, indicating if it's unlocked.
 	public bool[] UnlockWeapons = new bool[15];

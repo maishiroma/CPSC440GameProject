@@ -1125,6 +1125,8 @@ GameObject:
   - component: {fileID: 484511004}
   - component: {fileID: 484511003}
   - component: {fileID: 484511006}
+  - component: {fileID: 484511008}
+  - component: {fileID: 484511007}
   m_Layer: 12
   m_Name: rightButton
   m_TagString: Untagged
@@ -1213,6 +1215,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HologramMaskTag: MenuBounds
+--- !u!114 &484511007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 484511001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c4f4e41a5fc433d987b6e0c622405d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  representWhichSpot: 0
+  isSelected: 0
+  isDisabled: 0
+  currTrap: {fileID: 0}
+  otherRadials:
+  - {fileID: 907336655}
+  - {fileID: 1069711929}
+--- !u!114 &484511008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 484511001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 484511007}
+          m_MethodName: SelectSpot
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &498657998
 GameObject:
   m_ObjectHideFlags: 0
@@ -2533,6 +2583,8 @@ GameObject:
   - component: {fileID: 907336659}
   - component: {fileID: 907336658}
   - component: {fileID: 907336657}
+  - component: {fileID: 907336662}
+  - component: {fileID: 907336661}
   m_Layer: 12
   m_Name: leftButton
   m_TagString: Untagged
@@ -2621,6 +2673,54 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 907336655}
   m_Mesh: {fileID: 4300000, guid: be3b93f66873d3c4d81354e078d40ea1, type: 3}
+--- !u!114 &907336661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 907336655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c4f4e41a5fc433d987b6e0c622405d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  representWhichSpot: 2
+  isSelected: 0
+  isDisabled: 0
+  currTrap: {fileID: 0}
+  otherRadials:
+  - {fileID: 484511001}
+  - {fileID: 1069711929}
+--- !u!114 &907336662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 907336655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 907336661}
+          m_MethodName: SelectSpot
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &929754566
 GameObject:
   m_ObjectHideFlags: 0
@@ -2752,6 +2852,10 @@ MonoBehaviour:
     WeaponAmmo: 0
     WeaponShotRate: 0
     WeaponReloadRate: 0
+    EquippedTraps:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     UnlockWeapons: 000000000000000000000000000000
     LevelHighScores: 
   IsSceneBeingLoaded: 0
@@ -2775,6 +2879,10 @@ MonoBehaviour:
     WeaponAmmo: 0
     WeaponShotRate: 0
     WeaponReloadRate: 0
+    EquippedTraps:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     UnlockWeapons: 000000000000000000000000000000
     LevelHighScores: 
   currLevel: 1
@@ -2785,6 +2893,10 @@ MonoBehaviour:
   currWeaponAmmo: 100
   currWeaponShotRate: 1
   currWeaponReloadRate: 1
+  currEquippedTraps:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &960517311
 Transform:
   m_ObjectHideFlags: 0
@@ -2985,6 +3097,8 @@ GameObject:
   - component: {fileID: 1069711932}
   - component: {fileID: 1069711931}
   - component: {fileID: 1069711934}
+  - component: {fileID: 1069711936}
+  - component: {fileID: 1069711935}
   m_Layer: 12
   m_Name: topButton
   m_TagString: Untagged
@@ -3073,6 +3187,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HologramMaskTag: MenuBounds
+--- !u!114 &1069711935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1069711929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c4f4e41a5fc433d987b6e0c622405d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  representWhichSpot: 1
+  isSelected: 0
+  isDisabled: 0
+  currTrap: {fileID: 0}
+  otherRadials:
+  - {fileID: 907336655}
+  - {fileID: 484511001}
+--- !u!114 &1069711936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1069711929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1069711935}
+          m_MethodName: SelectSpot
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!4 &1089731780 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4901259288954396, guid: fc392830da106514c9b1fcb4bfc59e29,

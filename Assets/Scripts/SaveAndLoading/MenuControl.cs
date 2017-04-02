@@ -62,7 +62,9 @@ public class MenuControl : MonoBehaviour {
 		PlayerState.Instance.localPlayerData.WeaponAmmo = player.GetComponent<PlayerState>().currWeaponAmmo;
 		PlayerState.Instance.localPlayerData.WeaponShotRate = player.GetComponent<PlayerState>().currWeaponShotRate;
 		PlayerState.Instance.localPlayerData.WeaponReloadRate = player.GetComponent<PlayerState>().currWeaponReloadRate;
+		PlayerState.Instance.localPlayerData.EquippedTraps = player.GetComponent<PlayerState>().currEquippedTraps;
 
+		// These are from the dummy script of handling menu stuff
 		PlayerState.Instance.localPlayerData.UnlockWeapons = unlockables.GetComponent<Unlockables>().currUnlockWeapons;
 		PlayerState.Instance.localPlayerData.LevelHighScores = currLevelHighScores;
 
@@ -95,10 +97,13 @@ public class MenuControl : MonoBehaviour {
 			player.GetComponent<PlayerState>().currWeaponAmmo = GlobalControl.Instance.savedPlayerData.WeaponAmmo;
 			player.GetComponent<PlayerState>().currWeaponShotRate = GlobalControl.Instance.savedPlayerData.WeaponShotRate;
 			player.GetComponent<PlayerState>().currWeaponReloadRate = GlobalControl.Instance.savedPlayerData.WeaponReloadRate;
+			player.GetComponent<PlayerState>().currEquippedTraps = GlobalControl.Instance.savedPlayerData.EquippedTraps;
 
+			// These are from the dummy script of handling menu stuff
 			unlockables.GetComponent<Unlockables>().currUnlockWeapons = GlobalControl.Instance.savedPlayerData.UnlockWeapons;
 			currLevelHighScores = GlobalControl.Instance.savedPlayerData.LevelHighScores;
 
+			// We then tell the program that the game has finished loading
 			print("Loaded game!");
 			GlobalControl.Instance.IsSceneBeingLoaded = false;
 		}
