@@ -6,15 +6,13 @@ using UnityEngine;
  * 	place a trap in this spot. Each square will be assigned a section from the PlayerState GameObject array. (so this script goes on
  *  each square).
  */
-
-
 public class EquipTrapRadial : MonoBehaviour {
 
 	public int representWhichSpot;		// Which index spot does this square represent for the player's equipped traps in PlayerState?
 	public bool isSelected;				// This will be true when the player selects this spot
 	public bool isDisabled;				// This makes sure that only one of these spots are selected.
 
-	public GameObject currTrap;			// What trap is currently on this spot?
+	public GameObject currTrap;				// What trap is currently associated othis spot?
 	public EquipTrapRadial[] otherRadials;	// Keeps track of the other radial spots.
 
 	private PlayerState player;	// Keeps a refrence to the playerState so that it can refer back to it when needed.
@@ -61,12 +59,19 @@ public class EquipTrapRadial : MonoBehaviour {
 	}
 
 	// This sets the given trap from the parameter into this spot.
-	public void SetTrap(GameObject trap)
+	public void SetTrap(GameObject selectedTrap)
 	{
-		currTrap = trap;
-		trap.GetComponent<Trap>().slot = representWhichSpot;
+		currTrap = selectedTrap;
 		DeselectSpot();
-		print("Set " + currTrap.name + " into slot " + representWhichSpot);
+		print("Set " + currTrap.GetComponent<TrapCard>().associatedTrap.name + " into slot " + representWhichSpot);
+	}
+
+	// This removes the current trap that's in the currTrap variable.
+	public void RemoveTrap()
+	{
+		currTrap.GetComponent<TrapCard>().equipped = false;
+		print("Removed " + currTrap.GetComponent<TrapCard>().associatedTrap.name  + " from slot " + representWhichSpot);
+		currTrap = null;
 	}
 
 }
