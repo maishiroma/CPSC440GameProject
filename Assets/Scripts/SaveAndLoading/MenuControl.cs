@@ -10,8 +10,15 @@ using UnityEngine.SceneManagement;
 
 public class MenuControl : MonoBehaviour {
 
+	// Keeps a refrence to itself; used in saving and loading
 	public static MenuControl Instance;
+
+	// Variables on where main menu stuff get's saved, like high scores.
 	public int[] currLevelHighScores;
+
+	// used to optimize save and loading.
+	private PlayerState player;
+	private Unlockables unlockables;
 
 	// Pseudo-singleton concept from Unity dev tutorial video.
 	void Awake()
@@ -20,6 +27,9 @@ public class MenuControl : MonoBehaviour {
 		{
 			DontDestroyOnLoad(gameObject);
 			Instance = this;
+
+			player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>();
+			unlockables = GameObject.FindGameObjectWithTag("Unlockables").GetComponent<Unlockables>();
 		}
 		else if (Instance != this)
 		{
@@ -48,24 +58,24 @@ public class MenuControl : MonoBehaviour {
 	// Saves all of the important data into a PlayerState Instance and turns it into a .bat file.
 	public void SaveGame()
 	{
-		// We retrieve the player and "shop" gameobjects, since they have necessary data to save
-		GameObject player = GameObject.FindGameObjectWithTag("Player");
-		GameObject unlockables = GameObject.FindGameObjectWithTag("Unlockables");
+		// We store the important variables into the PlayerState's localPlayerData
+		PlayerState.Instance.localPlayerData.Level = player.currLevel;
+		PlayerState.Instance.localPlayerData.NextLevel = player.toNextLevel;
+		PlayerState.Instance.localPlayerData.XP = player.currXP;
+		PlayerState.Instance.localPlayerData.Currency = player.currCurrency;
 
-		// We then store the important variables into the PlayerState's localPlayerData
-		PlayerState.Instance.localPlayerData.Level = player.GetComponent<PlayerState>().currLevel;
-		PlayerState.Instance.localPlayerData.NextLevel = player.GetComponent<PlayerState>().toNextLevel;
-		PlayerState.Instance.localPlayerData.XP = player.GetComponent<PlayerState>().currXP;
-		PlayerState.Instance.localPlayerData.Currency = player.GetComponent<PlayerState>().currCurrency;
+		PlayerState.Instance.localPlayerData.WeaponDamage = player.currWeaponDamage;
+		PlayerState.Instance.localPlayerData.WeaponAmmo = player.currWeaponAmmo;
+		PlayerState.Instance.localPlayerData.WeaponShotRate = player.currWeaponShotRate;
+		PlayerState.Instance.localPlayerData.WeaponReloadRate = player.currWeaponReloadRate;
+		PlayerState.Instance.localPlayerData.EquippedTraps = player.currEquippedTraps;
 
-		PlayerState.Instance.localPlayerData.WeaponDamage = player.GetComponent<PlayerState>().currWeaponDamage;
-		PlayerState.Instance.localPlayerData.WeaponAmmo = player.GetComponent<PlayerState>().currWeaponAmmo;
-		PlayerState.Instance.localPlayerData.WeaponShotRate = player.GetComponent<PlayerState>().currWeaponShotRate;
-		PlayerState.Instance.localPlayerData.WeaponReloadRate = player.GetComponent<PlayerState>().currWeaponReloadRate;
-		PlayerState.Instance.localPlayerData.EquippedTraps = player.GetComponent<PlayerState>().currEquippedTraps;
-
-		// These are from the dummy script of handling menu stuff
-		PlayerState.Instance.localPlayerData.UnlockWeapons = unlockables.GetComponent<Unlockables>().currUnlockWeapons;
+		// Main Menu stuff, including trap unlocking and gun upgrades.
+		PlayerState.Instance.localPlayerData.UnlockWeapons = unlockables.currUnlockWeapons;
+		PlayerState.Instance.localPlayerData.GunDamageIndex = player.currGunDamageIndex;
+		PlayerState.Instance.localPlayerData.GunAmmoIndex = player.currGunAmmoIndex;
+		PlayerState.Instance.localPlayerData.GunReloadIndex = player.currGunReloadIndex;
+		PlayerState.Instance.localPlayerData.GunFireIndex = player.currGunFireIndex;
 		PlayerState.Instance.localPlayerData.LevelHighScores = currLevelHighScores;
 
 		// With the localPlayerData filled, we save the data to the .bat file
@@ -73,7 +83,7 @@ public class MenuControl : MonoBehaviour {
 		print("Saved game!");
 	}
 
-	// If there's a save file, loads it into the game.
+	// If there's a save file, loads it into the game by using the Global Control's data and putting it into the player's state.
 	public void LoadGame()
 	{
 		bool foundSave = GlobalControl.Instance.LoadData();
@@ -83,24 +93,25 @@ public class MenuControl : MonoBehaviour {
 			GlobalControl.Instance.IsSceneBeingLoaded = true;
 			SceneManager.LoadScene(0);
 
-			// After we loaded the scene, we find the player and the "shop" gameobjects, since we will be filling in details in them
-			GameObject player = GameObject.FindGameObjectWithTag("Player");
-			GameObject unlockables = GameObject.FindGameObjectWithTag("Unlockables");
-
 			// Then, we load the saved data extracted from GlobalControl into the player and the "shop".
-			player.GetComponent<PlayerState>().currLevel = GlobalControl.Instance.savedPlayerData.Level;
-			player.GetComponent<PlayerState>().toNextLevel = GlobalControl.Instance.savedPlayerData.NextLevel;
-			player.GetComponent<PlayerState>().currXP = GlobalControl.Instance.savedPlayerData.XP;
-			player.GetComponent<PlayerState>().currCurrency = GlobalControl.Instance.savedPlayerData.Currency;
+			player.currLevel = GlobalControl.Instance.savedPlayerData.Level;
+			player.toNextLevel = GlobalControl.Instance.savedPlayerData.NextLevel;
+			player.currXP = GlobalControl.Instance.savedPlayerData.XP;
+			player.currCurrency = GlobalControl.Instance.savedPlayerData.Currency;
 
-			player.GetComponent<PlayerState>().currWeaponDamage = GlobalControl.Instance.savedPlayerData.WeaponDamage;
-			player.GetComponent<PlayerState>().currWeaponAmmo = GlobalControl.Instance.savedPlayerData.WeaponAmmo;
-			player.GetComponent<PlayerState>().currWeaponShotRate = GlobalControl.Instance.savedPlayerData.WeaponShotRate;
-			player.GetComponent<PlayerState>().currWeaponReloadRate = GlobalControl.Instance.savedPlayerData.WeaponReloadRate;
-			player.GetComponent<PlayerState>().currEquippedTraps = GlobalControl.Instance.savedPlayerData.EquippedTraps;
+			player.currWeaponDamage = GlobalControl.Instance.savedPlayerData.WeaponDamage;
+			player.currWeaponAmmo = GlobalControl.Instance.savedPlayerData.WeaponAmmo;
+			player.currWeaponShotRate = GlobalControl.Instance.savedPlayerData.WeaponShotRate;
+			player.currWeaponReloadRate = GlobalControl.Instance.savedPlayerData.WeaponReloadRate;
+			player.currEquippedTraps = GlobalControl.Instance.savedPlayerData.EquippedTraps;
 
-			// These are from the dummy script of handling menu stuff
-			unlockables.GetComponent<Unlockables>().currUnlockWeapons = GlobalControl.Instance.savedPlayerData.UnlockWeapons;
+			// Menu items, including trap unlocking and gun upgrades.
+			unlockables.currUnlockWeapons = GlobalControl.Instance.savedPlayerData.UnlockWeapons;
+			player.currGunDamageIndex = GlobalControl.Instance.savedPlayerData.GunDamageIndex;
+			player.currGunAmmoIndex = GlobalControl.Instance.savedPlayerData.GunAmmoIndex;
+			player.currGunReloadIndex = GlobalControl.Instance.savedPlayerData.GunReloadIndex;
+			player.currGunFireIndex = GlobalControl.Instance.savedPlayerData.GunFireIndex;
+
 			currLevelHighScores = GlobalControl.Instance.savedPlayerData.LevelHighScores;
 
 			// We then tell the program that the game has finished loading

@@ -20,8 +20,8 @@ public class TrapCard : MonoBehaviour {
 	// This is only needed to be done once
 	void Awake()
 	{
-		if(trapRadials == null)
-			trapRadials = GameObject.FindObjectsOfType<EquipTrapRadial>();
+		//if(trapRadials == null)
+			//trapRadials = GameObject.FindObjectsOfType<EquipTrapRadial>();
 	}
 	
     public void LoadTrapInSlot(GameObject trap)
@@ -33,7 +33,7 @@ public class TrapCard : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 
 	// Checks if any of the trapRadials are selected. If so, puts this trap onto there, and sets this trap as equipped.
@@ -41,6 +41,7 @@ public class TrapCard : MonoBehaviour {
 	{
 		if(equipped == false)
 		{
+			trapRadials = GameObject.FindObjectsOfType<EquipTrapRadial>();
 			for(int i = 0; i < trapRadials.Length; i++)
 			{
 				if(trapRadials[i].isSelected == true)

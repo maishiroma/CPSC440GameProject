@@ -31,6 +31,12 @@ public class PlayerState : MonoBehaviour
 	// The current Player traps that they equipped.
 	public GameObject[] currEquippedTraps = new GameObject[3];
 
+	// The current index the player's upgrades are at.
+	public int currGunDamageIndex = 0;
+	public int currGunAmmoIndex = 0;
+	public int currGunReloadIndex = 0;
+	public int currGunFireIndex = 0;
+
 	// Singleton method, so that only one of these exist.
 	void Awake()
 	{

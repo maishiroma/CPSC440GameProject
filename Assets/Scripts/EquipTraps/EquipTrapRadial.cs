@@ -15,17 +15,17 @@ public class EquipTrapRadial : MonoBehaviour {
 	public bool isDisabled;				// This makes sure that only one of these spots are selected.
 
 	public GameObject currTrap;			// What trap is currently on this spot?
-	public GameObject[] otherRadials;	// Keeps track of the other radial spots.
+	public EquipTrapRadial[] otherRadials;	// Keeps track of the other radial spots.
 
-	private GameObject playerState;	// Keeps a refrence to the playerState so that it can refer back to it when needed.
+	private PlayerState player;	// Keeps a refrence to the playerState so that it can refer back to it when needed.
 
 	// This will set the trap here to whatever is selected in the GameObject array.
 	void Start()
 	{
-		playerState = GameObject.FindGameObjectWithTag("Player");
+		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>();
 
-		if(playerState.GetComponent<PlayerState>().currEquippedTraps[representWhichSpot] != null)
-			currTrap = playerState.GetComponent<PlayerState>().currEquippedTraps[representWhichSpot];
+		if(player.currEquippedTraps[representWhichSpot] != null)
+			currTrap = player.currEquippedTraps[representWhichSpot];
 	}
 
 	// This method is called in the event system in order to let the object know it's been selected.
@@ -43,7 +43,7 @@ public class EquipTrapRadial : MonoBehaviour {
 			{
 				isSelected = true;
 				for(int i = 0; i < otherRadials.Length; i++)
-					otherRadials[i].GetComponent<EquipTrapRadial>().isDisabled = true;
+					otherRadials[i].isDisabled = true;
 			}
 		}
 	}
@@ -55,9 +55,8 @@ public class EquipTrapRadial : MonoBehaviour {
 		if(isDisabled == false)
 		{
 			isSelected = false;
-
 			for(int i = 0; i < otherRadials.Length; i++)
-				otherRadials[i].GetComponent<EquipTrapRadial>().isDisabled = false;
+				otherRadials[i].isDisabled = false;
 		}
 	}
 
@@ -67,7 +66,7 @@ public class EquipTrapRadial : MonoBehaviour {
 		currTrap = trap;
 		trap.GetComponent<Trap>().slot = representWhichSpot;
 		DeselectSpot();
-		print("It worked!");
+		print("Set " + currTrap.name + " into slot " + representWhichSpot);
 	}
 
 }

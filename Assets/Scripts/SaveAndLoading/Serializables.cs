@@ -39,4 +39,10 @@ public class PlayerStatistics
 	// Level highscores
 	public int[] LevelHighScores;
 
+	// This keeps track of the index position that each gun upgrade is at.
+	public int GunDamageIndex = 0;
+	public int GunAmmoIndex = 0;
+	public int GunReloadIndex = 0;
+	public int GunFireIndex = 0;
+
 }

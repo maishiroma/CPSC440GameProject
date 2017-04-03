@@ -1231,8 +1231,8 @@ MonoBehaviour:
   isDisabled: 0
   currTrap: {fileID: 0}
   otherRadials:
-  - {fileID: 907336655}
-  - {fileID: 1069711929}
+  - {fileID: 907336661}
+  - {fileID: 1069711935}
 --- !u!114 &484511008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1272,9 +1272,11 @@ GameObject:
   m_Component:
   - component: {fileID: 498657999}
   - component: {fileID: 498658002}
+  - component: {fileID: 498658005}
   - component: {fileID: 498658001}
   - component: {fileID: 498658000}
   - component: {fileID: 498658003}
+  - component: {fileID: 498658004}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -1334,7 +1336,7 @@ BoxCollider:
   m_GameObject: {fileID: 498657998}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -1357,6 +1359,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HologramMaskTag: MenuBounds
+--- !u!114 &498658004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 498657998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 551307761}
+          m_MethodName: UpgradeGunFireRate
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
+--- !u!64 &498658005
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 498657998}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &512203388
 GameObject:
   m_ObjectHideFlags: 0
@@ -1742,6 +1788,10 @@ MonoBehaviour:
   gunAmmoCost: 64000000c80000002c01000090010000
   gunReloadCost: 64000000c80000002c01000090010000
   gunFireRateCost: 64000000c80000002c01000090010000
+  gunDamageBoost: 5
+  gunAmmoBoost: 20
+  gunFireRateBoost: 0.5
+  gunReloadRateBoost: 0.5
 --- !u!4 &551307762
 Transform:
   m_ObjectHideFlags: 0
@@ -2689,8 +2739,8 @@ MonoBehaviour:
   isDisabled: 0
   currTrap: {fileID: 0}
   otherRadials:
-  - {fileID: 484511001}
-  - {fileID: 1069711929}
+  - {fileID: 484511007}
+  - {fileID: 1069711935}
 --- !u!114 &907336662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2730,9 +2780,11 @@ GameObject:
   m_Component:
   - component: {fileID: 929754567}
   - component: {fileID: 929754570}
+  - component: {fileID: 929754573}
   - component: {fileID: 929754569}
   - component: {fileID: 929754568}
   - component: {fileID: 929754571}
+  - component: {fileID: 929754572}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -2792,7 +2844,7 @@ BoxCollider:
   m_GameObject: {fileID: 929754566}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -2815,6 +2867,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HologramMaskTag: MenuBounds
+--- !u!114 &929754572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 929754566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 551307761}
+          m_MethodName: UpgradeGunAmmo
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
+--- !u!64 &929754573
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 929754566}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &960517308
 GameObject:
   m_ObjectHideFlags: 0
@@ -2858,6 +2954,10 @@ MonoBehaviour:
     - {fileID: 0}
     UnlockWeapons: 000000000000000000000000000000
     LevelHighScores: 
+    GunDamageIndex: 0
+    GunAmmoIndex: 0
+    GunReloadIndex: 0
+    GunFireIndex: 0
   IsSceneBeingLoaded: 0
 --- !u!114 &960517310
 MonoBehaviour:
@@ -2885,6 +2985,10 @@ MonoBehaviour:
     - {fileID: 0}
     UnlockWeapons: 000000000000000000000000000000
     LevelHighScores: 
+    GunDamageIndex: 0
+    GunAmmoIndex: 0
+    GunReloadIndex: 0
+    GunFireIndex: 0
   currLevel: 1
   toNextLevel: 100
   currXP: 0
@@ -2897,6 +3001,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  currGunDamageIndex: 0
+  currGunAmmoIndex: 0
+  currGunReloadIndex: 0
+  currGunFireIndex: 0
 --- !u!4 &960517311
 Transform:
   m_ObjectHideFlags: 0
@@ -3203,8 +3311,8 @@ MonoBehaviour:
   isDisabled: 0
   currTrap: {fileID: 0}
   otherRadials:
-  - {fileID: 907336655}
-  - {fileID: 484511001}
+  - {fileID: 907336661}
+  - {fileID: 484511007}
 --- !u!114 &1069711936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5898,9 +6006,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1840800421}
   - component: {fileID: 1840800424}
+  - component: {fileID: 1840800427}
   - component: {fileID: 1840800423}
   - component: {fileID: 1840800422}
   - component: {fileID: 1840800425}
+  - component: {fileID: 1840800426}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -5960,7 +6070,7 @@ BoxCollider:
   m_GameObject: {fileID: 1840800420}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -5983,6 +6093,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HologramMaskTag: MenuBounds
+--- !u!114 &1840800426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1840800420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 551307761}
+          m_MethodName: UpgradeGunDamage
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
+--- !u!64 &1840800427
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1840800420}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1844870933
 GameObject:
   m_ObjectHideFlags: 0
