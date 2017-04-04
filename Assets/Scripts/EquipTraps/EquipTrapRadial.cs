@@ -39,6 +39,7 @@ public class EquipTrapRadial : MonoBehaviour {
 			}
 			else
 			{
+				print(representWhichSpot + " is selected.");
 				isSelected = true;
 				for(int i = 0; i < otherRadials.Length; i++)
 					otherRadials[i].isDisabled = true;
@@ -52,6 +53,7 @@ public class EquipTrapRadial : MonoBehaviour {
 	{
 		if(isDisabled == false)
 		{
+			print(representWhichSpot + " is deselected.");
 			isSelected = false;
 			for(int i = 0; i < otherRadials.Length; i++)
 				otherRadials[i].isDisabled = false;
