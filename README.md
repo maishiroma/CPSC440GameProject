@@ -1,12 +1,12 @@
 # CPSC440GameProject
-This is the source code for our CPSC 440 VR game, tenatively called Grim Galaxy. Our goal for this project is to get one level out that's fully polished. This includes having an introduction that's scripted as well as completed game mechanics (shooting, placing traps, picking up items, etc.)
+This is the source code for our CPSC 440 VR game, called Beyond Space. Our goal for this project is to get one level out that's fully polished. This includes having an introduction that's scripted as well as completed game mechanics (shooting, placing traps, picking up items, etc.)
 
 ## Collaborators and Roles
 - Cameron Horst: Big Boss
 - Varsénik Aslanyan: Sound Master
 - Aaron Albert: Producer and Artist
-- Jennifer Ly: Storyboard
-- Kevin Lin: Artist
+- Jennifer Ly: Storyboard Creator
+- Kevin Lin: Main Artist
 - Matthew Shiroma: GitHub Manager and General Assistant
 
 ## Inportant Deadlines
