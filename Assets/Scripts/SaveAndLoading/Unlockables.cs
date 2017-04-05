@@ -26,11 +26,14 @@ public class Unlockables : MonoBehaviour {
 
 	private PlayerState player;	// Used as a refrence to the playerState.
 
-	// This will handle what traps are unlocked when the player returns to the ship.
 	void Awake()
 	{		
-		// When the "menu screen" boots up, any weapon that the player can get will be unlocked.
 		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>();
+	}
+
+	// When the "menu screen" boots up, any weapon that the player can get will be unlocked.
+	void Start()
+	{
 		for(int i = 0; i < currUnlockWeapons.Length; i++)
 		{
 			// We check if the player has reached the level requirement for a weapon. If so, the weapon is unlocked.

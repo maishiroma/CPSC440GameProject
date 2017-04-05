@@ -45,4 +45,7 @@ public class PlayerStatistics
 	public int GunReloadIndex = 0;
 	public int GunFireIndex = 0;
 
+	// The current game state. This essentially keeps track of what part the game is at. Used in controlling when cutscenes play out.
+	public int GameState = 0;
+
 }

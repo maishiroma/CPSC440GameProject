@@ -13,10 +13,7 @@ public class MenuControl : MonoBehaviour {
 	// Keeps a refrence to itself; used in saving and loading
 	public static MenuControl Instance;
 
-	// Variables on where main menu stuff get's saved, like high scores.
-	public int[] currLevelHighScores;
-
-	// used to optimize save and loading.
+	// Used to optimize save and loading.
 	private PlayerState player;
 	private Unlockables unlockables;
 
@@ -59,24 +56,29 @@ public class MenuControl : MonoBehaviour {
 	public void SaveGame()
 	{
 		// We store the important variables into the PlayerState's localPlayerData
+		// Saves the player's current stats
 		PlayerState.Instance.localPlayerData.Level = player.currLevel;
 		PlayerState.Instance.localPlayerData.NextLevel = player.toNextLevel;
 		PlayerState.Instance.localPlayerData.XP = player.currXP;
 		PlayerState.Instance.localPlayerData.Currency = player.currCurrency;
 
+		// Saves the player's gun upgrades and what traps they've equipped
 		PlayerState.Instance.localPlayerData.WeaponDamage = player.currWeaponDamage;
 		PlayerState.Instance.localPlayerData.WeaponAmmo = player.currWeaponAmmo;
 		PlayerState.Instance.localPlayerData.WeaponShotRate = player.currWeaponShotRate;
 		PlayerState.Instance.localPlayerData.WeaponReloadRate = player.currWeaponReloadRate;
 		PlayerState.Instance.localPlayerData.EquippedTraps = player.currEquippedTraps;
 
-		// Main Menu stuff, including trap unlocking and gun upgrades.
+		// Saves what traps they've equipped and what was the last upgrade they've gotten
 		PlayerState.Instance.localPlayerData.UnlockWeapons = unlockables.currUnlockWeapons;
 		PlayerState.Instance.localPlayerData.GunDamageIndex = player.currGunDamageIndex;
 		PlayerState.Instance.localPlayerData.GunAmmoIndex = player.currGunAmmoIndex;
 		PlayerState.Instance.localPlayerData.GunReloadIndex = player.currGunReloadIndex;
 		PlayerState.Instance.localPlayerData.GunFireIndex = player.currGunFireIndex;
-		PlayerState.Instance.localPlayerData.LevelHighScores = currLevelHighScores;
+
+		// Saves other main menu things, like high scores, game state, etc.
+		PlayerState.Instance.localPlayerData.LevelHighScores = player.currLevelHighScores;
+		PlayerState.Instance.localPlayerData.GameState = player.currGameState;
 
 		// With the localPlayerData filled, we save the data to the .bat file
 		GlobalControl.Instance.SaveData();
@@ -94,25 +96,29 @@ public class MenuControl : MonoBehaviour {
 			SceneManager.LoadScene(0);
 
 			// Then, we load the saved data extracted from GlobalControl into the player and the "shop".
+			// Loads the player's current stats
 			player.currLevel = GlobalControl.Instance.savedPlayerData.Level;
 			player.toNextLevel = GlobalControl.Instance.savedPlayerData.NextLevel;
 			player.currXP = GlobalControl.Instance.savedPlayerData.XP;
 			player.currCurrency = GlobalControl.Instance.savedPlayerData.Currency;
 
+			// Loads the player's gun upgrades and what traps they've equipped
 			player.currWeaponDamage = GlobalControl.Instance.savedPlayerData.WeaponDamage;
 			player.currWeaponAmmo = GlobalControl.Instance.savedPlayerData.WeaponAmmo;
 			player.currWeaponShotRate = GlobalControl.Instance.savedPlayerData.WeaponShotRate;
 			player.currWeaponReloadRate = GlobalControl.Instance.savedPlayerData.WeaponReloadRate;
 			player.currEquippedTraps = GlobalControl.Instance.savedPlayerData.EquippedTraps;
 
-			// Menu items, including trap unlocking and gun upgrades.
+			// Loads what traps they've equipped and what was the last upgrade they've gotten
 			unlockables.currUnlockWeapons = GlobalControl.Instance.savedPlayerData.UnlockWeapons;
 			player.currGunDamageIndex = GlobalControl.Instance.savedPlayerData.GunDamageIndex;
 			player.currGunAmmoIndex = GlobalControl.Instance.savedPlayerData.GunAmmoIndex;
 			player.currGunReloadIndex = GlobalControl.Instance.savedPlayerData.GunReloadIndex;
 			player.currGunFireIndex = GlobalControl.Instance.savedPlayerData.GunFireIndex;
 
-			currLevelHighScores = GlobalControl.Instance.savedPlayerData.LevelHighScores;
+			// Loads other main menu things, like high scores, game state, etc.
+			player.currLevelHighScores = GlobalControl.Instance.savedPlayerData.LevelHighScores;
+			player.currGameState = GlobalControl.Instance.savedPlayerData.GameState;
 
 			// We then tell the program that the game has finished loading
 			print("Loaded game!");

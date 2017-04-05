@@ -37,6 +37,16 @@ public class PlayerState : MonoBehaviour
 	public int currGunReloadIndex = 0;
 	public int currGunFireIndex = 0;
 
+	// The player's high scores on each level.
+	public int[] currLevelHighScores;
+
+	/*	The current state the player is in.
+	 * 	0 = new game
+	 * 	1 = Seen Introduction
+	 * 
+	 */
+	public int currGameState = 0;
+
 	// Singleton method, so that only one of these exist.
 	void Awake()
 	{

@@ -1879,7 +1879,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6cfb172cb214021beb855c0d77827b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currLevelHighScores: 64000000
 --- !u!4 &597190349
 Transform:
   m_ObjectHideFlags: 0
@@ -2557,6 +2556,84 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &854005221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 854005224}
+  - component: {fileID: 854005223}
+  - component: {fileID: 854005222}
+  m_Layer: 0
+  m_Name: Introduction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &854005222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 854005221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbca64e524ea44f9b26142ec59aca8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bypassRoomEffects: 0
+  directivityAlpha: 0
+  directivitySharpness: 1
+  listenerDirectivityAlpha: 0
+  listenerDirectivitySharpness: 1
+  gainDb: 0
+  occlusionEnabled: 0
+  playOnAwake: 0
+  sourceClip: {fileID: 0}
+  sourceLoop: 0
+  sourceMute: 0
+  sourcePitch: 1
+  sourcePriority: 128
+  sourceDopplerLevel: 1
+  sourceSpread: 0
+  sourceVolume: 1
+  sourceRolloffMode: 0
+  sourceMaxDistance: 500
+  sourceMinDistance: 1
+  hrtfEnabled: 1
+  audioSource: {fileID: 0}
+--- !u!114 &854005223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 854005221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e31cea529c64e4fa0413b27cbe1b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutsceneAudio:
+  - {fileID: 8300000, guid: c26f43087d0b24db1a01dddde759c5c0, type: 3}
+  soundVolume: 1
+  isReady: 1
+  playOnGameState: 0
+--- !u!4 &854005224
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 854005221}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &906438374
 GameObject:
   m_ObjectHideFlags: 0
@@ -2958,6 +3035,7 @@ MonoBehaviour:
     GunAmmoIndex: 0
     GunReloadIndex: 0
     GunFireIndex: 0
+    GameState: 0
   IsSceneBeingLoaded: 0
 --- !u!114 &960517310
 MonoBehaviour:
@@ -2989,6 +3067,7 @@ MonoBehaviour:
     GunAmmoIndex: 0
     GunReloadIndex: 0
     GunFireIndex: 0
+    GameState: 0
   currLevel: 1
   toNextLevel: 100
   currXP: 0
@@ -3005,6 +3084,8 @@ MonoBehaviour:
   currGunAmmoIndex: 0
   currGunReloadIndex: 0
   currGunFireIndex: 0
+  currLevelHighScores: 
+  currGameState: 0
 --- !u!4 &960517311
 Transform:
   m_ObjectHideFlags: 0
