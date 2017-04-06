@@ -39,4 +39,13 @@ public class PlayerStatistics
 	// Level highscores
 	public int[] LevelHighScores;
 
+	// This keeps track of the index position that each gun upgrade is at.
+	public int GunDamageIndex = 0;
+	public int GunAmmoIndex = 0;
+	public int GunReloadIndex = 0;
+	public int GunFireIndex = 0;
+
+	// The current game state. This essentially keeps track of what part the game is at. Used in controlling when cutscenes play out.
+	public int GameState = 0;
+
 }

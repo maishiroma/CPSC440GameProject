@@ -6,26 +6,24 @@ using UnityEngine;
  * 	place a trap in this spot. Each square will be assigned a section from the PlayerState GameObject array. (so this script goes on
  *  each square).
  */
-
-
 public class EquipTrapRadial : MonoBehaviour {
 
 	public int representWhichSpot;		// Which index spot does this square represent for the player's equipped traps in PlayerState?
 	public bool isSelected;				// This will be true when the player selects this spot
 	public bool isDisabled;				// This makes sure that only one of these spots are selected.
 
-	public GameObject currTrap;			// What trap is currently on this spot?
-	public GameObject[] otherRadials;	// Keeps track of the other radial spots.
+	public GameObject currTrap;				// What trap is currently associated othis spot?
+	public EquipTrapRadial[] otherRadials;	// Keeps track of the other radial spots.
 
-	private GameObject playerState;	// Keeps a refrence to the playerState so that it can refer back to it when needed.
+	private PlayerState player;	// Keeps a refrence to the playerState so that it can refer back to it when needed.
 
 	// This will set the trap here to whatever is selected in the GameObject array.
 	void Start()
 	{
-		playerState = GameObject.FindGameObjectWithTag("Player");
+		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>();
 
-		if(playerState.GetComponent<PlayerState>().currEquippedTraps[representWhichSpot] != null)
-			currTrap = playerState.GetComponent<PlayerState>().currEquippedTraps[representWhichSpot];
+		if(player.currEquippedTraps[representWhichSpot] != null)
+			currTrap = player.currEquippedTraps[representWhichSpot];
 	}
 
 	// This method is called in the event system in order to let the object know it's been selected.
@@ -41,9 +39,10 @@ public class EquipTrapRadial : MonoBehaviour {
 			}
 			else
 			{
+				print(representWhichSpot + " is selected.");
 				isSelected = true;
 				for(int i = 0; i < otherRadials.Length; i++)
-					otherRadials[i].GetComponent<EquipTrapRadial>().isDisabled = true;
+					otherRadials[i].isDisabled = true;
 			}
 		}
 	}
@@ -54,20 +53,27 @@ public class EquipTrapRadial : MonoBehaviour {
 	{
 		if(isDisabled == false)
 		{
+			print(representWhichSpot + " is deselected.");
 			isSelected = false;
-
 			for(int i = 0; i < otherRadials.Length; i++)
-				otherRadials[i].GetComponent<EquipTrapRadial>().isDisabled = false;
+				otherRadials[i].isDisabled = false;
 		}
 	}
 
 	// This sets the given trap from the parameter into this spot.
-	public void SetTrap(GameObject trap)
+	public void SetTrap(GameObject selectedTrap)
 	{
-		currTrap = trap;
-		trap.GetComponent<Trap>().slot = representWhichSpot;
+		currTrap = selectedTrap;
 		DeselectSpot();
-		print("It worked!");
+		print("Set " + currTrap.GetComponent<TrapCard>().associatedTrap.name + " into slot " + representWhichSpot);
+	}
+
+	// This removes the current trap that's in the currTrap variable.
+	public void RemoveTrap()
+	{
+		currTrap.GetComponent<TrapCard>().equipped = false;
+		print("Removed " + currTrap.GetComponent<TrapCard>().associatedTrap.name  + " from slot " + representWhichSpot);
+		currTrap = null;
 	}
 
 }
