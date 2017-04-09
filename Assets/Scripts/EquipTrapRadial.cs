@@ -12,18 +12,16 @@ public class EquipTrapRadial : MonoBehaviour {
 	public bool isSelected;				// This will be true when the player selects this spot
 	public bool isDisabled;				// This makes sure that only one of these spots are selected.
 
-	public GameObject currTrap;				// What trap is currently associated othis spot?
+	public TrapCard associatedTrapCard;		// What trapCard is currently associated on this spot?
 	public EquipTrapRadial[] otherRadials;	// Keeps track of the other radial spots.
 
-	private PlayerState player;	// Keeps a refrence to the playerState so that it can refer back to it when needed.
+	private PlayerState player;				// Keeps a refrence to the playerState so that it can refer back to it when needed.
+	private static TrapCard[] trapCards;	// Used to put back the refrences to these cards in associatedTrapCard.
 
-	// This will set the trap here to whatever is selected in the GameObject array.
+	// This will set which TrapCard is associated to this spot, if the player has traps equipped.
 	void Start()
 	{
 		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>();
-
-		if(player.currEquippedTraps[representWhichSpot] != null)
-			currTrap = player.currEquippedTraps[representWhichSpot];
 	}
 
 	// This method is called in the event system in order to let the object know it's been selected.
@@ -61,19 +59,26 @@ public class EquipTrapRadial : MonoBehaviour {
 	}
 
 	// This sets the given trap from the parameter into this spot.
-	public void SetTrap(GameObject selectedTrap)
+	public void SetTrap(TrapCard selectedTrapCard)
 	{
-		currTrap = selectedTrap;
+		// This is done so that we know which TrapCard is associated to this spot.
+		associatedTrapCard = selectedTrapCard;
+
+		// This sets the trap that's in the TrapCard to the player. 
+		player.currEquippedTraps[representWhichSpot] = selectedTrapCard.associatedTrap;
 		DeselectSpot();
-		print("Set " + currTrap.GetComponent<TrapCard>().associatedTrap.name + " into slot " + representWhichSpot);
+		print("Set " + player.currEquippedTraps[representWhichSpot].name + " into slot " + representWhichSpot);
 	}
 
 	// This removes the current trap that's in the currTrap variable.
 	public void RemoveTrap()
 	{
-		currTrap.GetComponent<TrapCard>().equipped = false;
-		print("Removed " + currTrap.GetComponent<TrapCard>().associatedTrap.name  + " from slot " + representWhichSpot);
-		currTrap = null;
-	}
+		// We tell the TrapCard associated here that it is no longer associated with anything.
+		associatedTrapCard.GetComponent<TrapCard>().equipped = false;
+		print("Removed " + player.currEquippedTraps[representWhichSpot].name  + " from slot " + representWhichSpot);
 
+		// And then we null out the refrences.
+		associatedTrapCard = null;
+		player.currEquippedTraps[representWhichSpot] = null;
+	}
 }

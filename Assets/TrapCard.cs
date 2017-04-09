@@ -7,7 +7,7 @@ public class TrapCard : MonoBehaviour {
     public bool visible;
     public bool equipped;				// Is this trap card equipped?
     public Transform trapIconPos;
-	public GameObject associatedTrap;	// Uses to know what trap is here.
+	public GameObject associatedTrap;	// What Trap prefab is associated to this spot?
 
 	// Use this for initialization
 	void Start ()
@@ -21,13 +21,13 @@ public class TrapCard : MonoBehaviour {
 		//if(trapRadials == null)
 			//trapRadials = GameObject.FindObjectsOfType<EquipTrapRadial>();
 	}
-	
+
+	// Associated this trap card with the passed in Trap and instanciates an icon of it.
     public void LoadTrapInSlot(GameObject trap)
     {
-        Instantiate(trap, trapIconPos.position, Quaternion.identity, GameObject.Find("Icons").transform);
+		Instantiate(trap.GetComponent<Trap>().icon, trapIconPos.position, Quaternion.identity, GameObject.Find("Icons").transform);
 		associatedTrap = trap;
     }
-
 
 	// Update is called once per frame
 	void Update () {
@@ -45,11 +45,11 @@ public class TrapCard : MonoBehaviour {
 				if(trapRadials[i].isSelected == true)
 				{
 					// If there's already a trap in this spot, this current one get's "deequipped"
-					if(trapRadials[i].currTrap != null)
+					if(trapRadials[i].associatedTrapCard != null)
 					{
 						trapRadials[i].RemoveTrap();
 					}
-					trapRadials[i].SetTrap(gameObject);
+					trapRadials[i].SetTrap(this);
 					equipped = true;
 					break;
 				}

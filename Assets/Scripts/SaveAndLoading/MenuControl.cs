@@ -67,7 +67,11 @@ public class MenuControl : MonoBehaviour {
 		PlayerState.Instance.localPlayerData.WeaponAmmo = player.currWeaponAmmo;
 		PlayerState.Instance.localPlayerData.WeaponShotRate = player.currWeaponShotRate;
 		PlayerState.Instance.localPlayerData.WeaponReloadRate = player.currWeaponReloadRate;
-		PlayerState.Instance.localPlayerData.EquippedTraps = player.currEquippedTraps;
+
+		// Saves the names of the traps that the plays has equipped.
+		// The name and slot they are on is saved into a string, since it's REALLY hard to serialize gameobjects.
+		for(int i = 0; i < player.currEquippedTraps.Length; i++)
+			PlayerState.Instance.localPlayerData.EquippedTraps[i] = player.currEquippedTraps[i].name + i.ToString();
 
 		// Saves what traps they've equipped and what was the last upgrade they've gotten
 		PlayerState.Instance.localPlayerData.UnlockWeapons = unlockables.currUnlockWeapons;
@@ -107,7 +111,9 @@ public class MenuControl : MonoBehaviour {
 			player.currWeaponAmmo = GlobalControl.Instance.savedPlayerData.WeaponAmmo;
 			player.currWeaponShotRate = GlobalControl.Instance.savedPlayerData.WeaponShotRate;
 			player.currWeaponReloadRate = GlobalControl.Instance.savedPlayerData.WeaponReloadRate;
-			player.currEquippedTraps = GlobalControl.Instance.savedPlayerData.EquippedTraps;
+		
+			// Loads the names of the traps that the plays has equipped.
+			unlockables.LoadEquippedTraps(GlobalControl.Instance.savedPlayerData.EquippedTraps);
 
 			// Loads what traps they've equipped and what was the last upgrade they've gotten
 			unlockables.currUnlockWeapons = GlobalControl.Instance.savedPlayerData.UnlockWeapons;

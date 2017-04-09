@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114270575294591600}
   - component: {fileID: 114946844818538042}
   - component: {fileID: 114840420879464968}
+  - component: {fileID: 114437903912501880}
   m_Layer: 0
   m_Name: Trap Card
   m_TagString: Untagged
@@ -151,6 +152,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HologramMaskTag: MenuBounds
+--- !u!114 &114437903912501880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1929536329781792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbca64e524ea44f9b26142ec59aca8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bypassRoomEffects: 0
+  directivityAlpha: 0
+  directivitySharpness: 1
+  listenerDirectivityAlpha: 0
+  listenerDirectivitySharpness: 1
+  gainDb: 0
+  occlusionEnabled: 0
+  playOnAwake: 0
+  sourceClip: {fileID: 8300000, guid: 2be39c336621a4137b3a78a47e4522c1, type: 3}
+  sourceLoop: 0
+  sourceMute: 0
+  sourcePitch: 1
+  sourcePriority: 50
+  sourceDopplerLevel: 1
+  sourceSpread: 0
+  sourceVolume: 0.2
+  sourceRolloffMode: 0
+  sourceMaxDistance: 500
+  sourceMinDistance: 1
+  hrtfEnabled: 1
+  audioSource: {fileID: 0}
 --- !u!114 &114840420879464968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -180,6 +213,23 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114437903912501880}
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
 --- !u!114 &114946844818538042
 MonoBehaviour:
@@ -195,4 +245,4 @@ MonoBehaviour:
   visible: 0
   equipped: 0
   trapIconPos: {fileID: 4342417168458894}
-  displayedTrap: {fileID: 0}
+  associatedTrap: {fileID: 0}

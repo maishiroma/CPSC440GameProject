@@ -30,8 +30,8 @@ public class PlayerStatistics
 	public float WeaponShotRate;
 	public float WeaponReloadRate;
 
-	// What traps do the player currently have equipped?
-	public GameObject[] EquippedTraps = new GameObject[3];
+	// What are the names of the traps the player currently have equipped?
+	public string[] EquippedTraps = new string[3];
     
 	// Traps that are currently unlocked. This will be a filled array that has a bool for each one, indicating if it's unlocked.
 	public bool[] UnlockWeapons = new bool[15];

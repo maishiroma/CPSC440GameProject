@@ -153,8 +153,6 @@ MonoBehaviour:
   sceneName: AlienDefense_Prototype
   screenFade: {fileID: 0}
   fadeIn: 0
-  levelSelectSound: {fileID: 8300000, guid: 2be39c336621a4137b3a78a47e4522c1, type: 3}
-  levelSelectSource: {fileID: 0}
 --- !u!114 &8005211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,8 +186,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 8005210}
-          m_MethodName: PlaySelectSound
+        - m_Target: {fileID: 8005215}
+          m_MethodName: Play
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -271,14 +269,14 @@ MonoBehaviour:
   gainDb: 0
   occlusionEnabled: 0
   playOnAwake: 0
-  sourceClip: {fileID: 0}
+  sourceClip: {fileID: 8300000, guid: 2be39c336621a4137b3a78a47e4522c1, type: 3}
   sourceLoop: 0
   sourceMute: 0
   sourcePitch: 1
-  sourcePriority: 128
+  sourcePriority: 50
   sourceDopplerLevel: 1
   sourceSpread: 0
-  sourceVolume: 1
+  sourceVolume: 0.2
   sourceRolloffMode: 0
   sourceMaxDistance: 500
   sourceMinDistance: 1
@@ -999,8 +997,9 @@ GameObject:
   - component: {fileID: 453462728}
   - component: {fileID: 453462727}
   - component: {fileID: 453462726}
+  - component: {fileID: 453462732}
   m_Layer: 0
-  m_Name: GunUpgradeButton (1)
+  m_Name: TrapEquipButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1037,6 +1036,23 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 453462726}
           m_MethodName: SwitchToPage
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 453462732}
+          m_MethodName: Play
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1112,6 +1128,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: -45.002003, y: 0, z: 0}
+--- !u!114 &453462732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 453462725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbca64e524ea44f9b26142ec59aca8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bypassRoomEffects: 0
+  directivityAlpha: 0
+  directivitySharpness: 1
+  listenerDirectivityAlpha: 0
+  listenerDirectivitySharpness: 1
+  gainDb: 0
+  occlusionEnabled: 0
+  playOnAwake: 0
+  sourceClip: {fileID: 8300000, guid: 2be39c336621a4137b3a78a47e4522c1, type: 3}
+  sourceLoop: 0
+  sourceMute: 0
+  sourcePitch: 1
+  sourcePriority: 50
+  sourceDopplerLevel: 1
+  sourceSpread: 0
+  sourceVolume: 0.2
+  sourceRolloffMode: 0
+  sourceMaxDistance: 500
+  sourceMinDistance: 1
+  hrtfEnabled: 1
+  audioSource: {fileID: 0}
 --- !u!1 &484511001
 GameObject:
   m_ObjectHideFlags: 0
@@ -1229,7 +1277,7 @@ MonoBehaviour:
   representWhichSpot: 0
   isSelected: 0
   isDisabled: 0
-  currTrap: {fileID: 0}
+  associatedTrapCard: {fileID: 0}
   otherRadials:
   - {fileID: 907336661}
   - {fileID: 1069711935}
@@ -1277,6 +1325,7 @@ GameObject:
   - component: {fileID: 498658000}
   - component: {fileID: 498658003}
   - component: {fileID: 498658004}
+  - component: {fileID: 498658006}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -1388,6 +1437,23 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 498658006}
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
 --- !u!64 &498658005
 MeshCollider:
@@ -1403,6 +1469,38 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &498658006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 498657998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbca64e524ea44f9b26142ec59aca8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bypassRoomEffects: 0
+  directivityAlpha: 0
+  directivitySharpness: 1
+  listenerDirectivityAlpha: 0
+  listenerDirectivitySharpness: 1
+  gainDb: 0
+  occlusionEnabled: 0
+  playOnAwake: 0
+  sourceClip: {fileID: 8300000, guid: 2be39c336621a4137b3a78a47e4522c1, type: 3}
+  sourceLoop: 0
+  sourceMute: 0
+  sourcePitch: 1
+  sourcePriority: 50
+  sourceDopplerLevel: 1
+  sourceSpread: 0
+  sourceVolume: 0.2
+  sourceRolloffMode: 0
+  sourceMaxDistance: 500
+  sourceMinDistance: 1
+  hrtfEnabled: 1
+  audioSource: {fileID: 0}
 --- !u!1 &512203388
 GameObject:
   m_ObjectHideFlags: 0
@@ -1599,8 +1697,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 533487532}
-          m_MethodName: PlaySelectSound
+        - m_Target: {fileID: 533487533}
+          m_MethodName: Play
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1627,8 +1725,6 @@ MonoBehaviour:
   sceneName: Level2
   screenFade: {fileID: 0}
   fadeIn: 0
-  levelSelectSound: {fileID: 8300000, guid: 2be39c336621a4137b3a78a47e4522c1, type: 3}
-  levelSelectSource: {fileID: 0}
 --- !u!114 &533487533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1648,14 +1744,14 @@ MonoBehaviour:
   gainDb: 0
   occlusionEnabled: 0
   playOnAwake: 0
-  sourceClip: {fileID: 0}
+  sourceClip: {fileID: 8300000, guid: 2be39c336621a4137b3a78a47e4522c1, type: 3}
   sourceLoop: 0
   sourceMute: 0
   sourcePitch: 1
-  sourcePriority: 128
+  sourcePriority: 50
   sourceDopplerLevel: 1
   sourceSpread: 0
-  sourceVolume: 1
+  sourceVolume: 0.2
   sourceRolloffMode: 0
   sourceMaxDistance: 500
   sourceMinDistance: 1
@@ -1782,6 +1878,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8453f3c6700704c38bbf7ee76043ad58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  listOfTraps:
+  - {fileID: 1904342659408870, guid: 99e6d0e4dfe2dc345bb9e90cfad75570, type: 2}
+  - {fileID: 1350685366864302, guid: 8cc2572ab6f55a746a40db418105532c, type: 2}
+  - {fileID: 1044124871619802, guid: 18fcc586cbca3cf459fecd08fc986779, type: 2}
   currUnlockWeapons: 000000000000000000000000000000
   weaponLevelReq: 020000000400000006000000080000000a0000000c0000000e00000010000000120000001400000016000000180000001a0000001c0000001e000000
   gunDamageCost: 64000000c80000002c01000090010000
@@ -2201,6 +2301,10 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &692841365 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400000, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+  m_PrefabInternal: {fileID: 900063395}
 --- !u!1 &714068968
 GameObject:
   m_ObjectHideFlags: 0
@@ -2213,6 +2317,8 @@ GameObject:
   - component: {fileID: 714068972}
   - component: {fileID: 714068971}
   - component: {fileID: 714068970}
+  - component: {fileID: 714068975}
+  - component: {fileID: 714068974}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -2295,6 +2401,68 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 714068968}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &714068974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 714068968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbca64e524ea44f9b26142ec59aca8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bypassRoomEffects: 0
+  directivityAlpha: 0
+  directivitySharpness: 1
+  listenerDirectivityAlpha: 0
+  listenerDirectivitySharpness: 1
+  gainDb: 0
+  occlusionEnabled: 0
+  playOnAwake: 0
+  sourceClip: {fileID: 8300000, guid: 2be39c336621a4137b3a78a47e4522c1, type: 3}
+  sourceLoop: 0
+  sourceMute: 0
+  sourcePitch: 1
+  sourcePriority: 50
+  sourceDopplerLevel: 1
+  sourceSpread: 0
+  sourceVolume: 0.2
+  sourceRolloffMode: 0
+  sourceMaxDistance: 500
+  sourceMinDistance: 1
+  hrtfEnabled: 1
+  audioSource: {fileID: 0}
+--- !u!114 &714068975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 714068968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 714068974}
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &721496195 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000013741105360, guid: 5cbfd3102cf9012429dddfc34d042edf,
@@ -2572,7 +2740,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &854005222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2584,7 +2752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dbca64e524ea44f9b26142ec59aca8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bypassRoomEffects: 0
+  bypassRoomEffects: 1
   directivityAlpha: 0
   directivitySharpness: 1
   listenerDirectivityAlpha: 0
@@ -2596,7 +2764,7 @@ MonoBehaviour:
   sourceLoop: 0
   sourceMute: 0
   sourcePitch: 1
-  sourcePriority: 128
+  sourcePriority: 100
   sourceDopplerLevel: 1
   sourceSpread: 0
   sourceVolume: 1
@@ -2617,8 +2785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutsceneAudio:
-  - {fileID: 8300000, guid: c26f43087d0b24db1a01dddde759c5c0, type: 3}
-  soundVolume: 1
+  - {fileID: 8300000, guid: de307055bba5a4ec5a611634ee42b9a5, type: 3}
   isReady: 1
   playOnGameState: 0
 --- !u!4 &854005224
@@ -2627,13 +2794,151 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 854005221}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_Father: {fileID: 2030932301}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &900063395
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2030932301}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 2300024, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 2300022, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 2300014, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 2300032, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 2300018, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 2300016, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 2300020, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 2300026, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 2300012, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 2300028, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 2300036, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 2300030, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 2300034, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 2300010, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 2300002, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 2300008, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 2300004, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 2300006, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 100000, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_Name
+      value: Fred Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 487d0f32272a34f758280243eb3df19a, type: 3}
+  m_IsPrefabParent: 0
 --- !u!1 &906438374
 GameObject:
   m_ObjectHideFlags: 0
@@ -2814,7 +3119,7 @@ MonoBehaviour:
   representWhichSpot: 2
   isSelected: 0
   isDisabled: 0
-  currTrap: {fileID: 0}
+  associatedTrapCard: {fileID: 0}
   otherRadials:
   - {fileID: 484511007}
   - {fileID: 1069711935}
@@ -2862,6 +3167,7 @@ GameObject:
   - component: {fileID: 929754568}
   - component: {fileID: 929754571}
   - component: {fileID: 929754572}
+  - component: {fileID: 929754574}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -2973,6 +3279,23 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 929754574}
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
 --- !u!64 &929754573
 MeshCollider:
@@ -2988,6 +3311,112 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &929754574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 929754566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbca64e524ea44f9b26142ec59aca8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bypassRoomEffects: 0
+  directivityAlpha: 0
+  directivitySharpness: 1
+  listenerDirectivityAlpha: 0
+  listenerDirectivitySharpness: 1
+  gainDb: 0
+  occlusionEnabled: 0
+  playOnAwake: 0
+  sourceClip: {fileID: 8300000, guid: 2be39c336621a4137b3a78a47e4522c1, type: 3}
+  sourceLoop: 0
+  sourceMute: 0
+  sourcePitch: 1
+  sourcePriority: 50
+  sourceDopplerLevel: 1
+  sourceSpread: 0
+  sourceVolume: 0.2
+  sourceRolloffMode: 0
+  sourceMaxDistance: 500
+  sourceMinDistance: 1
+  hrtfEnabled: 1
+  audioSource: {fileID: 0}
+--- !u!1001 &956144260
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400014, guid: 168f3fc92c9e742b48dbc6b2d8982401, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.1850312
+      objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 168f3fc92c9e742b48dbc6b2d8982401, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.24000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 168f3fc92c9e742b48dbc6b2d8982401, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.451283
+      objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 168f3fc92c9e742b48dbc6b2d8982401, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 168f3fc92c9e742b48dbc6b2d8982401, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5222994
+      objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 168f3fc92c9e742b48dbc6b2d8982401, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 168f3fc92c9e742b48dbc6b2d8982401, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8527622
+      objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 168f3fc92c9e742b48dbc6b2d8982401, type: 3}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300006, guid: 168f3fc92c9e742b48dbc6b2d8982401, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 2300008, guid: 168f3fc92c9e742b48dbc6b2d8982401, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 2300012, guid: 168f3fc92c9e742b48dbc6b2d8982401, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 2300000, guid: 168f3fc92c9e742b48dbc6b2d8982401, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 2300010, guid: 168f3fc92c9e742b48dbc6b2d8982401, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 2300004, guid: 168f3fc92c9e742b48dbc6b2d8982401, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 2300002, guid: 168f3fc92c9e742b48dbc6b2d8982401, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+    - target: {fileID: 400014, guid: 168f3fc92c9e742b48dbc6b2d8982401, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -62.973003
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 168f3fc92c9e742b48dbc6b2d8982401, type: 3}
+  m_IsPrefabParent: 0
 --- !u!1 &960517308
 GameObject:
   m_ObjectHideFlags: 0
@@ -3026,9 +3455,9 @@ MonoBehaviour:
     WeaponShotRate: 0
     WeaponReloadRate: 0
     EquippedTraps:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - 
+    - 
+    - 
     UnlockWeapons: 000000000000000000000000000000
     LevelHighScores: 
     GunDamageIndex: 0
@@ -3058,9 +3487,9 @@ MonoBehaviour:
     WeaponShotRate: 0
     WeaponReloadRate: 0
     EquippedTraps:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - 
+    - 
+    - 
     UnlockWeapons: 000000000000000000000000000000
     LevelHighScores: 
     GunDamageIndex: 0
@@ -3221,11 +3650,11 @@ MonoBehaviour:
   leftWall: 13
   rightWall: 13
   floor: 12
-  ceiling: 1
+  ceiling: 13
   backWall: 13
   frontWall: 13
   reflectivity: 1
-  reverbGainDb: 0
+  reverbGainDb: -8
   reverbBrightness: 0
   reverbTime: 1
   size: {x: 31.53, y: 10.55, z: 32}
@@ -3390,7 +3819,7 @@ MonoBehaviour:
   representWhichSpot: 1
   isSelected: 0
   isDisabled: 0
-  currTrap: {fileID: 0}
+  associatedTrapCard: {fileID: 0}
   otherRadials:
   - {fileID: 907336661}
   - {fileID: 484511007}
@@ -3488,6 +3917,7 @@ GameObject:
   - component: {fileID: 1182915925}
   - component: {fileID: 1182915924}
   - component: {fileID: 1182915923}
+  - component: {fileID: 1182915929}
   m_Layer: 0
   m_Name: GunUpgradeButton
   m_TagString: Untagged
@@ -3526,6 +3956,23 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1182915923}
           m_MethodName: SwitchToPage
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1182915929}
+          m_MethodName: Play
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3601,6 +4048,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: -45.002003, y: 0, z: 0}
+--- !u!114 &1182915929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1182915922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbca64e524ea44f9b26142ec59aca8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bypassRoomEffects: 0
+  directivityAlpha: 0
+  directivitySharpness: 1
+  listenerDirectivityAlpha: 0
+  listenerDirectivitySharpness: 1
+  gainDb: 0
+  occlusionEnabled: 0
+  playOnAwake: 0
+  sourceClip: {fileID: 8300000, guid: 2be39c336621a4137b3a78a47e4522c1, type: 3}
+  sourceLoop: 0
+  sourceMute: 0
+  sourcePitch: 1
+  sourcePriority: 50
+  sourceDopplerLevel: 1
+  sourceSpread: 0
+  sourceVolume: 0.2
+  sourceRolloffMode: 0
+  sourceMaxDistance: 500
+  sourceMinDistance: 1
+  hrtfEnabled: 1
+  audioSource: {fileID: 0}
 --- !u!1 &1188063902
 GameObject:
   m_ObjectHideFlags: 0
@@ -3628,7 +4107,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 45a4d32dce9d64e24b61b4af506d2010, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3915,6 +4394,8 @@ GameObject:
   - component: {fileID: 1254544014}
   - component: {fileID: 1254544013}
   - component: {fileID: 1254544012}
+  - component: {fileID: 1254544017}
+  - component: {fileID: 1254544016}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -3997,6 +4478,68 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1254544010}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1254544016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1254544010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbca64e524ea44f9b26142ec59aca8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bypassRoomEffects: 0
+  directivityAlpha: 0
+  directivitySharpness: 1
+  listenerDirectivityAlpha: 0
+  listenerDirectivitySharpness: 1
+  gainDb: 0
+  occlusionEnabled: 0
+  playOnAwake: 0
+  sourceClip: {fileID: 8300000, guid: 2be39c336621a4137b3a78a47e4522c1, type: 3}
+  sourceLoop: 0
+  sourceMute: 0
+  sourcePitch: 1
+  sourcePriority: 50
+  sourceDopplerLevel: 1
+  sourceSpread: 0
+  sourceVolume: 0.2
+  sourceRolloffMode: 0
+  sourceMaxDistance: 500
+  sourceMinDistance: 1
+  hrtfEnabled: 1
+  audioSource: {fileID: 0}
+--- !u!114 &1254544017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1254544010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1254544016}
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1301058280
 GameObject:
   m_ObjectHideFlags: 0
@@ -4642,8 +5185,9 @@ GameObject:
   - component: {fileID: 1312924620}
   - component: {fileID: 1312924619}
   - component: {fileID: 1312924618}
+  - component: {fileID: 1312924624}
   m_Layer: 0
-  m_Name: GunUpgradeButton (2)
+  m_Name: SettingsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4680,6 +5224,23 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1312924618}
           m_MethodName: SwitchToPage
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1312924624}
+          m_MethodName: Play
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4755,6 +5316,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: -45.002003, y: 0, z: 0}
+--- !u!114 &1312924624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1312924617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbca64e524ea44f9b26142ec59aca8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bypassRoomEffects: 0
+  directivityAlpha: 0
+  directivitySharpness: 1
+  listenerDirectivityAlpha: 0
+  listenerDirectivitySharpness: 1
+  gainDb: 0
+  occlusionEnabled: 0
+  playOnAwake: 0
+  sourceClip: {fileID: 8300000, guid: 2be39c336621a4137b3a78a47e4522c1, type: 3}
+  sourceLoop: 0
+  sourceMute: 0
+  sourcePitch: 1
+  sourcePriority: 50
+  sourceDopplerLevel: 1
+  sourceSpread: 0
+  sourceVolume: 0.2
+  sourceRolloffMode: 0
+  sourceMaxDistance: 500
+  sourceMinDistance: 1
+  hrtfEnabled: 1
+  audioSource: {fileID: 0}
 --- !u!1 &1332962355 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000012995372064, guid: 5cbfd3102cf9012429dddfc34d042edf,
@@ -4892,6 +5485,8 @@ GameObject:
   - component: {fileID: 1360315653}
   - component: {fileID: 1360315652}
   - component: {fileID: 1360315651}
+  - component: {fileID: 1360315656}
+  - component: {fileID: 1360315655}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -4974,6 +5569,68 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1360315649}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1360315655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1360315649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbca64e524ea44f9b26142ec59aca8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bypassRoomEffects: 0
+  directivityAlpha: 0
+  directivitySharpness: 1
+  listenerDirectivityAlpha: 0
+  listenerDirectivitySharpness: 1
+  gainDb: 0
+  occlusionEnabled: 0
+  playOnAwake: 0
+  sourceClip: {fileID: 8300000, guid: 2be39c336621a4137b3a78a47e4522c1, type: 3}
+  sourceLoop: 0
+  sourceMute: 0
+  sourcePitch: 1
+  sourcePriority: 50
+  sourceDopplerLevel: 1
+  sourceSpread: 0
+  sourceVolume: 0.2
+  sourceRolloffMode: 0
+  sourceMaxDistance: 500
+  sourceMinDistance: 1
+  hrtfEnabled: 1
+  audioSource: {fileID: 0}
+--- !u!114 &1360315656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1360315649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1360315655}
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1370447548
 GameObject:
   m_ObjectHideFlags: 0
@@ -5985,8 +6642,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1754370215}
-          m_MethodName: PlaySelectSound
+        - m_Target: {fileID: 1754370216}
+          m_MethodName: Play
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6013,8 +6670,6 @@ MonoBehaviour:
   sceneName: SmallAlienAI
   screenFade: {fileID: 0}
   fadeIn: 0
-  levelSelectSound: {fileID: 8300000, guid: 2be39c336621a4137b3a78a47e4522c1, type: 3}
-  levelSelectSource: {fileID: 0}
 --- !u!114 &1754370216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6034,14 +6689,14 @@ MonoBehaviour:
   gainDb: 0
   occlusionEnabled: 0
   playOnAwake: 0
-  sourceClip: {fileID: 0}
+  sourceClip: {fileID: 8300000, guid: 2be39c336621a4137b3a78a47e4522c1, type: 3}
   sourceLoop: 0
   sourceMute: 0
   sourcePitch: 1
-  sourcePriority: 128
+  sourcePriority: 50
   sourceDopplerLevel: 1
   sourceSpread: 0
-  sourceVolume: 1
+  sourceVolume: 0.2
   sourceRolloffMode: 0
   sourceMaxDistance: 500
   sourceMinDistance: 1
@@ -6092,6 +6747,7 @@ GameObject:
   - component: {fileID: 1840800422}
   - component: {fileID: 1840800425}
   - component: {fileID: 1840800426}
+  - component: {fileID: 1840800428}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -6203,6 +6859,23 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1840800428}
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
 --- !u!64 &1840800427
 MeshCollider:
@@ -6218,6 +6891,38 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1840800428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1840800420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbca64e524ea44f9b26142ec59aca8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bypassRoomEffects: 0
+  directivityAlpha: 0
+  directivitySharpness: 1
+  listenerDirectivityAlpha: 0
+  listenerDirectivitySharpness: 1
+  gainDb: 0
+  occlusionEnabled: 0
+  playOnAwake: 0
+  sourceClip: {fileID: 8300000, guid: 2be39c336621a4137b3a78a47e4522c1, type: 3}
+  sourceLoop: 0
+  sourceMute: 0
+  sourcePitch: 1
+  sourcePriority: 50
+  sourceDopplerLevel: 1
+  sourceSpread: 0
+  sourceVolume: 0.2
+  sourceRolloffMode: 0
+  sourceMaxDistance: 500
+  sourceMinDistance: 1
+  hrtfEnabled: 1
+  audioSource: {fileID: 0}
 --- !u!1 &1844870933
 GameObject:
   m_ObjectHideFlags: 0
@@ -6688,6 +7393,36 @@ Light:
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &2030932300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2030932301}
+  m_Layer: 0
+  m_Name: FRED
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2030932301
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2030932300}
+  m_LocalRotation: {x: 0.030395055, y: 0.36995393, z: -0.012111026, w: 0.92847383}
+  m_LocalPosition: {x: -3.97, y: 0.93, z: -3.56}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 692841365}
+  - {fileID: 854005224}
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 3.75, y: 43.45, z: 0}
 --- !u!1 &2050076827
 GameObject:
   m_ObjectHideFlags: 0
@@ -6973,6 +7708,7 @@ GameObject:
   - component: {fileID: 2135543095}
   - component: {fileID: 2135543094}
   - component: {fileID: 2135543093}
+  - component: {fileID: 2135543099}
   m_Layer: 0
   m_Name: LevelSelectButton
   m_TagString: Untagged
@@ -7011,6 +7747,23 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 2135543093}
           m_MethodName: SwitchToPage
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2135543099}
+          m_MethodName: Play
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7086,3 +7839,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: -45.002003, y: 0, z: 0}
+--- !u!114 &2135543099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2135543092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbca64e524ea44f9b26142ec59aca8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bypassRoomEffects: 0
+  directivityAlpha: 0
+  directivitySharpness: 1
+  listenerDirectivityAlpha: 0
+  listenerDirectivitySharpness: 1
+  gainDb: 0
+  occlusionEnabled: 0
+  playOnAwake: 0
+  sourceClip: {fileID: 8300000, guid: 2be39c336621a4137b3a78a47e4522c1, type: 3}
+  sourceLoop: 0
+  sourceMute: 0
+  sourcePitch: 1
+  sourcePriority: 50
+  sourceDopplerLevel: 1
+  sourceSpread: 0
+  sourceVolume: 0.2
+  sourceRolloffMode: 0
+  sourceMaxDistance: 500
+  sourceMinDistance: 1
+  hrtfEnabled: 1
+  audioSource: {fileID: 0}

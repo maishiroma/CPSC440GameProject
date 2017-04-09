@@ -12,7 +12,6 @@ using UnityEngine;
 public class CutScene : MonoBehaviour {
 
 	public AudioClip[] cutsceneAudio;		// The array of cutscene audio clips.
-	public float soundVolume;				// The univesal sound volume for the cutscene.
 	public bool isReady;					// Does this cutscene play immediatly when the scene is loaded?
 	public int playOnGameState;				// What game state does this cutscene play on?
 
@@ -42,7 +41,7 @@ public class CutScene : MonoBehaviour {
 			{
 				if(currAudioIndex < cutsceneAudio.Length)
 				{
-					cutsceneSource.PlayOneShot(cutsceneAudio[currAudioIndex],soundVolume);
+					cutsceneSource.PlayOneShot(cutsceneAudio[currAudioIndex]);
 					currAudioIndex++;
 				}
 				else
