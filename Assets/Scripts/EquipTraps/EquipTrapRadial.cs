@@ -10,6 +10,8 @@ using UnityEngine;
 
 public class EquipTrapRadial : MonoBehaviour {
 
+    private TrapButtonInteraction _trapButtonInteraction;
+
 	public int representWhichSpot;		// Which index spot does this square represent for the player's equipped traps in PlayerState?
 	public bool isSelected;				// This will be true when the player selects this spot
 	public bool isDisabled;				// This makes sure that only one of these spots are selected.
@@ -26,6 +28,8 @@ public class EquipTrapRadial : MonoBehaviour {
 
 		if(playerState.GetComponent<PlayerState>().currEquippedTraps[representWhichSpot] != null)
 			currTrap = playerState.GetComponent<PlayerState>().currEquippedTraps[representWhichSpot];
+
+        _trapButtonInteraction = gameObject.GetComponent<TrapButtonInteraction>();
 	}
 
 	// This method is called in the event system in order to let the object know it's been selected.
@@ -33,6 +37,8 @@ public class EquipTrapRadial : MonoBehaviour {
 	// Selecting the same spot will deselect it. (or removing the trap that was in there?)
 	public void SelectSpot()
 	{
+        _trapButtonInteraction.Select();
+
 		if(isDisabled == false)
 		{
 			if(isSelected == true)
@@ -52,6 +58,8 @@ public class EquipTrapRadial : MonoBehaviour {
 	// All other spots are then reenabled, allowing them to being selected.
 	public void DeselectSpot()
 	{
+        _trapButtonInteraction.Deselect();
+
 		if(isDisabled == false)
 		{
 			isSelected = false;

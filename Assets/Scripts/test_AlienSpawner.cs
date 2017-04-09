@@ -10,7 +10,7 @@ public class test_AlienSpawner : MonoBehaviour {
     public float maxUpdate = 6;
     public float maxNumAliens = 4;
     public int currSpawendAliens = 0;
-
+    public List<GameObject> LiveAliens = new List<GameObject>();
     public GameObject[] SpawnPoints;
 
 	// Use this for initialization
@@ -33,6 +33,7 @@ public class test_AlienSpawner : MonoBehaviour {
     {
         int randomSpawn = Random.Range(0, SpawnPoints.Length);
         GameObject smallAlien = Instantiate(alienPrefab, SpawnPoints[randomSpawn].transform.position, SpawnPoints[randomSpawn].transform.rotation, GameObject.Find("SpawnedAliens").transform);
+        LiveAliens.Add(smallAlien);
         currSpawendAliens++;
     }
 	
