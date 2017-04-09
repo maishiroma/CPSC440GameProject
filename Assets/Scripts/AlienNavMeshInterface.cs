@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class AlienNavMeshInterface : MonoBehaviour {
 
     private NavMeshObstacle nmo;
-
+    public float startDistanceFromPlayer;
     private SmallAlienHealth health;
     public GameObject SmallAlienNavmeshAgentPrefab;
     public NavMeshAgent _SmallAlienAgent;
@@ -46,6 +46,7 @@ public class AlienNavMeshInterface : MonoBehaviour {
             lookingForward = true;
             usingNavmeshAgent = true;
             _SmallAlienAgent.enabled = true;
+            Invoke("FindAttackPosition", 1f);
         }
         else if (!useNavMesh)
         {
@@ -75,6 +76,7 @@ public class AlienNavMeshInterface : MonoBehaviour {
         ToggleNavmeshAgent(true);
 
         target = GameObject.Find("PlayerSpawnLocation");
+        startDistanceFromPlayer = Vector3.Distance(transform.position, target.transform.position);
         FindAttackPosition();
 
         /*

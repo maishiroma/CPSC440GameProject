@@ -12,11 +12,13 @@ public class test_AlienSpawner : MonoBehaviour {
     public int currSpawendAliens = 0;
     public List<GameObject> LiveAliens = new List<GameObject>();
     public GameObject[] SpawnPoints;
+    public RadarScript Radar;
 
 	// Use this for initialization
 	void Start ()
     {
         SpawnUpdate();
+        Radar = GameObject.Find("Radar").GetComponent<RadarScript>();
 	}
 
     float updateTime()
@@ -34,6 +36,7 @@ public class test_AlienSpawner : MonoBehaviour {
         int randomSpawn = Random.Range(0, SpawnPoints.Length);
         GameObject smallAlien = Instantiate(alienPrefab, SpawnPoints[randomSpawn].transform.position, SpawnPoints[randomSpawn].transform.rotation, GameObject.Find("SpawnedAliens").transform);
         LiveAliens.Add(smallAlien);
+        Radar.StartCoroutine(Radar.CreateEnemyIcon(smallAlien));
         currSpawendAliens++;
     }
 	

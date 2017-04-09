@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Screen
-  m_Shader: {fileID: 4800000, guid: f6facff6ff7250c499f56534ae72d0f0, type: 3}
+  m_Name: PlayerIcon
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
@@ -48,7 +48,7 @@ Material:
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: 3b870cfe4b4d2604485879e6f58b9e9f, type: 3}
+        m_Texture: {fileID: 2800000, guid: f9b776983f5d130468bf5d4a97828b65, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -71,14 +71,26 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - first:
+        name: PixelSnap
+      second: 0
+    - first:
+        name: _AmbientOn
+      second: 0
+    - first:
         name: _BumpScale
       second: 1
+    - first:
+        name: _ColorMask
+      second: 15
     - first:
         name: _Cutoff
       second: 0.5
     - first:
         name: _DetailNormalMapScale
       second: 1
+    - first:
+        name: _DistanceInMeters
+      second: 2
     - first:
         name: _DstBlend
       second: 0
@@ -87,13 +99,16 @@ Material:
       second: 1
     - first:
         name: _Glossiness
-      second: 0.66
+      second: 0.5
     - first:
         name: _GlossyReflections
       second: 1
     - first:
+        name: _InnerDiameter
+      second: 1.5
+    - first:
         name: _Metallic
-      second: 1
+      second: 0
     - first:
         name: _Mode
       second: 0
@@ -101,11 +116,14 @@ Material:
         name: _OcclusionStrength
       second: 1
     - first:
+        name: _OuterDiameter
+      second: 2
+    - first:
         name: _Parallax
       second: 0.02
     - first:
         name: _Shininess
-      second: 0.254
+      second: 0.7
     - first:
         name: _SmoothnessTextureChannel
       second: 0
@@ -116,7 +134,25 @@ Material:
         name: _SrcBlend
       second: 1
     - first:
+        name: _Stencil
+      second: 0
+    - first:
+        name: _StencilComp
+      second: 8
+    - first:
+        name: _StencilOp
+      second: 0
+    - first:
+        name: _StencilReadMask
+      second: 255
+    - first:
+        name: _StencilWriteMask
+      second: 255
+    - first:
         name: _UVSec
+      second: 0
+    - first:
+        name: _UseUIAlphaClip
       second: 0
     - first:
         name: _ZWrite
@@ -124,13 +160,13 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.82428634, g: 0.82499105, b: 0.9264706, a: 0.509}
+      second: {r: 0.7647059, g: 0.99026364, b: 1, a: 0.741}
     - first:
         name: _Emission
-      second: {r: 0.011191608, g: 0.043424103, b: 0.066176474, a: 0.428}
+      second: {r: 0, g: 0, b: 0, a: 0}
     - first:
         name: _EmissionColor
-      second: {r: 0.21399264, g: 0.25822636, b: 0.267, a: 1}
+      second: {r: 0, g: 0, b: 0, a: 1}
     - first:
         name: _SpecColor
-      second: {r: 1, g: 1, b: 1, a: 0.566}
+      second: {r: 1, g: 1, b: 1, a: 1}

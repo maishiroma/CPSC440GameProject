@@ -736,8 +736,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1933553262101548}
-  m_LocalRotation: {x: -0, y: -0.9727829, z: -0, w: -0.23171857}
-  m_LocalPosition: {x: -5.17, y: -0.80509573, z: 7.32}
+  m_LocalRotation: {x: -0, y: -0.9998677, z: -0, w: -0.01626805}
+  m_LocalPosition: {x: -0.63, y: -0.80509573, z: 9.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4240294960092146}
@@ -745,7 +745,7 @@ Transform:
   - {fileID: 4066994682274960}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -206.797, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -181.864, z: 0}
 --- !u!4 &4948263844542568
 Transform:
   m_ObjectHideFlags: 1
@@ -904,11 +904,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96994dbaa1a82ae46b9bf7b7994dbff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startDistanceFromPlayer: 0
   SmallAlienNavmeshAgentPrefab: {fileID: 1829474774205572, guid: e24c8fcba1c62074ea8add15707768a9,
     type: 2}
   _SmallAlienAgent: {fileID: 0}
-  stoppingDistFromTarget: 4.65
-  attackDistance: 2.25
+  stoppingDistFromTarget: 5
+  attackDistance: 2.6
   usingNavmeshAgent: 0
   walkAcceleration: 2
   forwardRaycastFrequency: 1
