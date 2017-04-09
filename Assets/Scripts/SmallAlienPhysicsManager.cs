@@ -39,6 +39,12 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
     private float inAirTime;
     public float airImpactRotation = 15f;
 
+    private float startReactingTime;
+    public float minReactTime = .5f;
+
+
+
+
     bool foundLandPos;
     Vector3 landPos;
 
@@ -64,13 +70,22 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
         gameObject.GetComponent<Rigidbody>().velocity = (pushDirection * impactForce);
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.layer == 10 && isInAir && (Time.time > (startReactingTime + minReactTime)))
+        {
+                LandOnGround();
+            
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == 10)
         {
             //Debug.Log("touchingGround");
             touchingGround = true;
-            if (isInAir)
+            if (isInAir && (Time.time > (startReactingTime + minReactTime)))
             {
                 LandOnGround();
             }
@@ -130,6 +145,7 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
         {
             if (!reactingToPhysics)
             {
+                Debug.Log("React To Physics!");
                 ReactToPhysics();
             }
             inAirTime = Time.time;
@@ -151,13 +167,10 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
 
     void LandOnGround()
     {
-        anims.applyRootMotion = true;
+        Debug.Log("Land!");
+        //anims.applyRootMotion = true;
         transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
-        RaycastHit hit;
-        if(Physics.Raycast(transform.position, Vector3.down, out hit, 2f, groundMask))
-        {
-            //transform.position = new Vector3(transform.position.x, 10f + startY + hit.point.y, transform.position.z);
-        }
+        
 
 
         StopReactingToPhysics();
@@ -165,6 +178,16 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
         isInAir = false;
         health.dealDamage(20);
         impactFlash();
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 3f, groundMask))
+        {
+            Debug.Log("snap to ground");
+            transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
+            transform.rotation.eulerAngles.Set(0, transform.rotation.eulerAngles.y, 0);
+        }
+       
+
         grounded = true;
         rb.drag = startDrag;
     }
@@ -199,6 +222,7 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
 
     public void ReactToPhysics()
     {
+        startReactingTime = Time.time;
         anims.applyRootMotion = false;
         gameObject.GetComponent<Rigidbody>().isKinematic = false;
         nav.ToggleNavmeshAgent(false);
@@ -212,6 +236,7 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
         lerp = false;
         //Add AI idle choose state
         ai.SetState(SmallAlienAI.States.Navigating);
+        nav.ToggleNavmeshAgent(true);
         reactingToPhysics = false;
     }
 
@@ -247,8 +272,9 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
             lerpToPlayer();
         }
 
-        if (isInAir && rb.velocity.y <= 0)
+        if (isInAir && rb.velocity.y <= 0 && (Time.time > (startReactingTime + minReactTime)))
         {
+            Debug.Log("Checked For Ground!");
             CheckForGround();
         }
 
