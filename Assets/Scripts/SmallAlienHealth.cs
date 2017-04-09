@@ -35,6 +35,7 @@ public class SmallAlienHealth : Health {
             Invoke("disableCollider", 1);
             dead = true;
             GameObject.Find("AlienSpawners").GetComponent<test_AlienSpawner>().currSpawendAliens--;
+            GameObject.Find("AlienSpawners").GetComponent<test_AlienSpawner>().LiveAliens.Remove(this.gameObject);
         }
         else
         {
@@ -42,6 +43,7 @@ public class SmallAlienHealth : Health {
             Invoke("disableCollider", 1);
             dead = true;
             GameObject.Find("AlienSpawners").GetComponent<test_AlienSpawner>().currSpawendAliens--;
+            GameObject.Find("AlienSpawners").GetComponent<test_AlienSpawner>().LiveAliens.Remove(this.gameObject);
         }  
     }
 

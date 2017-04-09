@@ -48,7 +48,7 @@ public class Grenade : MonoBehaviour
         foreach(Collider col in hitColliders)
         {
             GameObject go = col.gameObject;
-            if (go.tag == "Alive")
+            if (go.tag == "Alive" && !go.transform.parent.GetComponent<SmallAlienHealth>().dead)
             {
                 go.transform.parent.GetComponent<SmallAlienPhysicsManager>().InAir();
                 //go.transform.parent.GetComponent<SmallAlienHealth>().dealDamage(20f);
@@ -90,7 +90,7 @@ public class Grenade : MonoBehaviour
         }
         else
         {
-            Obj.transform.position.Set(Obj.transform.parent.position.x, Obj.transform.parent.position.y + 0.1f, Obj.transform.parent.position.z);
+            Obj.transform.position.Set(Obj.transform.position.x, Obj.transform.position.y + 0.1f, Obj.transform.position.z);
             Obj.GetComponent<Rigidbody>().velocity = Vector3.zero;
             //Vector3 newForce = Vector3.Scale(direction, new Vector3(.75f, 7f, .75f)) * force;
            // newForce.Set(newForce.x, Mathf.Clamp(newForce.y, 0, 3.5f), newForce.z);

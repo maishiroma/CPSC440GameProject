@@ -12,6 +12,8 @@ public class GunShoot : MonoBehaviour {
     private float triggerDownTime;
     private bool isTriggerDown;
     private bool isTriggerHolding;
+    public LayerMask gunMask;
+
 
     //Ammo Stuff
     public float startAmmo = 100f;
@@ -52,6 +54,8 @@ public class GunShoot : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+        
+
         if (!isTriggerDown)
         {
             /*
@@ -143,7 +147,7 @@ public class GunShoot : MonoBehaviour {
     Vector3 getShootDirection()
     {
         RaycastHit hit;
-        if(Physics.Raycast(mainCam.transform.position, mainCam.transform.forward, out hit, Mathf.Infinity))
+        if(Physics.Raycast(mainCam.transform.position, mainCam.transform.forward, out hit, Mathf.Infinity, gunMask))
         {
             return (hit.point - shootPoint.position).normalized;
         }
