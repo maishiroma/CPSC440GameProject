@@ -6,8 +6,12 @@ using UnityEngine;
  * This script will handle the gun upgrading This will talk to the playerState as well, since it'll have to subtract money from that.
  *  Due to this functioning through event calls, only one of these scripts needs to be in the scene.
  */
+using System;
 
 public class Unlockables : MonoBehaviour {
+
+	// Used to fill the playerState with the traps that they have
+	public GameObject[] listOfTraps;
 
 	public bool[] currUnlockWeapons = new bool[15];	// What traps are currently unlocked right now?
 	public int[] weaponLevelReq = new int[15];		// What are the level stipulation for each trap?
@@ -104,6 +108,25 @@ public class Unlockables : MonoBehaviour {
 			player.currWeaponReloadRate += gunReloadRateBoost;
 			player.currCurrency = purch;
 			player.currGunReloadIndex++;
+		}
+	}
+
+	// This loads in the equipped traps that the player has unlocked.
+	public void LoadEquippedTraps(string[] equippedTrapNames)
+	{
+		for(int i = 0; i < listOfTraps.Length; i++)
+		{
+			for(int j = 0; j < equippedTrapNames.Length; j++)
+			{
+				// Since the string has both the name and the slot it was on, we have to make sure we only compare the name part.
+				if(equippedTrapNames[j].Substring(0,equippedTrapNames[j].Length - 1) == listOfTraps[i].name)
+				{
+					// We then extract out the number part of the string to be used to determine where it was part of originally.
+					int slot = Int32.Parse(equippedTrapNames[j].Substring(equippedTrapNames[j].Length - 1, 1));
+					player.currEquippedTraps[slot] = listOfTraps[i];
+					break;
+				}
+			}
 		}
 	}
 

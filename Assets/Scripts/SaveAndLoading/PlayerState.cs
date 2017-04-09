@@ -63,5 +63,4 @@ public class PlayerState : MonoBehaviour
 	{
 		localPlayerData = GlobalControl.Instance.savedPlayerData;
 	}
-
 }

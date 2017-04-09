@@ -7,6 +7,7 @@ using UnityEngine;
  */
 public class GameManager : MonoBehaviour {
 
+	public int overallScore = 0;		// The overall score that the player has.
 	public int overallKillCount = 0;	// The overall number of enemies that the player has killed.
 
 	public int killAggresiveCount = 0;	// The number of enemies that the player killed when the enemy is attacking them.
@@ -20,6 +21,10 @@ public class GameManager : MonoBehaviour {
 	public float trapComboTime = 0f;	// The amount of time it takes for killTrapCombo to reset.
 
 	public int resourceCount = 0;		// The number of resources that the player has obtained.
+
+	public int smallAlienPoints = 100;	// The number of points a small alien is worth
+	public int bigAlienPoints = 200;	// The number of points a big alien is worth
+	public int comboMultiplier = 300;	// The multiplier that the combo Vars are modified.
 
 	private float currTimeCombo = 0f;	// Keeps track of the amount of time left for the player to keep up the combo.
 
@@ -52,6 +57,8 @@ public class GameManager : MonoBehaviour {
 	// This method resets all of the numbers for the next round.
 	public void resetCounters()
 	{
+		overallScore = 0;
+		overallKillCount = 0;
 		killAggresiveCount = 0;
 		killEnemyNoTraps = 0;
 		killComboGun = 0;
@@ -93,5 +100,11 @@ public class GameManager : MonoBehaviour {
 		{
 			currTimeCombo = trapComboTime;
 		}
+	}
+
+	// This method calculates the combo scores after the level is complete.
+	public int calculateComboScore()
+	{
+		return (killComboGun * comboMultiplier) + (killComboTrap * comboMultiplier);
 	}
 }
