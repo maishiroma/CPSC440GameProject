@@ -5,43 +5,79 @@ using UnityEngine.AI;
 
 public class AlienNavMeshInterface : MonoBehaviour {
 
+    private NavMeshObstacle nmo;
+    public float startDistanceFromPlayer;
+    private SmallAlienHealth health;
     public GameObject SmallAlienNavmeshAgentPrefab;
     public NavMeshAgent _SmallAlienAgent;
     public float stoppingDistFromTarget = 3f;
+    public float attackDistance = 2f;
     private Animator anims;
     public bool usingNavmeshAgent;
     private bool trackingTarget = false;
     private GameObject trackedTarget = null;
     private Vector3 lastTargetPos;
     GameObject target;
+    SmallAlienAI ai;
+    SmallAlienPhysicsManager AlienPhysics;
+    private bool isInRangeOfTarget;
+    private bool walking;
+    private bool reachedTarget = false;
+    private float walkSpeed;
+    public float walkAcceleration = 2f;
+
+    public float forwardRaycastFrequency = 1f;
+    public float forwardRaycastLength = 2f;
+    public AnimationCurve SlowingFalloff;
+    public LayerMask forwardRaycastMask;
+    private bool lookingForward;
+    public bool ObjectInWay = false;
+    public float NoJumpThresholdDist = 2f;
+
+    public Vector3 currentAttackPosition;
+    public bool attacking;
+    public bool isInAttackPosition = false;
+
 
     public void ToggleNavmeshAgent (bool useNavMesh)
     {
         if (useNavMesh)
         {
+            lookingForward = true;
             usingNavmeshAgent = true;
-            SetNavMeshAgentDestination(target.transform.position, true, target);
-            _SmallAlienAgent.gameObject.SetActive(true);
-            _SmallAlienAgent.transform.position = transform.position;
-            _SmallAlienAgent.transform.rotation = transform.rotation;
+            _SmallAlienAgent.enabled = true;
+            Invoke("FindAttackPosition", 1f);
         }
         else if (!useNavMesh)
         {
+            lookingForward = false;
             usingNavmeshAgent = false;
-            _SmallAlienAgent.gameObject.SetActive(false);
+            _SmallAlienAgent.enabled = false;
+            //_SmallAlienAgent.gameObject.SetActive(false);
         }
     }
+
+
+   
+    
+
 
 	// Use this for initialization
 	void Start ()
     {
+        nmo = transform.FindChild("SmallAlienMesh").GetComponent<NavMeshObstacle>();
+        health = gameObject.GetComponent<SmallAlienHealth>();
+        AlienPhysics = gameObject.GetComponent<SmallAlienPhysicsManager>();
+        ai = gameObject.GetComponent<SmallAlienAI>();
+        walkSpeed = 1f;
         GameObject SmallAlienNavmeshAgent = (GameObject)Instantiate(SmallAlienNavmeshAgentPrefab, transform.position, transform.rotation);
         _SmallAlienAgent = SmallAlienNavmeshAgent.GetComponent<NavMeshAgent>();
         anims = gameObject.GetComponent<Animator>();
-        usingNavmeshAgent = true;
+        ToggleNavmeshAgent(true);
 
-        target = GameObject.Find("VRMain");
-        SetNavMeshAgentDestination(target.transform.position);
+        target = GameObject.Find("PlayerSpawnLocation");
+        startDistanceFromPlayer = Vector3.Distance(transform.position, target.transform.position);
+        FindAttackPosition();
 
         /*
         //debug target
@@ -76,18 +112,31 @@ public class AlienNavMeshInterface : MonoBehaviour {
         trackedTarget = null;
     }
 
-    void FollowAgent()
+    void FollowAnimation()
     {
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_SmallAlienAgent.transform.forward), Time.deltaTime * 20f);
-        //agent.transform.rotation *= anims.deltaRotation ;
-        transform.position = _SmallAlienAgent.transform.position;
+        if (usingNavmeshAgent && !isInRangeOfTarget && !attacking)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_SmallAlienAgent.transform.forward), Time.deltaTime * 15f);
+        }
+        transform.Translate(anims.deltaPosition, Space.World);
+
+
     }
 
     private void OnAnimatorMove()
     {
+        
         if (usingNavmeshAgent)
         {
-            _SmallAlienAgent.speed = (anims.deltaPosition / Time.deltaTime).magnitude;
+            //Debug.Log((anims.deltaPosition * Time.deltaTime).magnitude);
+            //_SmallAlienAgent.speed = (anims.deltaPosition / Time.deltaTime).magnitude;
+
+            //_SmallAlienAgent.transform.Translate(anims.deltaPosition * Time.deltaTime);
+
+        }
+        else if (_SmallAlienAgent != null)
+        {
+            //_SmallAlienAgent.transform.position = transform.position;
         }
     }
     
@@ -96,25 +145,210 @@ public class AlienNavMeshInterface : MonoBehaviour {
         if(Vector3.Distance(trackedTarget.transform.position, lastTargetPos) > 0.25f)
         {
             SetNavMeshAgentDestination(trackedTarget.transform.position, true, trackedTarget);
+            lastTargetPos = trackedTarget.transform.position;
         }
     }
+
+
+
+    bool InRangeOfTarget()
+    {
+        if(Vector3.Distance(lastTargetPos, transform.position) < stoppingDistFromTarget)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
+    void UpdateWalkSpeed()
+    {
+        float speed = Mathf.Lerp(anims.GetFloat("Speed"), walkSpeed, Time.deltaTime * walkAcceleration);
+        anims.SetFloat("Speed", speed);
+    }
+
+
+    void ReachedTarget()
+    {
+        walkSpeed = 0;
+        anims.SetTrigger("Attacking");
+        anims.SetTrigger("JumpForward");
+        //ai.SetState(SmallAlienAI.States.Attacking);
+    }
+
+    bool CheckIfReachedAttackPosition()
+    {
+        if (Vector3.Distance(transform.position, target.transform.position) <= attackDistance)
+        {
+            isInAttackPosition = true;
+            currentAttackPosition = transform.position;
+            //lastTargetPos = transform.position;
+            return true;
+        }
+        else
+        {
+            isInAttackPosition = false;
+            return false;
+        }
+    }
+
+    bool FindAttackPosition()
+    {
+        Vector3 foundPosition;
+
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(target.transform.position, out hit, 4.0f, NavMesh.AllAreas))
+        {
+            foundPosition = hit.position;
+        }
+        else
+        {
+            foundPosition = Vector3.zero;
+        }
+
+      
+
+
+        SetNavMeshAgentDestination(foundPosition);
+        currentAttackPosition = foundPosition;
+
+        if (!ObjectInWay)
+        {
+            return true;
+        }
+        else if(foundPosition == Vector3.zero)
+        {
+            Debug.Log("false");
+            return false;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
+    void JumpToAttackPosition()
+    {
+        anims.SetTrigger("JumpForwardDefault");
+    }
+
 
     // Update is called once per frame
     void Update ()
     {
-        if (usingNavmeshAgent)
+
+        if (ObjectInWay && !attacking)
         {
-            FollowAgent();
+            walkSpeed = 0.8f;
         }
-        else if(!usingNavmeshAgent)
+        else if(!attacking)
         {
-            _SmallAlienAgent.transform.position = transform.position;
-            SetNavMeshAgentDestination(_SmallAlienAgent.transform.position);
+            walkSpeed = 1;
         }
 
-        if (trackingTarget && usingNavmeshAgent)
+        _SmallAlienAgent.transform.position = transform.position;
+
+        if(Mathf.Abs(anims.GetFloat("Speed") - walkSpeed) > 0.01f)
         {
-            TrackTarget();
+            UpdateWalkSpeed();
         }
-	}
+        else
+        {
+            anims.SetFloat("Speed", walkSpeed);
+        }
+
+
+        if (!AlienPhysics.reactingToPhysics && !health.dead)
+        {
+
+            FollowAnimation();
+
+            if (!InRangeOfTarget())
+            {
+                isInRangeOfTarget = false;
+                if (usingNavmeshAgent)
+                {
+                    walking = true;
+                }
+
+                if (trackingTarget && usingNavmeshAgent)
+                {
+                    TrackTarget();
+                }
+            }
+            else if (isInRangeOfTarget == false)
+            {
+                isInRangeOfTarget = true;
+                if (FindAttackPosition() && !ObjectInWay)
+                {
+                    _SmallAlienAgent.transform.rotation = Quaternion.LookRotation(target.transform.position - transform.position);
+                    JumpToAttackPosition();
+                    nmo.enabled = true;
+                }
+            }
+
+            if (attacking)
+            {
+                if (CheckIfReachedAttackPosition())
+                {
+                    isInAttackPosition = true;
+                }
+                else
+                {
+                    isInAttackPosition = false;
+
+                }
+
+                
+                    Vector3 lookRotation = (Vector3.Scale(target.transform.position, new Vector3(1, 0, 1)) - transform.position);
+                    lookRotation.Set(lookRotation.x, 0, lookRotation.z);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookRotation), Time.deltaTime * 3f);
+                
+            }
+            else
+            {
+                isInAttackPosition = false;
+            }
+
+
+        }
+
+        
+
+        
+
+        if (isInRangeOfTarget && !ObjectInWay)
+        {
+            Vector3 lookRotation = (Vector3.zero - transform.position);
+            lookRotation.Set(lookRotation.x, 0, lookRotation.z);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookRotation), Time.deltaTime);
+        }
+
+        
+
+        if (isInRangeOfTarget && !attacking)
+        {
+            if (CheckIfReachedAttackPosition())
+            {
+                attacking = true;
+                anims.SetTrigger("StartAttacking");
+                anims.SetBool("Attacking", true);
+                nmo.enabled = true;
+                walkSpeed = 0;
+                ai.SetState(SmallAlienAI.States.Attacking);
+            }
+            else
+            {
+                
+            }
+        }
+
+
+
+
+    }
 }
