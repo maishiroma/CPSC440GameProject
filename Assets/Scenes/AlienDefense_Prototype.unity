@@ -1471,52 +1471,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &128227068 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1857751323144822, guid: d3ca7493b95772648833528676a086a4,
-    type: 2}
-  m_PrefabInternal: {fileID: 951054613}
---- !u!4 &128227069 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4088474955710950, guid: d3ca7493b95772648833528676a086a4,
-    type: 2}
-  m_PrefabInternal: {fileID: 951054613}
---- !u!95 &128227074
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 128227068}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ca9eb485151caa14abc7de646cde1da9, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &128227075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 128227068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48a03d14b9f7136459255b27f67d5cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  btnAnimator: {fileID: 128227074}
-  Trap: {fileID: 1044124871619802, guid: 18fcc586cbca3cf459fecd08fc986779, type: 2}
-  TempTrap: {fileID: 0}
-  startColor: {r: 0, g: 0, b: 0, a: 0}
-  highlightedColor: {r: 1, g: 1, b: 1, a: 0.722}
-  highlightTime: 0.3
-  tempMaterial: {fileID: 2100000, guid: 3e4d6d608c2c0314389fac7c4ad471cf, type: 2}
-  representWhatSpot: 
 --- !u!1001 &133019256
 Prefab:
   m_ObjectHideFlags: 0
@@ -1715,52 +1669,6 @@ Transform:
   m_Father: {fileID: 1663547896}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -6.0390005, z: 0}
---- !u!1 &183901406 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1394333436736922, guid: d3ca7493b95772648833528676a086a4,
-    type: 2}
-  m_PrefabInternal: {fileID: 951054613}
---- !u!4 &183901407 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4588121541191066, guid: d3ca7493b95772648833528676a086a4,
-    type: 2}
-  m_PrefabInternal: {fileID: 951054613}
---- !u!95 &183901412
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 183901406}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d128cac0186bbd34da91085b410b43b6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &183901413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 183901406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48a03d14b9f7136459255b27f67d5cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  btnAnimator: {fileID: 183901412}
-  Trap: {fileID: 1213772992599340, guid: ba8d38b861eceab448d9f3baa5800869, type: 2}
-  TempTrap: {fileID: 1716482288254864, guid: 11c3d08fab5b75b4d978a8904af08967, type: 2}
-  startColor: {r: 0, g: 0, b: 0, a: 0}
-  highlightedColor: {r: 1, g: 1, b: 1, a: 0.722}
-  highlightTime: 0.3
-  tempMaterial: {fileID: 2100000, guid: 3e4d6d608c2c0314389fac7c4ad471cf, type: 2}
-  representWhatSpot: 2
 --- !u!1 &187825288
 GameObject:
   m_ObjectHideFlags: 0
@@ -12549,6 +12457,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 114515614594560390, guid: 7ecfd14bd00089f45b58626dd35663cd,
+        type: 2}
+      propertyPath: representWhatSpot
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114990267493662022, guid: 7ecfd14bd00089f45b58626dd35663cd,
+        type: 2}
+      propertyPath: representWhatSpot
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7ecfd14bd00089f45b58626dd35663cd, type: 2}
   m_IsPrefabParent: 0
@@ -18573,18 +18491,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48a03d14b9f7136459255b27f67d5cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  btnAnimator: {fileID: 1486973945}
-  Trap: {fileID: 1904342659408870, guid: 99e6d0e4dfe2dc345bb9e90cfad75570, type: 2}
-  TempTrap: {fileID: 0}
-  startColor: {r: 0, g: 0, b: 0, a: 0}
-  highlightedColor: {r: 1, g: 1, b: 1, a: 0.722}
-  highlightTime: 0.3
-  tempMaterial: {fileID: 2100000, guid: 3e4d6d608c2c0314389fac7c4ad471cf, type: 2}
-  representWhatSpot: 0
   serializedVersion: 2
   m_Convex: 0
   m_InflateMesh: 0

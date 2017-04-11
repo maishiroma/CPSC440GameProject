@@ -1281,8 +1281,8 @@ MonoBehaviour:
   isDisabled: 0
   associatedTrapCard: {fileID: 0}
   otherRadials:
-  - {fileID: 907336661}
-  - {fileID: 1069711935}
+  - {fileID: 2071158325}
+  - {fileID: 1615553334}
 --- !u!114 &484511008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1947,7 +1947,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listOfTraps:
   - {fileID: 1904342659408870, guid: 99e6d0e4dfe2dc345bb9e90cfad75570, type: 2}
-  - {fileID: 1350685366864302, guid: 8cc2572ab6f55a746a40db418105532c, type: 2}
+  - {fileID: 1213772992599340, guid: ba8d38b861eceab448d9f3baa5800869, type: 2}
   - {fileID: 1044124871619802, guid: 18fcc586cbca3cf459fecd08fc986779, type: 2}
   currUnlockWeapons: 000000000000000000000000000000
   weaponLevelReq: 020000000400000006000000080000000a0000000c0000000e00000010000000120000001400000016000000180000001a0000001c0000001e000000
@@ -4030,6 +4030,8 @@ MonoBehaviour:
   - {fileID: 1904342659408870, guid: 99e6d0e4dfe2dc345bb9e90cfad75570, type: 2}
   - {fileID: 1350685366864302, guid: 8cc2572ab6f55a746a40db418105532c, type: 2}
   - {fileID: 1044124871619802, guid: 18fcc586cbca3cf459fecd08fc986779, type: 2}
+  ThrowableTraps:
+  - {fileID: 1213772992599340, guid: ba8d38b861eceab448d9f3baa5800869, type: 2}
 --- !u!1 &1182915922
 GameObject:
   m_ObjectHideFlags: 0
@@ -6363,10 +6365,10 @@ MonoBehaviour:
   representWhichSpot: 2
   isSelected: 0
   isDisabled: 0
-  currTrap: {fileID: 0}
+  associatedTrapCard: {fileID: 0}
   otherRadials:
-  - {fileID: 907336655}
-  - {fileID: 1069711929}
+  - {fileID: 484511007}
+  - {fileID: 2071158325}
 --- !u!114 &1615553335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7767,7 +7769,7 @@ Transform:
   - {fileID: 692841365}
   - {fileID: 854005224}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 3.75, y: 43.45, z: 0}
 --- !u!1 &2050076827
 GameObject:
@@ -8038,10 +8040,10 @@ MonoBehaviour:
   representWhichSpot: 1
   isSelected: 0
   isDisabled: 0
-  currTrap: {fileID: 0}
+  associatedTrapCard: {fileID: 0}
   otherRadials:
-  - {fileID: 907336655}
-  - {fileID: 1069711929}
+  - {fileID: 484511007}
+  - {fileID: 1615553334}
 --- !u!114 &2071158326
 MonoBehaviour:
   m_ObjectHideFlags: 0

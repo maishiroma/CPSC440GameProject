@@ -28,10 +28,21 @@ public class TrapCard : MonoBehaviour {
 		Instantiate(trap.GetComponent<Trap>().icon, trapIconPos.position, Quaternion.identity, GameObject.Find("Icons").transform);
 		associatedTrap = trap;
     }
-
+		
 	// Update is called once per frame
 	void Update () {
 
+	}
+
+	// Returns true if this trap name matches one of the names given here.
+	bool CheckIfTrapIsThrowable(string name)
+	{
+		switch(name)
+		{
+			case "Grenade":
+				return true;
+		}
+		return false;
 	}
 
 	// Checks if any of the trapRadials are selected. If so, puts this trap onto there, and sets this trap as equipped.
