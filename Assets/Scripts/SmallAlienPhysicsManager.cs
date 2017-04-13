@@ -10,6 +10,7 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
     SmallAlienAI ai;
     SmallAlienHealth health;
     AlienNavMeshInterface nav;
+    HitMarkerScript Reticle;
 
     //public vars
     public bool lerpToPlayerOnImpactact;
@@ -61,6 +62,8 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
         startEmission = mesh.GetComponent<SkinnedMeshRenderer>().material.GetColor("_Emission");
         startDrag = gameObject.GetComponent<Rigidbody>().drag;
         startY = transform.position.y;
+        Reticle = GameObject.Find("Reticle").GetComponent<HitMarkerScript>();
+
     }
 
     void ProjectileImpact(Collision collision)
@@ -212,6 +215,7 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
         {
             mesh.GetComponent<SkinnedMeshRenderer>().material.SetColor("_Emission", damageColor);
             Invoke("resetEmission", flashTime);
+            Reticle.Hit();
         }
     }
 

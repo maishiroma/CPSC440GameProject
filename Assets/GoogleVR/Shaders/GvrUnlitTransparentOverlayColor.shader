@@ -25,8 +25,12 @@ Shader "GoogleVR/Unlit/Transparent Overlay Color" {
     }
     LOD 100
 
-    ZWrite Off
-    Blend SrcAlpha OneMinusSrcAlpha
+	  Blend SrcAlpha OneMinusSrcAlpha
+	  AlphaTest Off
+	  Cull Back
+	  Lighting Off
+	  ZWrite Off
+	  ZTest Always
 
     Pass {
       CGPROGRAM

@@ -17,7 +17,7 @@ public class AlienNavMeshInterface : MonoBehaviour {
     private bool trackingTarget = false;
     private GameObject trackedTarget = null;
     private Vector3 lastTargetPos;
-    GameObject target;
+    public GameObject target;
     SmallAlienAI ai;
     SmallAlienPhysicsManager AlienPhysics;
     private bool isInRangeOfTarget;
@@ -25,7 +25,7 @@ public class AlienNavMeshInterface : MonoBehaviour {
     private bool reachedTarget = false;
     private float walkSpeed;
     public float walkAcceleration = 2f;
-
+    
     public float forwardRaycastFrequency = 1f;
     public float forwardRaycastLength = 2f;
     public AnimationCurve SlowingFalloff;
@@ -179,7 +179,7 @@ public class AlienNavMeshInterface : MonoBehaviour {
         //ai.SetState(SmallAlienAI.States.Attacking);
     }
 
-    bool CheckIfReachedAttackPosition()
+    public bool CheckIfReachedAttackPosition()
     {
         if (Vector3.Distance(transform.position, target.transform.position) <= attackDistance)
         {
@@ -243,7 +243,7 @@ public class AlienNavMeshInterface : MonoBehaviour {
 
         if (ObjectInWay && !attacking)
         {
-            walkSpeed = 0.8f;
+            walkSpeed = 0.76f;
         }
         else if(!attacking)
         {
