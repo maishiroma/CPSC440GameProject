@@ -63,7 +63,7 @@ public class SplashDamageScript : MonoBehaviour {
                     //indirect hit
                     SplashDamageMat.mainTexture = DirectionalSplashDamageImage;
 
-                    Debug.Log(angleBetweenCameraAndHit);
+                    //Debug.Log(angleBetweenCameraAndHit);
 
                     transform.localRotation = Quaternion.Euler (transform.localRotation.eulerAngles.x, 180 - angleBetweenCameraAndHit, transform.localRotation.eulerAngles.z);
                     currentColor = offColor;
@@ -124,7 +124,6 @@ public class SplashDamageScript : MonoBehaviour {
     {
         if(Time.time < startFadeTime + fadeTime)
         {
-            Debug.Log("fading");
             SplashDamageMat.SetColor("_Color",Color.Lerp(currentColor, targetColor, ((Time.time - startFadeTime) / fadeTime)));
         }
         else

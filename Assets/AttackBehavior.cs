@@ -9,6 +9,7 @@ public class AttackBehavior : StateMachineBehaviour {
     bool hit = false;
     private SplashDamageScript SplashDamage;
     private AlienNavMeshInterface _nav;
+    private PlayerHealthScript playerHealth;
 
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -17,6 +18,7 @@ public class AttackBehavior : StateMachineBehaviour {
         HitTime = Time.time + (stateInfo.length / 3f);
         SplashDamage = GameObject.Find("SplashDamage").GetComponent<SplashDamageScript>();
         _nav = animator.gameObject.GetComponent<AlienNavMeshInterface>();
+        playerHealth = GameObject.Find("PlayerSpawnLocation").GetComponent<PlayerHealthScript>();
 	}
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -26,6 +28,7 @@ public class AttackBehavior : StateMachineBehaviour {
         {
             hit = true;
             SplashDamage.Hit(animator.gameObject);
+            playerHealth.DealDamage(10);
         }
 	}
 
