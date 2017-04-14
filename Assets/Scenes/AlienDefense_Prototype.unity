@@ -7294,7 +7294,7 @@ GameObject:
   - component: {fileID: 608378361}
   - component: {fileID: 608378359}
   - component: {fileID: 608378360}
-  m_Layer: 13
+  m_Layer: 19
   m_Name: PlayerSpawnLocation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
