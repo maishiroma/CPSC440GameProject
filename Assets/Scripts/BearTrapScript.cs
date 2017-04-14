@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BearTrapScript : MonoBehaviour {
-    private Animator anim;
+    
+	public bool isActive = false;
+
+	private Animator anim;
+
 	// Use this for initialization
 	void Start () {
         anim = GetComponent<Animator>();
@@ -13,12 +17,22 @@ public class BearTrapScript : MonoBehaviour {
 	void Update () {
 		
 	}
-    void OnTriggerEnter(Collider other)
+    
+	void OnTriggerEnter(Collider other)
     {
-        
-        if (other.tag == "Alien")
+		if (other.tag == "Alien" && isActive == false)
         {
-            anim.SetTrigger("Triggered");
+			isActive = true;
+			anim.SetTrigger("Triggered");
+			SmallAlienPhysicsManager enemy = other.transform.parent.GetComponent<SmallAlienPhysicsManager>();
+			enemy.TakeDamage();
+
+			Invoke("DestroyTrap",3f);
         }
     }
+
+	void DestroyTrap()
+	{
+		Destroy(gameObject);
+	}
 }

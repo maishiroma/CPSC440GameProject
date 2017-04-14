@@ -120,6 +120,16 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
         }
     }
 
+	// Used in BearTrap
+	public void TakeDamage()
+	{
+		impactFlash();
+		anims.SetTrigger("Hit");
+		hit = true;
+		lerp = true;
+		Invoke("ProjectileReactionTime", 3f);
+	}
+
     void resetHitInAir()
     {
         hitInAir = false;

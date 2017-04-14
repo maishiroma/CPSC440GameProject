@@ -63,6 +63,7 @@ GameObject:
   - component: {fileID: 64470822287194536}
   - component: {fileID: 114521327742034406}
   - component: {fileID: 208293343981979816}
+  - component: {fileID: 114589808167033882}
   m_Layer: 18
   m_Name: Turret
   m_TagString: Untagged
@@ -1692,6 +1693,39 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 65536
   health: {fileID: 0}
+  deploySound: {fileID: 0}
+--- !u!114 &114589808167033882
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1044124871619802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbca64e524ea44f9b26142ec59aca8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bypassRoomEffects: 0
+  directivityAlpha: 0
+  directivitySharpness: 1
+  listenerDirectivityAlpha: 0
+  listenerDirectivitySharpness: 1
+  gainDb: 0
+  occlusionEnabled: 0
+  playOnAwake: 0
+  sourceClip: {fileID: 8300000, guid: 5d5805a2b50814070959a9c893698970, type: 3}
+  sourceLoop: 0
+  sourceMute: 0
+  sourcePitch: 1
+  sourcePriority: 128
+  sourceDopplerLevel: 1
+  sourceSpread: 0
+  sourceVolume: 1
+  sourceRolloffMode: 0
+  sourceMaxDistance: 500
+  sourceMinDistance: 1
+  hrtfEnabled: 1
+  audioSource: {fileID: 0}
 --- !u!135 &135707860283983198
 SphereCollider:
   m_ObjectHideFlags: 1

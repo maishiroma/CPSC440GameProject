@@ -21,11 +21,16 @@ public class TurretScript : MonoBehaviour {
 
     public Health health;
 
+	// GVR sound
+	private GvrAudioSource deploySound;
+
     public void Start()
     {
         turretAnims = gameObject.GetComponent<Animator>();
         
         health = GetComponent<Health>();
+
+		deploySound = GetComponent<GvrAudioSource>();
     }
 
     public void OnTriggerEnter(Collider other)
@@ -136,7 +141,10 @@ public class TurretScript : MonoBehaviour {
     {
         if (!health.dead)
         {
-            
+			// Plays the sound of deploying the trap.
+			if(health.currentHealth >= 100f)
+				deploySound.Play();
+			
             if (currentTarget == null)
             {
                 GameObject target = GetNewTarget();

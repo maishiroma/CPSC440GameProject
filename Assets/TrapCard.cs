@@ -12,14 +12,7 @@ public class TrapCard : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-	    	
-	}
-
-	// This is only needed to be done once
-	void Awake()
-	{
-		//if(trapRadials == null)
-			//trapRadials = GameObject.FindObjectsOfType<EquipTrapRadial>();
+	    
 	}
 
 	// Associated this trap card with the passed in Trap and instanciates an icon of it.
