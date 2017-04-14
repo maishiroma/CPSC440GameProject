@@ -138,6 +138,6 @@ MonoBehaviour:
   Alien: {fileID: 0}
   EnemyIconMovement: {fileID: 0}
   maxDistFromPlayerIcon: 0.33
-  deadTexture: {fileID: 2800000, guid: 194f62e9a1cfc1a44869c51f614dc096, type: 3}
-  deadColor: {r: 0.021896625, g: 0.0858148, b: 0.1102941, a: 0.584}
+  deadTexture: {fileID: 2800000, guid: 25e9957e682137d48af570ff3f29ca1f, type: 3}
+  deadColor: {r: 0.07915225, g: 0.14952087, b: 0.17647058, a: 0.484}
   lastAngleFromForward: 0
