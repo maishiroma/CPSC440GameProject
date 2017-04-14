@@ -18,7 +18,7 @@ public class SmallAlienAI : MonoBehaviour {
     public float maxRestTime = 5f;
     public float minAttackTime = 1.5f;
     public float maxAttackTime = 3f;
-
+    public float checkHitDelay;
     private bool inAttackPosition = false;
     private int attackNumber;
     private float currentRestLength;
@@ -33,6 +33,8 @@ public class SmallAlienAI : MonoBehaviour {
     private bool canAttack;
     private bool inJumpPos;
     public LayerMask JumpBackMask;
+    public SplashDamageScript SplashDamage;
+
 
     int RandomAttackNumber()
     {
@@ -50,6 +52,7 @@ public class SmallAlienAI : MonoBehaviour {
         _navMeshInterface = gameObject.GetComponent<AlienNavMeshInterface>();
         _health = gameObject.GetComponent<SmallAlienHealth>();
         anims = gameObject.GetComponent<Animator>();
+        SplashDamage = GameObject.Find("SplashDamage").GetComponent<SplashDamageScript>();
 	}
 	
     public void SetState(States state)
@@ -87,6 +90,7 @@ public class SmallAlienAI : MonoBehaviour {
 
         if(state != States.Attacking)
         {
+            attacking = false;
             _navMeshInterface.attacking = false;
             anims.SetTrigger("StopAttackCycle");
             anims.ResetTrigger("Hit");
@@ -131,6 +135,8 @@ public class SmallAlienAI : MonoBehaviour {
             StartCoroutine(AttackLoop());
         }
     }
+
+
 
     IEnumerator AttackLoop()
     {
@@ -198,6 +204,10 @@ public class SmallAlienAI : MonoBehaviour {
                 }
             }
 
+        }
+        else
+        {
+            
         }
 
     }
