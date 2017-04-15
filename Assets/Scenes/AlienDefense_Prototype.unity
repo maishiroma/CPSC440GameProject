@@ -2673,7 +2673,7 @@ MonoBehaviour:
   minUpdate: 4
   maxUpdate: 6
   maxNumAliens: 3
-  currSpawendAliens: 3
+  currSpawendAliens: 1
   LiveAliens:
   - {fileID: 620345264}
   SpawnPoints:
@@ -7460,7 +7460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerStartHealth: 100
   HealthRegeneratedPerSecond: 10
-  standardRegenDelay: 1
+  standardRegenDelay: 2
   minimumTimeBetweenDamageTaken: 0
 --- !u!1 &615311479
 GameObject:
@@ -12745,6 +12745,10 @@ Prefab:
     - target: {fileID: 4925520896747532, guid: c33779e1f48386249a13f5de00bf851b, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -257.375
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933553262101548, guid: c33779e1f48386249a13f5de00bf851b, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c33779e1f48386249a13f5de00bf851b, type: 2}
@@ -19618,6 +19622,10 @@ Prefab:
     - target: {fileID: 4925520896747532, guid: c33779e1f48386249a13f5de00bf851b, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -102.16701
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933553262101548, guid: c33779e1f48386249a13f5de00bf851b, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c33779e1f48386249a13f5de00bf851b, type: 2}

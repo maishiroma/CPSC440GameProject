@@ -30,12 +30,12 @@ public class PlayerHealthScript : MonoBehaviour {
             {
                 canRegenerateHealth = false;
                 startRegenDelay = Time.time;
-                currentRegenDelay = startRegenDelay;
+				currentRegenDelay = standardRegenDelay;
             }
             else
             {
                 canRegenerateHealth = false;
-                currentRegenDelay = ((startRegenDelay + currentRegenDelay) - Time.time) + standardRegenDelay;
+				currentRegenDelay = (Time.time - startRegenDelay) + standardRegenDelay;
                 startRegenDelay = Time.time;
             }
         }
