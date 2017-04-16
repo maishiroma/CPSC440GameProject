@@ -23,7 +23,8 @@ GameObject:
   - component: {fileID: 23173416381906262}
   - component: {fileID: 54161081911669602}
   - component: {fileID: 65226587771374118}
-  m_Layer: 0
+  - component: {fileID: 114747695349648846}
+  m_Layer: 18
   m_Name: FreezeBarrelPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1762557847696676}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.0124893, y: 2.33, z: 4.217743}
+  m_LocalPosition: {x: -1.0660362, y: -0.8625559, z: 8.494904}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,3 +109,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 107.78496, y: 113.169876, z: 102.5215}
   m_Center: {x: 0.0014877319, y: 62.330956, z: 0.9742527}
+--- !u!114 &114747695349648846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1762557847696676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b334883895f248a6a98cffddefa0bff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  healthRate: 13
+  healthRateMultiplier: 0
+  dead: 0
+  currentHealth: 0
+  explosionRange: 6
+  explosionMask:
+    serializedVersion: 2
+    m_Bits: 65536
+  impactParticles: {fileID: 1664966848565472, guid: 6f49f68d88344c941bfb14f8288eed43,
+    type: 2}
+  explosionParticles: {fileID: 1623538531801624, guid: cbaca0ab895447749a599456fd039348,
+    type: 2}
+  explosionSound: {fileID: 1330148264500758, guid: 46713ff352d1044589d6c6d92bfc092c,
+    type: 2}

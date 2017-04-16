@@ -42,8 +42,9 @@ public class PlayerState : MonoBehaviour
 
 	/*	The current state the player is in.
 	 * 	0 = new game
-	 * 	1 = Seen Introduction
-	 * 
+	 * 	1 = Seen first part of intro.
+	 * 	2 = Seen second part of intro.
+	 * 	3 = Entered first level.
 	 */
 	public int currGameState = 0;
 

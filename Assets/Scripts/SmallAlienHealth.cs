@@ -17,11 +17,13 @@ public class SmallAlienHealth : Health {
         anims = gameObject.GetComponent<Animator>();
 	}
 
-    private void Update()
-    {
-
-    }
+//    private void Update()
+//    {
+//
+//    }
     
+
+
     public override void Die()
     {
         if (Physics.isInAir)

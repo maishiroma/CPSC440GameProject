@@ -12,7 +12,7 @@ using UnityEngine;
 public class CutScene : MonoBehaviour {
 
 	public AudioClip[] cutsceneAudio;		// The array of cutscene audio clips.
-	public bool isReady;					// Does this cutscene play immediatly when the scene is loaded?
+	public bool incrementStateAfterPlaying;	// After this cutscene plays out, should the game state be incremented?
 	public int playOnGameState;				// What game state does this cutscene play on?
 
 	private GvrAudioSource cutsceneSource;	// Used for spatial audio for this object.
@@ -35,7 +35,7 @@ public class CutScene : MonoBehaviour {
 	// If the current source finished playing its sound clip, the next one is loaded up.
 	void Update()
 	{
-		if(isReady == true && playOnGameState <= player.currGameState)
+		if(playOnGameState <= player.currGameState)
 		{
 			if(cutsceneSource.isPlaying == false)
 			{
@@ -46,9 +46,11 @@ public class CutScene : MonoBehaviour {
 				}
 				else
 				{
-					// Once the cutscene finishes playing out, the game state increments, and this gameObject is disabled.
-					player.currGameState++;
-					gameObject.SetActive(false);
+					// Once the cutscene finishes playing out, the game state increments (if selected, and this gameObject is destroyed.
+					if(incrementStateAfterPlaying == true)
+						player.currGameState++;
+					
+					Destroy(gameObject);
 				}
 			}
 		}
@@ -57,6 +59,6 @@ public class CutScene : MonoBehaviour {
 	// Allows the cutscene to play. This can be triggered by an event call.
 	public void PlayCutscene()
 	{
-		isReady = true;
+		gameObject.SetActive(true);
 	}
 }

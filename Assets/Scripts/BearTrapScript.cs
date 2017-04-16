@@ -24,9 +24,8 @@ public class BearTrapScript : MonoBehaviour {
         {
 			isActive = true;
 			anim.SetTrigger("Triggered");
-			SmallAlienPhysicsManager enemy = other.transform.parent.GetComponent<SmallAlienPhysicsManager>();
-			enemy.TakeDamage();
-
+			other.transform.parent.GetComponent<Health>().dealDamage(10f);
+			other.transform.parent.GetComponent<SmallAlienPhysicsManager>().impactFlash();
 			Invoke("DestroyTrap",3f);
         }
     }

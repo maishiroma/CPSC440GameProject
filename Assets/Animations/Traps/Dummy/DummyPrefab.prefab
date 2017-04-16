@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4653198089657816}
   - component: {fileID: 33125903993427616}
   - component: {fileID: 23386079392409710}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: pSphere1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4999312932929924}
   - component: {fileID: 33535886503534358}
   - component: {fileID: 23815385514221710}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4865916563611732}
   - component: {fileID: 33732630672700912}
   - component: {fileID: 23279241508151992}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: pTorus2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4408347382210376}
   - component: {fileID: 33377120925615558}
   - component: {fileID: 23190674631435698}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: pTorus3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4251832390443338}
   - component: {fileID: 33320079574869274}
   - component: {fileID: 23520252635573928}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: pTorus1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 65288629342120066}
   - component: {fileID: 95100922462623108}
   - component: {fileID: 114458661796260538}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: DummyPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

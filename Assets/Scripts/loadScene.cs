@@ -10,7 +10,7 @@ public class loadScene : MonoBehaviour {
 
     void Start()
     {
-        screenFade = GameObject.Find("ScreenFade").GetComponent<ScreenFade>();
+       	screenFade = GameObject.Find("ScreenFade").GetComponent<ScreenFade>();
     }
 
     // Use this for initialization

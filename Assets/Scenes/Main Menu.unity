@@ -103,9 +103,9 @@ GameObject:
   - component: {fileID: 8005214}
   - component: {fileID: 8005213}
   - component: {fileID: 8005212}
-  - component: {fileID: 8005211}
-  - component: {fileID: 8005210}
   - component: {fileID: 8005209}
+  - component: {fileID: 8005216}
+  - component: {fileID: 8005211}
   - component: {fileID: 8005215}
   m_Layer: 0
   m_Name: Level_1
@@ -139,20 +139,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HologramMaskTag: MenuBounds
---- !u!114 &8005210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 8005207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaa5641bd3257734bad20e25bd7b1be5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: AlienDefense_Prototype
-  screenFade: {fileID: 0}
-  fadeIn: 0
 --- !u!114 &8005211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,8 +155,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 8005210}
-          m_MethodName: LoadScene
+        - m_Target: {fileID: 805282673}
+          m_MethodName: PlayCutscene
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -179,6 +165,17 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8005216}
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -282,6 +279,22 @@ MonoBehaviour:
   sourceMinDistance: 1
   hrtfEnabled: 1
   audioSource: {fileID: 0}
+--- !u!114 &8005216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 8005207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbbd1397b149d4efba3b4813e4bce42f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: AlienDefense_Prototype
+  screenFade: {fileID: 1483665528}
+  fadeIn: 0
+  waitToFinish: {fileID: 805282670}
+  isActiated: 0
 --- !u!4 &16657897 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400058, guid: 8f4ba9defa3346c448a9928211849df5, type: 3}
@@ -1790,7 +1803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Level2
-  screenFade: {fileID: 0}
+  screenFade: {fileID: 1483665528}
   fadeIn: 0
 --- !u!114 &533487533
 MonoBehaviour:
@@ -2687,6 +2700,83 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 782061883}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &805282670
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 805282671}
+  - component: {fileID: 805282673}
+  - component: {fileID: 805282672}
+  m_Layer: 22
+  m_Name: IntroP3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &805282671
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 805282670}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.000000067055225, y: 1.53, z: 0.00000008195639}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2030932301}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &805282672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 805282670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbca64e524ea44f9b26142ec59aca8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bypassRoomEffects: 1
+  directivityAlpha: 0
+  directivitySharpness: 1
+  listenerDirectivityAlpha: 0
+  listenerDirectivitySharpness: 1
+  gainDb: 12
+  occlusionEnabled: 0
+  playOnAwake: 0
+  sourceClip: {fileID: 0}
+  sourceLoop: 0
+  sourceMute: 0
+  sourcePitch: 1
+  sourcePriority: 100
+  sourceDopplerLevel: 1
+  sourceSpread: 0
+  sourceVolume: 1
+  sourceRolloffMode: 0
+  sourceMaxDistance: 500
+  sourceMinDistance: 1
+  hrtfEnabled: 1
+  audioSource: {fileID: 0}
+--- !u!114 &805282673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 805282670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e31cea529c64e4fa0413b27cbe1b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutsceneAudio:
+  - {fileID: 8300000, guid: 7324edef93b8743568a77155b3d6d47c, type: 3}
+  incrementStateAfterPlaying: 1
+  playOnGameState: 2
 --- !u!1 &811902497
 GameObject:
   m_ObjectHideFlags: 0
@@ -2802,12 +2892,12 @@ GameObject:
   - component: {fileID: 854005223}
   - component: {fileID: 854005222}
   m_Layer: 22
-  m_Name: Introduction
+  m_Name: IntroP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &854005222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2852,8 +2942,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutsceneAudio:
-  - {fileID: 8300000, guid: de307055bba5a4ec5a611634ee42b9a5, type: 3}
-  isReady: 1
+  - {fileID: 8300000, guid: 0753f872bc64f49c884358d85cbc9151, type: 3}
+  incrementStateAfterPlaying: 1
   playOnGameState: 0
 --- !u!4 &854005224
 Transform:
@@ -6334,6 +6424,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HologramMaskTag: MenuBounds
+--- !u!114 &1483665528 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114072804052007668, guid: 603571d5555e017438e2d83c482ab7e4,
+    type: 2}
+  m_PrefabInternal: {fileID: 648712880}
+  m_Script: {fileID: 11500000, guid: b5cb22c2baef564488b2ece287e586e7, type: 3}
 --- !u!1 &1492975083
 GameObject:
   m_ObjectHideFlags: 0
@@ -6891,6 +6987,83 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1615553330}
   m_Mesh: {fileID: 4300002, guid: be3b93f66873d3c4d81354e078d40ea1, type: 3}
+--- !u!1 &1636660667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1636660668}
+  - component: {fileID: 1636660670}
+  - component: {fileID: 1636660669}
+  m_Layer: 22
+  m_Name: IntroP2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1636660668
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1636660667}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.53, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2030932301}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1636660669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1636660667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbca64e524ea44f9b26142ec59aca8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bypassRoomEffects: 1
+  directivityAlpha: 0
+  directivitySharpness: 1
+  listenerDirectivityAlpha: 0
+  listenerDirectivitySharpness: 1
+  gainDb: 12
+  occlusionEnabled: 0
+  playOnAwake: 0
+  sourceClip: {fileID: 0}
+  sourceLoop: 0
+  sourceMute: 0
+  sourcePitch: 1
+  sourcePriority: 100
+  sourceDopplerLevel: 1
+  sourceSpread: 0
+  sourceVolume: 1
+  sourceRolloffMode: 0
+  sourceMaxDistance: 500
+  sourceMinDistance: 1
+  hrtfEnabled: 1
+  audioSource: {fileID: 0}
+--- !u!114 &1636660670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1636660667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e31cea529c64e4fa0413b27cbe1b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutsceneAudio:
+  - {fileID: 8300000, guid: a94b2025724ee4223ad84ce84845a137, type: 3}
+  incrementStateAfterPlaying: 1
+  playOnGameState: 1
 --- !u!1 &1653152464
 GameObject:
   m_ObjectHideFlags: 0
@@ -7407,7 +7580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: SmallAlienAI
-  screenFade: {fileID: 0}
+  screenFade: {fileID: 1483665528}
   fadeIn: 0
 --- !u!114 &1754370216
 MonoBehaviour:
@@ -8160,6 +8333,8 @@ Transform:
   - {fileID: 692841365}
   - {fileID: 927847289}
   - {fileID: 854005224}
+  - {fileID: 1636660668}
+  - {fileID: 805282671}
   m_Father: {fileID: 0}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 3.75, y: 43.45, z: 0}

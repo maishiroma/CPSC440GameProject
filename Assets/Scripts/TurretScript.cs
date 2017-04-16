@@ -141,10 +141,6 @@ public class TurretScript : MonoBehaviour {
     {
         if (!health.dead)
         {
-			// Plays the sound of deploying the trap.
-			if(health.currentHealth >= 100f)
-				deploySound.Play();
-			
             if (currentTarget == null)
             {
                 GameObject target = GetNewTarget();
