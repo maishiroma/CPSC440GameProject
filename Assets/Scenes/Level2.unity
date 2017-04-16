@@ -1886,6 +1886,7 @@ MonoBehaviour:
   highlightedColor: {r: 1, g: 1, b: 1, a: 0.722}
   highlightTime: 0.3
   tempMaterial: {fileID: 2100000, guid: 3e4d6d608c2c0314389fac7c4ad471cf, type: 2}
+  representWhatSpot: 2
 --- !u!1001 &133019256
 Prefab:
   m_ObjectHideFlags: 0
@@ -2810,6 +2811,7 @@ MonoBehaviour:
   highlightedColor: {r: 1, g: 1, b: 1, a: 0.722}
   highlightTime: 0.3
   tempMaterial: {fileID: 2100000, guid: 3e4d6d608c2c0314389fac7c4ad471cf, type: 2}
+  representWhatSpot: 1
 --- !u!1 &186000210
 GameObject:
   m_ObjectHideFlags: 0
@@ -3646,6 +3648,7 @@ MonoBehaviour:
   maxUpdate: 6
   maxNumAliens: 3
   currSpawendAliens: 0
+  LiveAliens: []
   SpawnPoints:
   - {fileID: 477755026}
   - {fileID: 2142188422}
@@ -3653,6 +3656,7 @@ MonoBehaviour:
   - {fileID: 115644433}
   - {fileID: 842822949}
   - {fileID: 1004575315}
+  Radar: {fileID: 0}
 --- !u!1 &273168676
 GameObject:
   m_ObjectHideFlags: 0
@@ -15500,13 +15504,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireDelay: 0.1
   triggerHoldThreshold: 0.25
+  gunMask:
+    serializedVersion: 2
+    m_Bits: 0
   startAmmo: 100
   maxAmmo: 100
   ammoPerShoot: 5
   currentClip: {fileID: 1994317051}
   currentClipAnims: {fileID: 0}
   gunFireSound: {fileID: 8300000, guid: 7b8e5a88fa1904691bb7d3674bee9372, type: 3}
-  gunSoundSource: {fileID: 0}
+  gunReloadSound: {fileID: 8300000, guid: a3ac44d4e4ba040ab858cfd80f6b5d74, type: 3}
   trapMenu: {fileID: 2138808022}
   shootPoint: {fileID: 324230315}
   bullet: {fileID: 1000013753647018, guid: 765529aea65d1b74387ad855e948f828, type: 2}
@@ -23742,6 +23749,7 @@ MonoBehaviour:
   highlightedColor: {r: 1, g: 1, b: 1, a: 0.722}
   highlightTime: 0.3
   tempMaterial: {fileID: 2100000, guid: 3e4d6d608c2c0314389fac7c4ad471cf, type: 2}
+  representWhatSpot: 0
 --- !u!1 &1493096365
 GameObject:
   m_ObjectHideFlags: 0
@@ -27181,8 +27189,6 @@ MonoBehaviour:
   sceneName: Main Menu
   screenFade: {fileID: 1246943151}
   fadeIn: 0
-  levelSelectSound: {fileID: 0}
-  levelSelectSource: {fileID: 0}
 --- !u!114 &1692599803
 MonoBehaviour:
   m_ObjectHideFlags: 0

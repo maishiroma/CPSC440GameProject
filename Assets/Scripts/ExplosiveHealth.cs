@@ -13,10 +13,9 @@ public class ExplosiveHealth : Health
 
     public LayerMask explosionMask;
 
-    
-
     public GameObject impactParticles;
     public GameObject explosionParticles;
+	public GameObject explosionSound;			// Contains the object that plays the sound for this trap
 
     private List<GameObject> objToDestroy = new List<GameObject>();
 
@@ -63,7 +62,8 @@ public class ExplosiveHealth : Health
 
         }
 
-
+		// Creates the object that will play the sound at this trap's location.
+		Instantiate(explosionSound,transform.position, Quaternion.identity);
         Destroy(gameObject);
         foreach(GameObject go in objToDestroy)
         {

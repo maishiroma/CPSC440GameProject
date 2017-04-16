@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 54411668108261984}
   - component: {fileID: 65334182242775234}
   - component: {fileID: 114752558756725728}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ExplosiveBarrelPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,6 +138,8 @@ MonoBehaviour:
   impactParticles: {fileID: 1623538531801624, guid: cbaca0ab895447749a599456fd039348,
     type: 2}
   explosionParticles: {fileID: 1623538531801624, guid: cbaca0ab895447749a599456fd039348,
+    type: 2}
+  explosionSound: {fileID: 1780921431920592, guid: e129ee9eb8cdc4006af235ccecfac109,
     type: 2}
 --- !u!114 &114732922999738796
 MonoBehaviour:

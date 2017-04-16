@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4653198089657816}
   - component: {fileID: 33125903993427616}
   - component: {fileID: 23386079392409710}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: pSphere1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4999312932929924}
   - component: {fileID: 33535886503534358}
   - component: {fileID: 23815385514221710}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4865916563611732}
   - component: {fileID: 33732630672700912}
   - component: {fileID: 23279241508151992}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: pTorus2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4408347382210376}
   - component: {fileID: 33377120925615558}
   - component: {fileID: 23190674631435698}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: pTorus3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4251832390443338}
   - component: {fileID: 33320079574869274}
   - component: {fileID: 23520252635573928}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: pTorus1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,8 @@ GameObject:
   - component: {fileID: 54075189686108172}
   - component: {fileID: 65288629342120066}
   - component: {fileID: 95100922462623108}
-  m_Layer: 0
+  - component: {fileID: 114458661796260538}
+  m_Layer: 18
   m_Name: DummyPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +122,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1961167210848956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.53, y: 0.068744, z: 6.38}
+  m_LocalPosition: {x: -0.0320549, y: -0.80509573, z: 13.835266}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4999312932929924}
@@ -431,3 +432,35 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114458661796260538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1961167210848956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbca64e524ea44f9b26142ec59aca8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bypassRoomEffects: 0
+  directivityAlpha: 0
+  directivitySharpness: 1
+  listenerDirectivityAlpha: 0
+  listenerDirectivitySharpness: 1
+  gainDb: 0
+  occlusionEnabled: 0
+  playOnAwake: 0
+  sourceClip: {fileID: 0}
+  sourceLoop: 0
+  sourceMute: 0
+  sourcePitch: 1
+  sourcePriority: 128
+  sourceDopplerLevel: 1
+  sourceSpread: 0
+  sourceVolume: 1
+  sourceRolloffMode: 0
+  sourceMaxDistance: 500
+  sourceMinDistance: 1
+  hrtfEnabled: 1
+  audioSource: {fileID: 0}

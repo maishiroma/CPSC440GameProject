@@ -8,14 +8,9 @@ public class loadScene : MonoBehaviour {
     public ScreenFade screenFade;
     public bool fadeIn = true;
 
-	// For GoogleVR Spatial Audio
-	public AudioClip levelSelectSound;
-	public GvrAudioSource levelSelectSource;
-
     void Start()
     {
-        screenFade = GameObject.Find("ScreenFade").GetComponent<ScreenFade>();
-		levelSelectSource = GetComponent<GvrAudioSource>();
+       	screenFade = GameObject.Find("ScreenFade").GetComponent<ScreenFade>();
     }
 
     // Use this for initialization
@@ -34,11 +29,5 @@ public class loadScene : MonoBehaviour {
     {
         SceneManager.LoadScene(sceneName);
     }
-
-	// Plays the sound for selecting a sound
-	public void PlaySelectSound()
-	{
-		levelSelectSource.PlayOneShot(levelSelectSound, 0.5f);
-	}
 
 }

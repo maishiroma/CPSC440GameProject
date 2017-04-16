@@ -24,7 +24,7 @@ public class EquipTrapRadial : MonoBehaviour {
 	void Start()
 	{
 		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>();
-    _trapButtonInteraction = gameObject.GetComponent<TrapButtonInteraction>();
+    	_trapButtonInteraction = gameObject.GetComponent<TrapButtonInteraction>();
 	}
 
 	// This method is called in the event system in order to let the object know it's been selected.
@@ -32,10 +32,9 @@ public class EquipTrapRadial : MonoBehaviour {
 	// Selecting the same spot will deselect it. (or removing the trap that was in there?)
 	public void SelectSpot()
 	{
-        _trapButtonInteraction.Select();
-
 		if(isDisabled == false)
 		{
+			_trapButtonInteraction.Select();
 			if(isSelected == true)
 			{
 				DeselectSpot();
@@ -54,10 +53,10 @@ public class EquipTrapRadial : MonoBehaviour {
 	// All other spots are then reenabled, allowing them to being selected.
 	public void DeselectSpot()
 	{
-        _trapButtonInteraction.Deselect();
-
 		if(isDisabled == false)
 		{
+			_trapButtonInteraction.Deselect();
+			_trapButtonInteraction.EndHighlighting();
 			print(representWhichSpot + " is deselected.");
 			isSelected = false;
 			for(int i = 0; i < otherRadials.Length; i++)

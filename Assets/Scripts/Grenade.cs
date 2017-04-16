@@ -20,6 +20,7 @@ public class Grenade : MonoBehaviour
     private bool hitGround = false;
 
     public GameObject explosionParticles;
+	public GameObject explosionSound;			// Stores the gameobject that will play the trap sound.
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -59,6 +60,8 @@ public class Grenade : MonoBehaviour
                 AddExplosiveForce(col.gameObject);
             }
         }
+		// Creates the object that will play the sound at this trap's location.
+		Instantiate(explosionSound,transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
     
@@ -98,8 +101,6 @@ public class Grenade : MonoBehaviour
             Vector3 torque = new Vector3(Random.Range(-rotationalForce * t, rotationalForce * t), Random.Range(-rotationalForce * t, rotationalForce * t), Random.Range(-rotationalForce * t, rotationalForce * t));
             Obj.GetComponent<Rigidbody>().AddTorque(torque, ForceMode.Impulse);
         }
-
-        
     }    
 
 }

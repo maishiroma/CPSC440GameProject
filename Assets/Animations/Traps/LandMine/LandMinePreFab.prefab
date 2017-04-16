@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4441758965954968}
   - component: {fileID: 33455807340020904}
   - component: {fileID: 23377782297996212}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: pCylinder1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,8 @@ GameObject:
   - component: {fileID: 65158313066511524}
   - component: {fileID: 65234233352419378}
   - component: {fileID: 95999103498953880}
-  m_Layer: 0
+  - component: {fileID: 114156386098668138}
+  m_Layer: 18
   m_Name: LandMinePreFab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1877234821352314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.73, z: 5.258301}
+  m_LocalPosition: {x: -0.48968124, y: -0.758, z: 6.679138}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4441758965954968}
@@ -168,3 +169,45 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114156386098668138
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1877234821352314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f14fd299ebcb46f8b8846e5b025f496, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionMask:
+    serializedVersion: 2
+    m_Bits: 65536
+  maxDamage: 60
+  minDamage: 10
+  damageFalloff:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxExplosionForce: 15
+  minExplosionForce: 10
+  rotationalForce: 60
+  explosionForceFalloff:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  YForce:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  explosionRange: 5
+  explosionParticles: {fileID: 1623538531801624, guid: cbaca0ab895447749a599456fd039348,
+    type: 2}
+  explosionSound: {fileID: 1870811987128262, guid: 06f1f8288670140ebb84c68d965a1d82,
+    type: 2}

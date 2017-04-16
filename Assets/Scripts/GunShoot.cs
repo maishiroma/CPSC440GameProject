@@ -27,7 +27,8 @@ public class GunShoot : MonoBehaviour {
 
 	// Google VR sounds
 	public AudioClip gunFireSound;
-	public GvrAudioSource gunSoundSource;
+	public AudioClip gunReloadSound;
+	private GvrAudioSource gunSoundSource;
 
     public TrapMenu trapMenu;
 
@@ -192,6 +193,7 @@ public class GunShoot : MonoBehaviour {
         currentClipAnims = currentClip.GetComponent<Animator>();
         currentAmmo = startAmmo;
         outOfAmmo = false;
+		gunSoundSource.PlayOneShot(gunReloadSound, 0.3f);
     }
 
     public void DropAmmoClip()

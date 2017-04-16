@@ -21,11 +21,16 @@ public class TurretScript : MonoBehaviour {
 
     public Health health;
 
+	// GVR sound
+	private GvrAudioSource deploySound;
+
     public void Start()
     {
         turretAnims = gameObject.GetComponent<Animator>();
         
         health = GetComponent<Health>();
+
+		deploySound = GetComponent<GvrAudioSource>();
     }
 
     public void OnTriggerEnter(Collider other)
@@ -136,7 +141,6 @@ public class TurretScript : MonoBehaviour {
     {
         if (!health.dead)
         {
-            
             if (currentTarget == null)
             {
                 GameObject target = GetNewTarget();
