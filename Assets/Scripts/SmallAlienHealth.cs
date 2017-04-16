@@ -7,6 +7,7 @@ public class SmallAlienHealth : Health {
     Animator anims;
     SmallAlienAI ai;
     SmallAlienPhysicsManager Physics;
+    HitMarkerScript Reticle;
 
 	// Use this for initialization
 	void Start ()
@@ -15,6 +16,7 @@ public class SmallAlienHealth : Health {
         ai = gameObject.GetComponent<SmallAlienAI>();
         Physics = gameObject.GetComponent<SmallAlienPhysicsManager>();
         anims = gameObject.GetComponent<Animator>();
+        Reticle = GameObject.Find("Reticle").GetComponent<HitMarkerScript>();
 	}
 
 //    private void Update()
@@ -34,6 +36,7 @@ public class SmallAlienHealth : Health {
         {
             
             anims.SetTrigger("FallToDeath");
+            Reticle.Death();
             Invoke("disableCollider", 1);
             dead = true;
             GameObject.Find("AlienSpawners").GetComponent<test_AlienSpawner>().currSpawendAliens--;
@@ -42,6 +45,7 @@ public class SmallAlienHealth : Health {
         else
         {
             anims.SetTrigger("Dead");
+            Reticle.Death();
             Invoke("disableCollider", 1);
             dead = true;
             GameObject.Find("AlienSpawners").GetComponent<test_AlienSpawner>().currSpawendAliens--;
