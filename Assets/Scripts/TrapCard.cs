@@ -4,18 +4,95 @@ using UnityEngine;
 
 public class TrapCard : MonoBehaviour {
 
+    public Color InvisibleColor;
     public bool visible;
     public bool equipped;
     public Transform trapIconPos;
-
+    public float fadeTime = 0.1f;
+    private List<MeshRenderer> ObjectsToFade = new List<MeshRenderer>();
+    private Color StartColor;
+    public bool StartVisible;
 	public GameObject displayedTrap;				// What trap is here?
 	public static EquipTrapRadial[] trapRadials;	// Refrence to radial buttons. Used to interact with equipTrapRadial
 
 	// Use this for initialization
 	void Start ()
     {
-	    	
+        ObjectsToFade.Add(gameObject.GetComponent<MeshRenderer>());
+        StartColor = ObjectsToFade[0].material.color;
 	}
+
+    public void FadeOut()
+    {
+        if (visible)
+        {
+            StopAllCoroutines();
+            StartCoroutine(FadingOut());
+        }
+        
+    }
+
+
+
+    IEnumerator FadingOut()
+    {
+        float startTime = Time.time;
+        while (true)
+        {
+            if (Time.time <= startTime + fadeTime)
+            {
+                for (int i = 0; i < ObjectsToFade.Count; i++)
+                {
+                    ObjectsToFade[i].material.color = Color.Lerp(StartColor, InvisibleColor, (Time.time - startTime) / fadeTime);
+                }
+            }
+            else
+            {
+                visible = false;
+                for (int i = 0; i < ObjectsToFade.Count; i++)
+                {
+                    ObjectsToFade[i].enabled = false;
+                }
+                yield break;
+            }
+            yield return null;
+        }
+    }
+
+    public void FadeIn()
+    {
+        if (!visible)
+        {
+            for(int i = 0; i < ObjectsToFade.Count; i++)
+            {
+                ObjectsToFade[i].enabled = true;
+            }
+            StopAllCoroutines();
+            StartCoroutine(FadingIn());
+        }
+    }
+
+    IEnumerator FadingIn()
+    {
+        visible = true;
+        float startTime = Time.time;
+        while (true)
+        {
+            if(Time.time <= startTime + fadeTime)
+            {
+                for(int i = 0; i < ObjectsToFade.Count; i++)
+                {
+                    ObjectsToFade[i].material.color = Color.Lerp(InvisibleColor, StartColor, (Time.time - startTime) / fadeTime);
+                }
+            }
+            else
+            {
+                yield break;
+            }
+            yield return null;
+        }
+    }
+
 
 	// This is only needed to be done once
 	void Awake()
@@ -26,7 +103,8 @@ public class TrapCard : MonoBehaviour {
 	
     public void LoadTrapInSlot(GameObject trap)
     {
-        Instantiate(trap, trapIconPos.position, Quaternion.identity, GameObject.Find("Icons").transform);
+        GameObject _trap = (GameObject)Instantiate(trap, trapIconPos.position, Quaternion.identity, trapIconPos);
+        ObjectsToFade.Add(_trap.gameObject.GetComponentInChildren<MeshRenderer>());
 		displayedTrap = trap;
     }
 

@@ -911,7 +911,7 @@ MonoBehaviour:
     type: 2}
   _SmallAlienAgent: {fileID: 0}
   stoppingDistFromTarget: 5.2
-  attackDistance: 2.6
+  attackDistance: 3
   usingNavmeshAgent: 0
   target: {fileID: 0}
   walkAcceleration: 2

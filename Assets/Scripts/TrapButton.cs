@@ -28,7 +28,7 @@ public class TrapButton : MonoBehaviour{
     private float unhighlightedTime;
 
     private GameObject objectToSpawn;
-
+    private PlayerManager playerManager;
     
     public Material tempMaterial;
 
@@ -40,7 +40,7 @@ public class TrapButton : MonoBehaviour{
         btnMat = gameObject.GetComponent<Renderer>().material;
         startColor = btnMat.color;
         marker = GameObject.Find("CircleMarker_Prefab").GetComponent<Marker>();
-        
+        playerManager = GameObject.Find("PlayerSpawnLocation").GetComponent<PlayerManager>();
 	}
 
     void Update()
@@ -83,6 +83,7 @@ public class TrapButton : MonoBehaviour{
             Destroy(objectToSpawn);
             
             objectToSpawn = null;
+            playerManager.IncrementNumTraps(false);
         }
     }   
 
