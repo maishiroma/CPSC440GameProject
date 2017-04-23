@@ -8,6 +8,12 @@ public class AmmoClip : MonoBehaviour {
     public float ammoLeft;
     private Animator ClipAnims;
 
+
+    public Color[] AmmoColors;
+    public float lowAmmoColorThreshold = 0.2f;
+    public float midAmmoColorThreshold = 0.5f;
+    private Material ClipMat;
+
     private Vector3 startPoint;
     private bool flyingToTarget;
 
@@ -26,7 +32,7 @@ public class AmmoClip : MonoBehaviour {
         ClipPoint = GameObject.Find("ClipPoint").transform;
         Gun = GameObject.Find("Gun").GetComponent<GunShoot>();
         ClipAnims = gameObject.GetComponent<Animator>();
-        
+        ClipMat = Clip.GetComponent<MeshRenderer>().material;
 	}
 	
 	// Update is called once per frame
@@ -81,5 +87,22 @@ public class AmmoClip : MonoBehaviour {
     {
         ammoLeft = currentAmmo / maxAmmo;
         Clip.localScale = new Vector3(1, ammoLeft, 1);
+        if(ammoLeft < lowAmmoColorThreshold)
+        {
+            //ClipMat.color = Color.red;
+            ClipMat.color = AmmoColors[2];
+        }
+        else if(ammoLeft < midAmmoColorThreshold)
+        {
+            //ClipMat.color = Color.yellow;
+            ClipMat.color = AmmoColors[1];
+
+        }
+        else
+        {
+            ClipMat.color = Color.green;
+            ClipMat.color = AmmoColors[0];
+
+        }
     }
 }

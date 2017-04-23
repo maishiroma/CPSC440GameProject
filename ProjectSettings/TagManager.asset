@@ -33,6 +33,7 @@ TagManager:
   - Player
   - Navigation
   - ObjAvoider
+  - Waypoints
   - FRED
   - 
   - 

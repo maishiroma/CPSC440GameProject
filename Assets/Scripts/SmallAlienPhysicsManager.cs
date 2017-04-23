@@ -148,7 +148,6 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
         {
             if (!reactingToPhysics)
             {
-                Debug.Log("React To Physics!");
                 ReactToPhysics();
             }
             inAirTime = Time.time;
@@ -170,7 +169,6 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
 
     void LandOnGround()
     {
-        Debug.Log("Land!");
         //anims.applyRootMotion = true;
         transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
         
@@ -278,7 +276,6 @@ public class SmallAlienPhysicsManager : MonoBehaviour {
 
         if (isInAir && rb.velocity.y <= 0 && (Time.time > (startReactingTime + minReactTime)))
         {
-            Debug.Log("Checked For Ground!");
             CheckForGround();
         }
 

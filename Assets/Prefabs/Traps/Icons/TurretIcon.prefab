@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 33467098935596504}
   - component: {fileID: 23415101155276224}
   - component: {fileID: 64559265831536328}
-  - component: {fileID: 114039017502789478}
   m_Layer: 18
   m_Name: R_Arm2
   m_TagString: Untagged
@@ -41,7 +40,6 @@ GameObject:
   - component: {fileID: 33227834019794790}
   - component: {fileID: 23721500422556296}
   - component: {fileID: 64699605045182362}
-  - component: {fileID: 114842425848088578}
   m_Layer: 18
   m_Name: Piston
   m_TagString: Untagged
@@ -76,7 +74,6 @@ GameObject:
   - component: {fileID: 33801491559729366}
   - component: {fileID: 23636745530425068}
   - component: {fileID: 64186060598717300}
-  - component: {fileID: 114698726483431540}
   m_Layer: 18
   m_Name: R_MidJoint
   m_TagString: Untagged
@@ -95,7 +92,6 @@ GameObject:
   - component: {fileID: 33414165958727582}
   - component: {fileID: 23864239346408950}
   - component: {fileID: 64663212214856652}
-  - component: {fileID: 114463076298363790}
   m_Layer: 18
   m_Name: R_BottomJoint
   m_TagString: Untagged
@@ -114,7 +110,6 @@ GameObject:
   - component: {fileID: 33782827059157026}
   - component: {fileID: 23553454955364404}
   - component: {fileID: 64879470414872566}
-  - component: {fileID: 114733188607811256}
   m_Layer: 18
   m_Name: PistonScale
   m_TagString: Untagged
@@ -165,7 +160,6 @@ GameObject:
   - component: {fileID: 33832832778259570}
   - component: {fileID: 23051991516154584}
   - component: {fileID: 64404022111283206}
-  - component: {fileID: 114700885021727376}
   m_Layer: 18
   m_Name: R_Arm1
   m_TagString: Untagged
@@ -184,7 +178,6 @@ GameObject:
   - component: {fileID: 33442082702139340}
   - component: {fileID: 23951985872231580}
   - component: {fileID: 64384177091685246}
-  - component: {fileID: 114714276399500760}
   m_Layer: 18
   m_Name: L_Arm2
   m_TagString: Untagged
@@ -203,7 +196,6 @@ GameObject:
   - component: {fileID: 33739341539022944}
   - component: {fileID: 23125089987441406}
   - component: {fileID: 64077309197846018}
-  - component: {fileID: 114880906844992744}
   m_Layer: 18
   m_Name: Hinge
   m_TagString: Untagged
@@ -272,7 +264,6 @@ GameObject:
   - component: {fileID: 33286941439814854}
   - component: {fileID: 23393455702854390}
   - component: {fileID: 64813282642217358}
-  - component: {fileID: 114134736398613972}
   m_Layer: 18
   m_Name: L_TopJoint
   m_TagString: Untagged
@@ -291,7 +282,6 @@ GameObject:
   - component: {fileID: 33515741061423412}
   - component: {fileID: 23920997966134372}
   - component: {fileID: 64930877891321098}
-  - component: {fileID: 114179712582836636}
   m_Layer: 18
   m_Name: Gun
   m_TagString: Untagged
@@ -326,7 +316,6 @@ GameObject:
   - component: {fileID: 33641626409599078}
   - component: {fileID: 23884310010580992}
   - component: {fileID: 64352696001722214}
-  - component: {fileID: 114757089480765358}
   m_Layer: 18
   m_Name: BaseGun
   m_TagString: Untagged
@@ -361,7 +350,6 @@ GameObject:
   - component: {fileID: 33564165934583002}
   - component: {fileID: 23119524736399408}
   - component: {fileID: 64523210044161516}
-  - component: {fileID: 114358807002769054}
   m_Layer: 18
   m_Name: L_MidJoint
   m_TagString: Untagged
@@ -380,7 +368,6 @@ GameObject:
   - component: {fileID: 33345139698147828}
   - component: {fileID: 23242684837007920}
   - component: {fileID: 64144094782202650}
-  - component: {fileID: 114973017661144300}
   m_Layer: 18
   m_Name: pCylinder1
   m_TagString: Untagged
@@ -399,7 +386,6 @@ GameObject:
   - component: {fileID: 33571666041900726}
   - component: {fileID: 23847545459277696}
   - component: {fileID: 64069984978650048}
-  - component: {fileID: 114414738042343322}
   m_Layer: 18
   m_Name: L_BottomJoint
   m_TagString: Untagged
@@ -418,7 +404,6 @@ GameObject:
   - component: {fileID: 33064116585007012}
   - component: {fileID: 23497971577981902}
   - component: {fileID: 64948838618172778}
-  - component: {fileID: 114800278634515868}
   m_Layer: 18
   m_Name: L_Arm1
   m_TagString: Untagged
@@ -437,7 +422,6 @@ GameObject:
   - component: {fileID: 33180204084476478}
   - component: {fileID: 23893394153294212}
   - component: {fileID: 64616133847512220}
-  - component: {fileID: 114441745258083888}
   m_Layer: 18
   m_Name: R_TopJoint
   m_TagString: Untagged
@@ -1626,30 +1610,6 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300024, guid: beb561d44c80d4f4fa89f1e187b12241, type: 3}
---- !u!114 &114039017502789478
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1027029175608356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f0f62ea870a574c97e381011c44002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HologramMaskTag: MenuBounds
---- !u!114 &114134736398613972
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1614988560362854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f0f62ea870a574c97e381011c44002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HologramMaskTag: MenuBounds
 --- !u!114 &114145253701761476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1662,72 +1622,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HologramMaskTag: MenuBounds
---- !u!114 &114179712582836636
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1670282836999788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f0f62ea870a574c97e381011c44002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HologramMaskTag: MenuBounds
 --- !u!114 &114202598658042340
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358709012456016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f0f62ea870a574c97e381011c44002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HologramMaskTag: MenuBounds
---- !u!114 &114358807002769054
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1925199269887022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f0f62ea870a574c97e381011c44002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HologramMaskTag: MenuBounds
---- !u!114 &114414738042343322
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1941777383884278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f0f62ea870a574c97e381011c44002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HologramMaskTag: MenuBounds
---- !u!114 &114441745258083888
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1955853096783014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f0f62ea870a574c97e381011c44002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HologramMaskTag: MenuBounds
---- !u!114 &114463076298363790
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1271167378967740}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91f0f62ea870a574c97e381011c44002, type: 3}
@@ -1758,66 +1658,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HologramMaskTag: MenuBounds
---- !u!114 &114698726483431540
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1235931555228270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f0f62ea870a574c97e381011c44002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HologramMaskTag: MenuBounds
---- !u!114 &114700885021727376
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1423337532676534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f0f62ea870a574c97e381011c44002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HologramMaskTag: MenuBounds
---- !u!114 &114714276399500760
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1445808529491814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f0f62ea870a574c97e381011c44002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HologramMaskTag: MenuBounds
---- !u!114 &114733188607811256
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1326827434943354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f0f62ea870a574c97e381011c44002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HologramMaskTag: MenuBounds
---- !u!114 &114757089480765358
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1800750387079650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f0f62ea870a574c97e381011c44002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HologramMaskTag: MenuBounds
 --- !u!114 &114782317408457476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1842,48 +1682,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HologramMaskTag: MenuBounds
---- !u!114 &114800278634515868
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1950203719714684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f0f62ea870a574c97e381011c44002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HologramMaskTag: MenuBounds
 --- !u!114 &114821045711118540
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1163366665073838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f0f62ea870a574c97e381011c44002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HologramMaskTag: MenuBounds
---- !u!114 &114842425848088578
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1078179723383172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f0f62ea870a574c97e381011c44002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HologramMaskTag: MenuBounds
---- !u!114 &114880906844992744
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1467060976747458}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91f0f62ea870a574c97e381011c44002, type: 3}
@@ -1906,18 +1710,6 @@ MonoBehaviour:
   purchased: 1
   icon: {fileID: 0}
   slot: 3
---- !u!114 &114973017661144300
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1936181925729578}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f0f62ea870a574c97e381011c44002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HologramMaskTag: MenuBounds
 --- !u!135 &135713508244464932
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1926,7 +1718,7 @@ SphereCollider:
   m_GameObject: {fileID: 1526897177407346}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 12
   m_Center: {x: 0, y: 0, z: 0}

@@ -20,7 +20,7 @@ public static class GameUtilities
         Vector3 unitDirection = direction.normalized;
 
         //float maxYPos = target.y + maxHeightOffset;
-        float maxYPos = 2;
+        float maxYPos = Mathf.Lerp(1.5f,5, (range) / 30);
 
         if (range / 2f > maxYPos)
         {

@@ -9,6 +9,8 @@ public class TrapMenu : MonoBehaviour {
     public Animator radialMenuAnimator;
     private bool isOpen;
     private Transform radialMenuLocation;
+    public ContextualScreenManager ContextualScreen;
+    public ContextualScreenPage TrapPage;
 
 	// Use this for initialization
 	void Start ()
@@ -43,6 +45,7 @@ public class TrapMenu : MonoBehaviour {
 
         if (isOpen)
         {
+            ContextualScreen.SwitchToPage(TrapPage);
             transform.position = radialMenuLocation.position;
             radialMenuAnimator.gameObject.SetActive(true);
             radialMenuAnimator.SetBool("Open", true); 
@@ -50,7 +53,16 @@ public class TrapMenu : MonoBehaviour {
         else
         {
             radialMenuAnimator.SetBool("Open", false);
+            Invoke("ResetContextualScreen", 1f);
         }
     }
 
+
+    void ResetContextualScreen()
+    {
+        if (!isOpen)
+        {
+            ContextualScreen.SwitchToDefaultPage(TrapPage);
+        }
+    }
 }

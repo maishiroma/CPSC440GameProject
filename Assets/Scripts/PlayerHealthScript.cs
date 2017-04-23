@@ -8,12 +8,15 @@ public class PlayerHealthScript : MonoBehaviour {
     public float HealthRegeneratedPerSecond;
     public float standardRegenDelay;
     public float minimumTimeBetweenDamageTaken;
+	public Transform debugHealthBar;
+    public ContextualScreenManager ContextualScreen;
+    public ContextualScreenPage Health;
 
     private float startRegenDelay;
     private bool canRegenerateHealth;
     private float currentRegenDelay;
     private float currentHealth;
-
+    private HealthBar PlayerHealthBar;
 
     public void DealDamage(float damage)
     {
@@ -25,7 +28,9 @@ public class PlayerHealthScript : MonoBehaviour {
         else
         {
             currentHealth = currentHealth - damage;
-            Debug.Log("Current Health Level: " + currentHealth);
+			UpdateDebugBar ();
+            PlayerHealthBar.SetHealthBar(currentHealth / PlayerStartHealth);
+            ContextualScreen.SwitchToPage(Health);
             if (canRegenerateHealth)
             {
                 canRegenerateHealth = false;
@@ -50,9 +55,22 @@ public class PlayerHealthScript : MonoBehaviour {
 	void Start ()
     {
         currentHealth = PlayerStartHealth;
+        PlayerHealthBar = GameObject.Find("ContextualScreen_ScreenHealthBar").GetComponent<HealthBar>();
 	}
 
 
+	void UpdateDebugBar()
+	{
+		Debug.Log ("Updating Health Bar");
+		float healthRatio = currentHealth / PlayerStartHealth;
+		debugHealthBar.localScale = new Vector3(healthRatio, debugHealthBar.localScale.y, debugHealthBar.localScale.z);
+	}
+
+
+    void ResetContextualScreen()
+    {
+        ContextualScreen.SwitchToDefaultPage(Health);
+    }
 
 	// Update is called once per frame
 	void Update ()
@@ -62,11 +80,14 @@ public class PlayerHealthScript : MonoBehaviour {
             if (canRegenerateHealth)
             {
                 currentHealth += HealthRegeneratedPerSecond * Time.deltaTime;
+				UpdateDebugBar ();
+                PlayerHealthBar.SetHealthBar(currentHealth / PlayerStartHealth);
             }
             else if (!canRegenerateHealth)
             {
                 if(Time.time > startRegenDelay + currentRegenDelay)
                 {
+                    Invoke("ResetContextualScreen", 2f);
                     canRegenerateHealth = true;
                     currentRegenDelay = standardRegenDelay;
                 }
