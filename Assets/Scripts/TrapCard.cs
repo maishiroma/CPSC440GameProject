@@ -12,7 +12,6 @@ public class TrapCard : MonoBehaviour {
     private List<MeshRenderer> ObjectsToFade = new List<MeshRenderer>();
     private Color StartColor;
     public bool StartVisible;
-	public GameObject displayedTrap;				// What trap is here?
 	public static EquipTrapRadial[] trapRadials;	// Refrence to radial buttons. Used to interact with equipTrapRadial
 	public GameObject associatedTrap;	// What Trap prefab is associated to this spot?
 
@@ -106,15 +105,8 @@ public class TrapCard : MonoBehaviour {
     {
         GameObject _trap = (GameObject)Instantiate(trap, trapIconPos.position, Quaternion.identity, trapIconPos);
         ObjectsToFade.Add(_trap.gameObject.GetComponentInChildren<MeshRenderer>());
-		displayedTrap = trap;	    
+	associatedTrap = trap;
 	}
-
-	// Associated this trap card with the passed in Trap and instanciates an icon of it.
-    public void LoadTrapInSlot(GameObject trap)
-    {
-		Instantiate(trap.GetComponent<Trap>().icon, trapIconPos.position, Quaternion.identity, GameObject.Find("Icons").transform);
-		associatedTrap = trap;
-    }
 		
 	// Update is called once per frame
 	void Update () {
