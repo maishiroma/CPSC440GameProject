@@ -23,7 +23,6 @@ public class TrapCardSpawner : MonoBehaviour {
     private float minX;
     private float maxX;
     private bool canSlide;
-    public GameObject[] Traps;				// The actual Traps themselves.
 	public GameObject[] ThrowableTraps;		// This stores the special GameObject that certain traps will need.
 	public EquipTrapRadial[] trapSlots;			// A refrence to the trap slots that store the traps being equipped.
 
