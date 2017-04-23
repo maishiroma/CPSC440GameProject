@@ -8,8 +8,19 @@ public class FredWaypoint : MonoBehaviour {
     public FredWaypoint[] connectedWaypoints;
     public Transform[] ScannableObjects;
 
-	// Use this for initialization
-	void Start () {
+
+    private void OnDrawGizmos()
+    {
+        foreach(FredWaypoint waypoint in connectedWaypoints)
+        {
+            
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(transform.position, waypoint.transform.position);
+        }   
+    }
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
