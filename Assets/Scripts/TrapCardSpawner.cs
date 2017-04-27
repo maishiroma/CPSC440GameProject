@@ -33,12 +33,13 @@ public class TrapCardSpawner : MonoBehaviour {
     {
         Slider = transform.FindChild("TrapCardSlider");
         sliderStartPos = Slider.position;
-		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>();
+		//player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>();
 		for(int i = 0; i < Traps.Length; i++)
         {
   
             float width = TrapCard.transform.lossyScale.x + TrapCardSpacing;
             SpawnTrapCard(transform.position + (Vector3.left * i * width), Traps[i]);
+           
         }
 
        
@@ -186,11 +187,13 @@ public class TrapCardSpawner : MonoBehaviour {
 	// Loads the specified trap into a TrapCard.
 	void SpawnTrapCard (Vector3 pos, GameObject trap)
     {
-		TrapCard _trapCard = Instantiate(TrapCard, pos, transform.rotation, transform).GetComponent<TrapCard>();
-		_trapCard.LoadTrapInSlot(trap);
-		AssignThrowableTrap(_trapCard);
+        GameObject _trapCard = (GameObject)Instantiate(TrapCard, pos, transform.rotation, Slider);
+        _trapCard.GetComponent<TrapCard>().LoadTrapInSlot(trap);
+        TrapCards.Add(_trapCard.GetComponent<TrapCard>());
+        //AssignThrowableTrap(_trapCard);
 
-		// Checks if the player has equipped this trap already. If so, it sets this card to the respective trapRadial spot.
+        // Checks if the player has equipped this trap already. If so, it sets this card to the respective trapRadial spot.
+        /*
 		for(int i = 0; i < trapSlots.Length; i++)
 		{
 			int trapIndex = trapSlots[i].representWhichSpot;
@@ -202,7 +205,8 @@ public class TrapCardSpawner : MonoBehaviour {
 			}
 
 		}
-	}
+        */
+    }
 
 	/*	If the assigned trap is a throwable trap, this method replaces the trap associated with it with the special gameobject
 	 * 	used to use it.

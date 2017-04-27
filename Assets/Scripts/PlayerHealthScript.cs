@@ -61,7 +61,7 @@ public class PlayerHealthScript : MonoBehaviour {
 
 	void UpdateDebugBar()
 	{
-		Debug.Log ("Updating Health Bar");
+		//Debug.Log ("Updating Health Bar");
 		float healthRatio = currentHealth / PlayerStartHealth;
 		debugHealthBar.localScale = new Vector3(healthRatio, debugHealthBar.localScale.y, debugHealthBar.localScale.z);
 	}

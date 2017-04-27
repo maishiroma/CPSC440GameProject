@@ -61,7 +61,7 @@ public class Grenade : MonoBehaviour
             }
         }
 		// Creates the object that will play the sound at this trap's location.
-		Instantiate(explosionSound,transform.position, Quaternion.identity);
+		//Instantiate(explosionSound,transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
     
