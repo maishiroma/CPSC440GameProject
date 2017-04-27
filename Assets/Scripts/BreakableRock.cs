@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BreakableRock : MonoBehaviour {
 
-    public GameObject OuterShell;
-    private Material OuterShellMat;
+    public GameObject[] OuterShell;
+    private Material[] OuterShellMat;
     public GameObject[] Chunks;
     public Color hitEmmisiveColor;
     private Color startEmmisiveColor;
@@ -29,8 +29,12 @@ public class BreakableRock : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        OuterShellMat = OuterShell.GetComponent<MeshRenderer>().material;
-        startEmmisiveColor = OuterShellMat.GetColor("_Emission");
+        OuterShellMat = new Material[OuterShell.Length];
+        for (int i = 0; i < OuterShell.Length; i++)
+        {
+            OuterShellMat[i] = OuterShell[i].GetComponent<MeshRenderer>().material;
+        }
+        startEmmisiveColor = OuterShellMat[0].GetColor("_Emission");
 
         hitColors = new Color[hitsToBreak-1];
         for(int i = 0; i < hitColors.Length; i++)
@@ -70,7 +74,10 @@ public class BreakableRock : MonoBehaviour {
 
     IEnumerator Break(Vector3 impactPos)
     {
-        Destroy(OuterShell);
+        foreach(GameObject go in OuterShell)
+        {
+            Destroy(go);
+        }
         List<Rigidbody> ChunkRBs = new List<Rigidbody>();
 
         foreach(GameObject Chunk in Chunks)
@@ -96,13 +103,14 @@ public class BreakableRock : MonoBehaviour {
         {
             Destroy(Chunk);
         }
+        Destroy(gameObject);
     }
 
     IEnumerator HitFade()
     {
         int _hittimes = hitTimes-1;
         float startFadeTime = Time.time;
-        Color startColor = OuterShellMat.GetColor("_Emission");
+        Color startColor = OuterShellMat[0].GetColor("_Emission");
         bool fadingToHit = true;
         while (true)
         {
@@ -110,7 +118,10 @@ public class BreakableRock : MonoBehaviour {
             {
                 if (Time.time <= startFadeTime + hitEmmisiveFadeTime)
                 {
-                    OuterShellMat.SetColor("_Emission", Color.Lerp(startColor, hitEmmisiveColor, (Time.time - startFadeTime) / hitEmmisiveFadeTime));
+                    foreach(Material mat in OuterShellMat)
+                    {
+                        mat.SetColor("_Emission", Color.Lerp(startColor, hitEmmisiveColor, (Time.time - startFadeTime) / hitEmmisiveFadeTime));
+                    }
                 }
                 else
                 {
@@ -122,7 +133,10 @@ public class BreakableRock : MonoBehaviour {
             {
                 if(Time.time <= startFadeTime + hitEmmisiveFadeTime)
                 {
-                    OuterShellMat.SetColor("_Emission", Color.Lerp(hitEmmisiveColor, hitColors[_hittimes], (Time.time - startFadeTime) / hitEmmisiveFadeTime));
+                    foreach (Material mat in OuterShellMat)
+                    {
+                        mat.SetColor("_Emission", Color.Lerp(hitEmmisiveColor, hitColors[_hittimes], (Time.time - startFadeTime) / hitEmmisiveFadeTime));
+                    }
                 }
                 else
                 {

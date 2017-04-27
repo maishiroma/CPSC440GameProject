@@ -21,9 +21,13 @@ public class FredMovementScript : MonoBehaviour {
     public float TurnTime = 3;
     public float turnSpeed = 3;
     public float StoppingTime = 1;
-
-	// Use this for initialization
-	void Start ()
+    FredWaypoint lastWaypoint = null;
+    private bool interupted = false;
+    public float scanStopDistance = 1.5f;
+    public Animator ScannerAnims;
+   
+    // Use this for initialization
+    void Start ()
     {
         FredAnims = gameObject.GetComponent<Animator>();
         FredWaypoints = new FredWaypoint[Waypoints.Length];
@@ -37,9 +41,12 @@ public class FredMovementScript : MonoBehaviour {
         StartCoroutine(Wandering());
 	}
 	
+
+
+
+
     IEnumerator Wandering()
     {
-        FredWaypoint lastWaypoint = null;
 
         //If don't have a current waypoint
         if(currentWaypoint == null)
@@ -68,7 +75,7 @@ public class FredMovementScript : MonoBehaviour {
             
             if(bestWaypoint != null)
             {
-                //Move to best Waypoint; not ready to move until you get there
+                //Move to best Waypoint
                 StartCoroutine(MovingToWaypoint(bestWaypoint));
                 yield break;
             }
@@ -102,18 +109,17 @@ public class FredMovementScript : MonoBehaviour {
                     if( lastWaypoint != null && _potentialWaypoint == lastWaypoint)
                     {
                         //you were just there, low weight
-                        weightedWaypoints[i] = 1;
+                        weightedWaypoints[i] = 3;
                     }
-
-                    if (reachedWaypoints.Contains(_potentialWaypoint))
+                    else if (reachedWaypoints.Contains(_potentialWaypoint))
                     {
                         //you've been there, average weight
-                        weightedWaypoints[i] = 2;
+                        weightedWaypoints[i] = 4;
                     }
                     else
                     {
                         //new place, highest weight
-                        weightedWaypoints[i] = 3;
+                        weightedWaypoints[i] = 6;
                     }
 
                     weightedTotal = weightedTotal + weightedWaypoints[i];
@@ -125,9 +131,15 @@ public class FredMovementScript : MonoBehaviour {
 
 
                 //loop through weights until total is greater than randomweight, then select that waypoint
-                for(int i = 0; i < weightedWaypoints.Length; i++)
+                int counter = 0;
+                for(int i = 0; targetWaypoint == null; i++)
                 {
-                    int currentWeight = weightedWaypoints[i] + i;
+                    counter++;
+                    if(i == weightedWaypoints.Length)
+                    {
+                        i = 0;
+                    }
+                    int currentWeight = weightedWaypoints[i] + counter;
                     if(currentWeight > randomWeight)
                     {
                         targetWaypoint = currentWaypoint.connectedWaypoints[i];
@@ -182,7 +194,7 @@ public class FredMovementScript : MonoBehaviour {
             float speed = 0;
             FredAnims.SetBool("Flying", true);
             FredAnims.enabled = false;
-
+              
             while (distance > distToReachWaypoint)
             {
                 float currentSpeed = Mathf.Lerp(0, maxDistPerSec, AccelerationCurve.Evaluate((Time.time - startAccelerationTime) / AccelerationTime));
@@ -205,13 +217,20 @@ public class FredMovementScript : MonoBehaviour {
                 yield return null;
             }
 
-            //reached waypoint, set as current, add to reached waypoints, and continue wandering.
+            //reached waypoint, set as current, add to reached waypoints
+            if(currentWaypoint != null)
+            {
+                lastWaypoint = currentWaypoint;
+            }
             currentWaypoint = targetWaypoint;
-            reachedWaypoints.Add(currentWaypoint);
+            if (!reachedWaypoints.Contains(currentWaypoint))
+            {
+                reachedWaypoints.Add(currentWaypoint);
+            }
             readyToMove = false;
-            StartCoroutine(Wandering());
-            yield return new WaitForSeconds(3f);
-            readyToMove = true;
+            StartCoroutine(Scanning());
+            //yield return new WaitForSeconds(2f);
+            //readyToMove = true;
         }
         else if(currentState == State.Fetching)
         {
@@ -220,6 +239,120 @@ public class FredMovementScript : MonoBehaviour {
 
         yield break;
     }
+
+   
+
+
+    IEnumerator Scanning()
+    {
+        ScannableObject[] objectsToScan = currentWaypoint.ObjectsToScan();
+
+        //loop for as many objects to scan
+        for(int i = 0; i < objectsToScan.Length; i++)
+        {
+            if(objectsToScan[i] == null)
+            {
+                continue;
+            }
+            //get transform of current scan object
+            Vector3 scanPos;
+            if(objectsToScan[i].ScanPoint != null)
+            {
+                scanPos = objectsToScan[i].ScanPoint.position;
+            }
+            else
+            {
+                scanPos = objectsToScan[i].transform.position;
+            }
+
+            //set scan transform to equal fred's flying height
+            scanPos.Set(scanPos.x, transform.position.y, scanPos.z);
+
+
+            //turn To look at scan pos
+            float startTurnTime = Time.time;
+
+            while (Time.time < startTurnTime + TurnTime)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(scanPos - transform.position), Time.deltaTime * turnSpeed);
+                yield return null;
+            }
+
+
+            //if not close enough to scan pos, move towards it
+            float distance = Vector3.Distance(transform.position, scanPos);
+            if(distance > scanStopDistance)
+            {
+                Vector3 moveDirection = transform.forward;
+                float startAccelerationTime = Time.time;
+                float speed = 0;
+                
+                //start moving to scan pos
+                while (distance > scanStopDistance)
+                {
+                    float currentSpeed = Mathf.Lerp(0, maxDistPerSec/2f, AccelerationCurve.Evaluate((Time.time - startAccelerationTime) / AccelerationTime));
+                    speed = currentSpeed;
+                    transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
+                    distance = Vector3.Distance(transform.position, scanPos);
+                    yield return null;
+                }
+
+                //reached target, slow down and stop
+                float startSlowTime = Time.time;
+                FredAnims.enabled = true;
+                FredAnims.SetBool("Flying", false);
+                while (Time.time < startSlowTime + .3f)
+                {
+                    float currentSpeed = Mathf.Lerp(speed, 0, (Time.time - startSlowTime) / .3f);
+                    transform.Translate(moveDirection * currentSpeed * Time.deltaTime, Space.World);
+
+
+                    yield return null;
+                }
+
+            }
+
+
+            //look at rocks
+            if(objectsToScan[i].ScanPoint != null)
+            {
+                float startTurnScanTime = Time.time;
+                Vector3 dir = objectsToScan[i].transform.position;
+                dir.Set(dir.x, transform.position.y, dir.z);
+                dir = dir - transform.position;
+
+                while (Time.time < startTurnScanTime + .6f)
+                {
+                    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * turnSpeed);
+                    yield return null;
+                }
+            }
+            
+
+
+            //scan target
+            ScannerAnims.SetTrigger("Scan");
+            yield return new WaitForSeconds(4);
+            if (objectsToScan[i].containsGems)
+            {
+                //trigger found gems particles over rocks
+            }
+
+
+            //delay before next iteration
+            yield return new WaitForSeconds(3);
+        }
+
+
+
+
+
+        readyToMove = true;
+        StartCoroutine(Wandering());
+
+        yield break;
+    }
+
 
 
 	// Update is called once per frame

@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: defaultMat
-  m_Shader: {fileID: 4800000, guid: 6563d6e0d0fa0f346b650b80b621be90, type: 3}
-  m_ShaderKeywords: AMBIENT_ON _EMISSION
+  m_Name: Fred
+  m_Shader: {fileID: 4800000, guid: cbcd1ea89056f1449a88fa8223a2a7eb, type: 3}
+  m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -69,16 +69,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _Ramp
-      second:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - first:
-        name: _AmbientOn
-      second: 1
     - first:
         name: _BumpScale
       second: 1
@@ -91,9 +82,6 @@ Material:
     - first:
         name: _DstBlend
       second: 0
-    - first:
-        name: _Gamma
-      second: 0.89
     - first:
         name: _GlossMapScale
       second: 1
@@ -117,7 +105,7 @@ Material:
       second: 0.02
     - first:
         name: _Shininess
-      second: 0.04
+      second: 0.7
     - first:
         name: _SmoothnessTextureChannel
       second: 0
@@ -128,9 +116,6 @@ Material:
         name: _SrcBlend
       second: 1
     - first:
-        name: _StereoVideo
-      second: 1
-    - first:
         name: _UVSec
       second: 0
     - first:
@@ -139,7 +124,7 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.15924266, g: 0.15322232, b: 0.19117647, a: 1}
+      second: {r: 1, g: 1, b: 1, a: 1}
     - first:
         name: _Emission
       second: {r: 0, g: 0, b: 0, a: 0}
