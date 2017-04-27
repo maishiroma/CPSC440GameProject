@@ -32,6 +32,8 @@ public class TrapButton : MonoBehaviour{
     
     public Material tempMaterial;
 
+	public int representWhatSpot;		// What spot does this section represent?
+
 	// Use this for initialization
 	void Start ()
     {
@@ -40,7 +42,9 @@ public class TrapButton : MonoBehaviour{
         btnMat = gameObject.GetComponent<Renderer>().material;
         startColor = btnMat.color;
         marker = GameObject.Find("CircleMarker_Prefab").GetComponent<Marker>();
-        playerManager = GameObject.Find("PlayerSpawnLocation").GetComponent<PlayerManager>();
+        playerManager = GameObject.Find("PlayerSpawnLocation").GetComponent<PlayerManager>();        
+		// Assigns the equipped trap from the playerState to this spot.
+		Trap = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>().currEquippedTraps[representWhatSpot];
 	}
 
     void Update()

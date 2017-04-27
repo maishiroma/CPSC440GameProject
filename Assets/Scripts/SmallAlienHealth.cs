@@ -19,11 +19,13 @@ public class SmallAlienHealth : Health {
         Reticle = GameObject.Find("Reticle").GetComponent<HitMarkerScript>();
 	}
 
-    private void Update()
-    {
-
-    }
+//    private void Update()
+//    {
+//
+//    }
     
+
+
     public override void Die()
     {
         if (Physics.isInAir)

@@ -8,6 +8,12 @@ using System.IO;
 /* 	
  * This class controls how the game saves into a file and loads a file.
  * There should always be one existing everywhere in the game.
+ * 
+ * NOTE: The save file is saved in a different place depending on the platform!
+ * Windows: C:/Users/[user]/AppData/LocalLow/[company name]
+ * Mac: user/Library/Application Support/company name/product name
+ * Android: /Data/Data/com.companyname.gamename/Files
+ * 
  */
 
 public class GlobalControl : MonoBehaviour 
@@ -41,7 +47,7 @@ public class GlobalControl : MonoBehaviour
 	// This is called when the player saves the game.
 	public void SaveData()
 	{
-		string saveDirectory = Application.dataPath + "/Saves";
+		string saveDirectory = Application.persistentDataPath + "/Saves";
 
 		// If there's no 'Saves' folder, the game creates one
 		if(!Directory.Exists(saveDirectory))
@@ -61,7 +67,7 @@ public class GlobalControl : MonoBehaviour
 	// This is called when the player loads the game. If there's no save file, returns false
 	public bool LoadData()
 	{
-		string filePath = Application.dataPath + "/Saves/save.bat";
+		string filePath = Application.persistentDataPath + "/Saves/save.bat";
 		if(File.Exists(filePath) == true)
 		{
 			// Creates the BinaryFormatter that will deserialize the same data at the given path.

@@ -9,31 +9,33 @@ using UnityEngine;
 
 public class Debugging : MonoBehaviour {
 
-	private GameObject player;
+	private PlayerState player;
 
-	void Start()
+	void Awake()
 	{
-		player = GameObject.FindGameObjectWithTag("Player");
+		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>();
 	}
 
 	// Depending on what key is pressed, something happens.
+	// Z = experience
+	// X = money
 	void Update()
 	{
 		// Gives the player 1 exp. If they reached the threshold of leveling up, they leveled up.
 		if(Input.GetKey(KeyCode.Z))
 		{
-			player.GetComponent<PlayerState>().currXP++;
-			if(player.GetComponent<PlayerState>().currXP > player.GetComponent<PlayerState>().toNextLevel)
+			player.currXP++;
+			if(player.currXP > player.toNextLevel)
 			{
-				player.GetComponent<PlayerState>().currLevel++;
-				print("Your level is now at lv " + player.GetComponent<PlayerState>().currLevel);
-				player.GetComponent<PlayerState>().toNextLevel *= 1.5f;
+				player.currLevel++;
+				print("Your level is now at lv " + player.currLevel);
+				player.toNextLevel *= 1.5f;
 			}
 		}
 		// Gives the player 1 currency.
 		else if(Input.GetKey(KeyCode.X))
 		{
-			player.GetComponent<PlayerState>().currCurrency++;
+			player.currCurrency++;
 		}
 	}
 

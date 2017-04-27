@@ -23,17 +23,22 @@ public class TrapCardSpawner : MonoBehaviour {
     private float minX;
     private float maxX;
     private bool canSlide;
+	public GameObject[] ThrowableTraps;		// This stores the special GameObject that certain traps will need.
+	public EquipTrapRadial[] trapSlots;			// A refrence to the trap slots that store the traps being equipped.
+
+	private PlayerState player;
 
 	// Use this for initialization
 	void Start ()
     {
         Slider = transform.FindChild("TrapCardSlider");
         sliderStartPos = Slider.position;
+		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>();
 		for(int i = 0; i < Traps.Length; i++)
         {
   
             float width = TrapCard.transform.lossyScale.x + TrapCardSpacing;
-            SpawnTrapCard(transform.position + (Vector3.left * i * width), Traps[i].GetComponent<Trap>().icon);
+            SpawnTrapCard(transform.position + (Vector3.left * i * width), Traps[i]);
         }
 
        
@@ -178,13 +183,41 @@ public class TrapCardSpawner : MonoBehaviour {
         }
     }
 
-
-	// Update is called once per frame
+	// Loads the specified trap into a TrapCard.
 	void SpawnTrapCard (Vector3 pos, GameObject trap)
     {
-        GameObject _trapCard = (GameObject)Instantiate(TrapCard, pos, transform.rotation, Slider);
-        _trapCard.GetComponent<TrapCard>().LoadTrapInSlot(trap);
-        TrapCards.Add(_trapCard.GetComponent<TrapCard>());
+		TrapCard _trapCard = Instantiate(TrapCard, pos, transform.rotation, transform).GetComponent<TrapCard>();
+		_trapCard.LoadTrapInSlot(trap);
+		AssignThrowableTrap(_trapCard);
 
+		// Checks if the player has equipped this trap already. If so, it sets this card to the respective trapRadial spot.
+		for(int i = 0; i < trapSlots.Length; i++)
+		{
+			int trapIndex = trapSlots[i].representWhichSpot;
+			if(player.currEquippedTraps[trapIndex] != null && player.currEquippedTraps[trapIndex].name == _trapCard.associatedTrap.name)
+			{
+				_trapCard.equipped = true;
+				trapSlots[i].associatedTrapCard = _trapCard;
+				break;
+			}
+
+		}
 	}
+
+	/*	If the assigned trap is a throwable trap, this method replaces the trap associated with it with the special gameobject
+	 * 	used to use it.
+	 * 	
+	 * 	Positions of each one:
+	 * 	Throwable = 0
+	 */
+	void AssignThrowableTrap(TrapCard currTrapCard)
+	{
+		switch(currTrapCard.associatedTrap.name)
+		{
+			case "Grenade":
+				currTrapCard.associatedTrap = ThrowableTraps[0];
+			break;
+		}
+	}
+
 }
