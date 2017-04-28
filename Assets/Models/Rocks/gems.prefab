@@ -152,6 +152,7 @@ GameObject:
   - component: {fileID: 23464711414435558}
   - component: {fileID: 64681336857349516}
   - component: {fileID: 54266579064797384}
+  - component: {fileID: 114814745584561478}
   m_Layer: 0
   m_Name: Gem
   m_TagString: Untagged
@@ -839,3 +840,17 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300010, guid: 3c5769bb850043343a22d0598f874935, type: 3}
+--- !u!114 &114814745584561478
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1774799479599552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23e84c44a4e135f4db31a987b6742c29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDropAmt: 30
+  maxDropAmt: 78
+  DropAmt: 0
