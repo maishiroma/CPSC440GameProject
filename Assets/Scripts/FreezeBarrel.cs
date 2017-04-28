@@ -38,7 +38,7 @@ public class FreezeBarrel : Health {
 			if (go.layer == 16)
 			{
 				// Insert code here that will freeze enemies
-				go.transform.parent.GetComponent<SmallAlienHealth>().dealDamage(30f);
+				go.transform.parent.GetComponent<SmallAlienHealth>().dealDamage(30f, true);
 			}
 
 		}
