@@ -14,6 +14,7 @@ public class GemScript : MonoBehaviour {
 	void Start ()
     {
         DropAmt = Random.Range(minDropAmt, maxDropAmt);
+        //gameObject.SetActive(false);
 	}
 	
     public void ScanGem()

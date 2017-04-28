@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1525080396337292}
+  m_IsPrefabParent: 1
+--- !u!1 &1525080396337292
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4977474979403176}
+  - component: {fileID: 114504092323849054}
+  m_Layer: 13
+  m_Name: GemGroup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4977474979403176
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1525080396337292}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.29, y: 1.9446623, z: 5.76}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114504092323849054
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1525080396337292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0c18cfa0c3fe364c8f6560aef9978a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gems:
+  - {fileID: 1213767805514762, guid: c76d1956c74a0684b8dff739efc89cf0, type: 2}
+  - {fileID: 1391838816636080, guid: 7010b975b4b751743a3ab67783445c63, type: 2}
+  - {fileID: 1026865713857404, guid: 7f11a5a6e4cade743a724ba26bf46a36, type: 2}
+  - {fileID: 1617216540203094, guid: 6e20dca8d99e3594f9a38e0c4977b387, type: 2}
+  - {fileID: 1424689998863878, guid: 860ae70a4082c8149b06e48d97298aca, type: 2}
+  - {fileID: 1638792979758220, guid: 4ccae734323a57b4aa7b944597ddb8d7, type: 2}
+  - {fileID: 1043272940138194, guid: e6ee43263cdf8d94abee0f71727b6480, type: 2}
+  - {fileID: 1211232199195276, guid: 092655561007baa4ba014f4d3901cb80, type: 2}
+  gemSpawnRadius: 1
+  highlightingGems: 0

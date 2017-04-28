@@ -10,14 +10,14 @@ public class BreakableRock : MonoBehaviour {
     public Color hitEmmisiveColor;
     private Color startEmmisiveColor;
     public float hitEmmisiveFadeTime = 0.35f;
-    public float minNumGems;
-    public float maxNumGems;
+    public int minNumGems;
+    public int maxNumGems;
     public GameObject[] Gems;
     public float gemSpawnRadius = 0.75f;
     public float gemSpawnHeighOffset = 0.3f;
     public float gemSpawnDelay = 1;
     public float chunkDeathDelay = 2f;
-
+    public GemGroupScript gemGroup;
 
     private bool fading;
     private int hitTimes = 0;
@@ -46,6 +46,8 @@ public class BreakableRock : MonoBehaviour {
         {
             chunk.GetComponent<MeshRenderer>().material.SetColor("_Emission", hitColors[1]);
         }
+
+        gemGroup.CreateGems(minNumGems, maxNumGems);
 
     }
 
@@ -96,6 +98,7 @@ public class BreakableRock : MonoBehaviour {
             rb.velocity = force * breakForce;
         }
 
+        gemGroup.WakeGems();
 
         yield return new WaitForSeconds(chunkDeathDelay);
 

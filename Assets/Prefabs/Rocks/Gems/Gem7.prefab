@@ -9,49 +9,49 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1026865713857404}
+  m_RootGameObject: {fileID: 1211232199195276}
   m_IsPrefabParent: 1
---- !u!1 &1026865713857404
+--- !u!1 &1211232199195276
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4015556834812052}
-  - component: {fileID: 33305331269782246}
-  - component: {fileID: 23300739825345276}
-  - component: {fileID: 64549978742163640}
-  - component: {fileID: 54245731397666874}
-  - component: {fileID: 135284617451313240}
-  - component: {fileID: 114270971433353580}
-  - component: {fileID: 114506983303991746}
+  - component: {fileID: 4088567577991350}
+  - component: {fileID: 33532133571653644}
+  - component: {fileID: 23785953897974610}
+  - component: {fileID: 64285007942586142}
+  - component: {fileID: 54109888373265446}
+  - component: {fileID: 135831295097106966}
+  - component: {fileID: 114494298337632460}
+  - component: {fileID: 114439958321755494}
   m_Layer: 13
-  m_Name: Gem2
+  m_Name: Gem7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4015556834812052
+--- !u!4 &4088567577991350
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1026865713857404}
+  m_GameObject: {fileID: 1211232199195276}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.907803, y: 1.7862142, z: 5.671846}
-  m_LocalScale: {x: 0.3997098, y: 0.22107033, z: 0.39970967}
+  m_LocalPosition: {x: -8.148249, y: 2.0478578, z: 5.475978}
+  m_LocalScale: {x: 0.08866969, y: 0.3127767, z: 0.088669665}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23300739825345276
+--- !u!23 &23785953897974610
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1026865713857404}
+  m_GameObject: {fileID: 1211232199195276}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -77,19 +77,19 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &33305331269782246
+--- !u!33 &33532133571653644
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1026865713857404}
-  m_Mesh: {fileID: 4300004, guid: 3c5769bb850043343a22d0598f874935, type: 3}
---- !u!54 &54245731397666874
+  m_GameObject: {fileID: 1211232199195276}
+  m_Mesh: {fileID: 4300014, guid: 3c5769bb850043343a22d0598f874935, type: 3}
+--- !u!54 &54109888373265446
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1026865713857404}
+  m_GameObject: {fileID: 1211232199195276}
   serializedVersion: 2
   m_Mass: 0.2
   m_Drag: 0
@@ -98,13 +98,13 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!64 &64549978742163640
+  m_CollisionDetection: 2
+--- !u!64 &64285007942586142
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1026865713857404}
+  m_GameObject: {fileID: 1211232199195276}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -112,27 +112,13 @@ MeshCollider:
   m_Convex: 1
   m_InflateMesh: 0
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300004, guid: 3c5769bb850043343a22d0598f874935, type: 3}
---- !u!114 &114270971433353580
+  m_Mesh: {fileID: 4300014, guid: 3c5769bb850043343a22d0598f874935, type: 3}
+--- !u!114 &114439958321755494
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1026865713857404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23e84c44a4e135f4db31a987b6742c29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minDropAmt: 30
-  maxDropAmt: 78
-  DropAmt: 0
---- !u!114 &114506983303991746
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1026865713857404}
+  m_GameObject: {fileID: 1211232199195276}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
@@ -143,7 +129,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114270971433353580}
+        - m_Target: {fileID: 114494298337632460}
           m_MethodName: Highlight
           m_Mode: 1
           m_Arguments:
@@ -160,7 +146,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114270971433353580}
+        - m_Target: {fileID: 114494298337632460}
           m_MethodName: ScanGem
           m_Mode: 1
           m_Arguments:
@@ -174,15 +160,29 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
---- !u!135 &135284617451313240
+--- !u!114 &114494298337632460
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1211232199195276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23e84c44a4e135f4db31a987b6742c29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDropAmt: 30
+  maxDropAmt: 78
+  DropAmt: 0
+--- !u!135 &135831295097106966
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1026865713857404}
+  m_GameObject: {fileID: 1211232199195276}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.91
-  m_Center: {x: 0.017545402, y: -0.014855385, z: -0.039339095}
+  m_Radius: 1.37
+  m_Center: {x: -0.073155046, y: 0.007829308, z: -0.089021504}
