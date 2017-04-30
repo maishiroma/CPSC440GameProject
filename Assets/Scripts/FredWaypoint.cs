@@ -64,6 +64,10 @@ public class FredWaypoint : MonoBehaviour {
 
             for (int i = 0; i < connectedWaypoints.Length; i++)
             {
+                if(connectedWaypoints[i] == targetWaypoint)
+                {
+                    return connectedWaypoints[i];
+                }
                 float dist = Vector3.Distance(connectedWaypoints[i].transform.position, targetWaypoint.transform.position);
 
                 if(dist < bestDist && connectedWaypoints[i] != lastFredWaypoint)

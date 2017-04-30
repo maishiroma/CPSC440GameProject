@@ -8,23 +8,29 @@ public class GemScript : MonoBehaviour {
     public int maxDropAmt = 78;
     public int DropAmt;
 
-    GemGroupScript GemGroup;
+    public GemGroupScript GemGroup;
 
 	// Use this for initialization
 	void Start ()
     {
         DropAmt = Random.Range(minDropAmt, maxDropAmt);
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
 	}
 	
     public void ScanGem()
     {
-        //GemGroupScript > CollectGems()
+        GemGroup.collectGems();
     }
 
     public void Highlight()
     {
         //if GemGroupScript > not highlighted ...  highlight()
+        GemGroup.Highlight();
+    }
+
+    public void Unhighlight()
+    {
+        GemGroup.Unhighlight();
     }
 
 	// Update is called once per frame

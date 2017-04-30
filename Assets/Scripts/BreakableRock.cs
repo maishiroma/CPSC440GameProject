@@ -47,7 +47,10 @@ public class BreakableRock : MonoBehaviour {
             chunk.GetComponent<MeshRenderer>().material.SetColor("_Emission", hitColors[1]);
         }
 
-        gemGroup.CreateGems(minNumGems, maxNumGems);
+        if(gemGroup != null)
+        {
+            gemGroup.CreateGems(minNumGems, maxNumGems);
+        }
 
     }
 
@@ -98,7 +101,10 @@ public class BreakableRock : MonoBehaviour {
             rb.velocity = force * breakForce;
         }
 
-        gemGroup.WakeGems();
+        if(gemGroup != null)
+        {
+            gemGroup.WakeGems();
+        }
 
         yield return new WaitForSeconds(chunkDeathDelay);
 

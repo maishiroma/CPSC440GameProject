@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4977474979403176}
   - component: {fileID: 114504092323849054}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: GemGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,8 +33,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1525080396337292}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.29, y: 1.9446623, z: 5.76}
+  m_LocalRotation: {x: -0, y: -0.2541429, z: -0, w: 0.9671667}
+  m_LocalPosition: {x: -4.85, y: -0.36430275, z: 6.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -60,5 +60,7 @@ MonoBehaviour:
   - {fileID: 1638792979758220, guid: 4ccae734323a57b4aa7b944597ddb8d7, type: 2}
   - {fileID: 1043272940138194, guid: e6ee43263cdf8d94abee0f71727b6480, type: 2}
   - {fileID: 1211232199195276, guid: 092655561007baa4ba014f4d3901cb80, type: 2}
-  gemSpawnRadius: 1
+  gemSpawnRadius: 0.5
   highlightingGems: 0
+  highlightFadeTime: 0.5
+  GemLocationWaypoint: {fileID: 0}

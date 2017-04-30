@@ -25,10 +25,21 @@ public class FredMovementScript : MonoBehaviour {
     private bool interupted = false;
     public float scanStopDistance = 1.5f;
     public Animator ScannerAnims;
-   
+    public List<GemGroupScript> GemsToCollect = new List<GemGroupScript>();
+    private bool fetchingGems;
+    private float currentSpeedMovingBetweenWaypoints = 0;
+    private FredWaypoint currentTargetWaypoint;
+    public float turningDistFromWaypoint = 4f;
+    public Transform gemCollector;
+    public float gemPickUpTime = 3f;
+    public float PickUpInForce = 3f;
+    public float PickUpUpForce = 12f;
+    public GameObject TractorBeam;
+
     // Use this for initialization
     void Start ()
     {
+        TractorBeam.SetActive(false);
         FredAnims = gameObject.GetComponent<Animator>();
         FredWaypoints = new FredWaypoint[Waypoints.Length];
         for(int i = 0; i < Waypoints.Length; i++)
@@ -41,9 +52,247 @@ public class FredMovementScript : MonoBehaviour {
         StartCoroutine(Wandering());
 	}
 	
+    public void ScanGem(GemGroupScript gemGroup)
+    {
+        GemsToCollect.Add(gemGroup);
+        if (!fetchingGems)
+        {
+            fetchingGems = true;
+            StopAllCoroutines();
+            StartCoroutine(Fetching());
+        }
+    }
+
+    IEnumerator Fetching()
+    {
+        while(GemsToCollect.Count > 0)
+        {
+            GemGroupScript currentTargetGem;
+
+            //Choose gem to get
+            if(GemsToCollect.Count == 1)
+            {
+                currentTargetGem = GemsToCollect[0];
+            }
+            else
+            {
+                float bestDistance = 1000;
+                GemGroupScript bestGemGroup = null;
+                for (int i = 0; i < GemsToCollect.Count; i++)
+                {
+                    float distance = Vector3.Distance(transform.position, GemsToCollect[i].transform.position);
+                    if(distance < bestDistance)
+                    {
+                        bestDistance = distance;
+                        bestGemGroup = GemsToCollect[i];
+                    }       
+                }
+
+                if(bestGemGroup == null)
+                {
+
+                    yield break;
+                }
+                else
+                {
+                    currentTargetGem = bestGemGroup;
+                }
+
+            }
+
+            //Found Gem, Going to get it
+            //If was already moving, keep momentum
+
+            FredWaypoint nextWaypoint;
+            float speed = 0;
+            float startMoveTime = Time.time;
+            float distanceToNextWaypoint = 100;
+            float startTurnTime = Time.time;
+            float startSpeed = 0;
+            if (currentTargetWaypoint != null && currentSpeedMovingBetweenWaypoints > 0)
+            {
+                float startSlowTime = Time.time;
+                while (Time.time < startSlowTime + 1.5f)
+                {
+                    float currentSpeed = Mathf.Lerp(currentSpeedMovingBetweenWaypoints, 0, (Time.time - startSlowTime) / 1.5f);
+                    transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
 
 
+                    yield return null;
+                }
+                nextWaypoint = null;
+                currentTargetWaypoint = null;
+                currentSpeedMovingBetweenWaypoints = 0;
+            }
+            else if(currentTargetGem.GemLocationWaypoint != currentWaypoint && currentWaypoint != null)
+            {
+                nextWaypoint = currentWaypoint.ConnectedWaypointClosestTo(currentTargetGem.GemLocationWaypoint);
+            }
+            else
+            {
+                //at target waypoint
+                nextWaypoint = null;
+            }
 
+            Vector3 _waypointTarget = currentTargetGem.GemLocationWaypoint.transform.position;
+            Vector3 _gemTarget = currentTargetGem.transform.position;
+            _gemTarget.Set(_gemTarget.x, transform.position.y, _gemTarget.z);
+
+            //if not already at target waypoint
+            if (nextWaypoint != null)
+            {
+                //TurnBeforeMoving
+                startTurnTime = Time.time;
+                Quaternion startRotation = transform.rotation;
+                while (Time.time < startTurnTime + TurnTime)
+                {
+                    transform.rotation = Quaternion.Lerp(startRotation, Quaternion.LookRotation(nextWaypoint.transform.position - transform.position), (Time.time - startTurnTime) / TurnTime);
+                    yield return null;
+                }
+
+                startMoveTime = Time.time;
+                FredWaypoint _lastwaypoint = currentWaypoint;
+                startRotation = transform.rotation;
+
+                //while still finding target waypoint
+                while (nextWaypoint != currentTargetGem.GemLocationWaypoint)
+                {
+                    if(Time.time < startTurnTime + TurnTime)
+                    {
+                        transform.rotation = Quaternion.Lerp(startRotation, Quaternion.LookRotation(nextWaypoint.transform.position - transform.position), (Time.time - startTurnTime)/TurnTime);
+                    }
+                    speed = Mathf.Lerp(0, maxDistPerSec, AccelerationCurve.Evaluate((Time.time - startMoveTime) / AccelerationTime));
+                    transform.Translate(transform.forward * speed * Time.deltaTime, Space.World);
+                    distanceToNextWaypoint = Vector3.Distance(transform.position, nextWaypoint.transform.position);
+                    if(distanceToNextWaypoint < turningDistFromWaypoint)
+                    {
+                        startTurnTime = Time.time;
+                        startRotation = transform.rotation;
+                        currentWaypoint = nextWaypoint;
+                        nextWaypoint = currentWaypoint.ConnectedWaypointClosestTo(currentTargetGem.GemLocationWaypoint, _lastwaypoint);
+                        _lastwaypoint = currentWaypoint;
+                    }
+
+                    yield return null;
+                }
+
+                //found target waypoint, are at waypoint before it
+                startSpeed = speed;
+                startTurnTime = Time.time;
+                Vector3 _turnTarget = _waypointTarget;
+                startRotation = transform.rotation;
+                while (true)
+                {
+                    if (Time.time < startTurnTime + .75f)
+                    {
+                        transform.rotation = Quaternion.Lerp(startRotation, Quaternion.LookRotation(_gemTarget - transform.position), (Time.time - startTurnTime) / .75f);
+                    }
+                    speed = Mathf.Lerp(startSpeed, maxDistPerSec, AccelerationCurve.Evaluate((Time.time - startMoveTime) / AccelerationTime));
+                    transform.Translate(transform.forward * speed * Time.deltaTime, Space.World);
+                    if(Vector3.Distance(transform.position, _gemTarget) < 3)
+                    {
+                        break;
+                    }
+
+                    yield return null;
+                }
+
+                //Slow and Stop
+                float startSlowTime = Time.time;
+                FredAnims.enabled = true;
+                FredAnims.SetBool("Flying", false);
+                while (Time.time < startSlowTime + StoppingTime)
+                {
+                    float currentSpeed = Mathf.Lerp(speed, 0, (Time.time - startSlowTime) / StoppingTime);
+                    transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
+
+
+                    yield return null;
+                }
+            }
+            else
+            {
+                //just turn and move to gems
+                //turn
+                startTurnTime = Time.time;
+                Quaternion startRotation = transform.rotation;
+                while (Time.time < startTurnTime + TurnTime)
+                {
+                    transform.rotation = Quaternion.Lerp(startRotation, Quaternion.LookRotation(_gemTarget - transform.position), (Time.time - startTurnTime) /TurnTime);
+                    yield return null;
+                }
+
+                float distanceToGems = Vector3.Distance(transform.position, _gemTarget);
+                //Move To Gems
+                if (distanceToGems > scanStopDistance)
+                {
+                    Vector3 moveDirection = transform.forward;
+                    float startAccelerationTime = Time.time;
+
+                    //start moving to scan pos
+                    while (distanceToGems > scanStopDistance)
+                    {
+                        float currentSpeed = Mathf.Lerp(0, maxDistPerSec / 2f, AccelerationCurve.Evaluate((Time.time - startAccelerationTime) / AccelerationTime));
+                        speed = currentSpeed;
+                        transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
+                        distanceToGems = Vector3.Distance(transform.position, _gemTarget);
+                        yield return null;
+                    }
+
+                    //reached target, slow down and stop
+                    float startSlowTime = Time.time;
+                    FredAnims.enabled = true;
+                    FredAnims.SetBool("Flying", false);
+                    while (Time.time < startSlowTime + .3f)
+                    {
+                        float currentSpeed = Mathf.Lerp(speed, 0, (Time.time - startSlowTime) / .3f);
+                        transform.Translate(moveDirection * currentSpeed * Time.deltaTime, Space.World);
+
+
+                        yield return null;
+                    }
+
+                }
+            }
+
+            currentWaypoint = currentTargetGem.GemLocationWaypoint;
+
+            //Collect Gems
+            GemsToCollect.Remove(currentTargetGem);
+
+            float startCollectTime = Time.time;
+            TractorBeam.SetActive(true);
+            while(Time.time < startCollectTime + gemPickUpTime)
+            {
+                for(int i = 0; i < currentTargetGem.spawnedGems.Length; i++)
+                {
+                    Vector3 InForce = gemCollector.position - currentTargetGem.spawnedGems[i].transform.position;
+                    InForce.Set(InForce.x, 0, InForce.z);
+                    InForce.Normalize();
+                    Vector3 force = (InForce * PickUpInForce) + (Vector3.up * PickUpUpForce);
+                    currentTargetGem.spawnedGems[i].GetComponent<Rigidbody>().AddForce(force, ForceMode.Acceleration);
+                }
+                yield return null;
+            }
+            TractorBeam.SetActive(false);
+
+            //Destroy(currentTargetGem);
+
+            if (GemsToCollect.Count == 0)
+            {
+                break;
+            }
+
+            yield return null;
+        }
+
+        fetchingGems = false;
+        yield return new WaitForSeconds(1f);
+        currentState = State.Wandering;
+        readyToMove = true;
+        StartCoroutine(Wandering());
+
+    }
 
     IEnumerator Wandering()
     {
@@ -194,11 +443,12 @@ public class FredMovementScript : MonoBehaviour {
             float speed = 0;
             FredAnims.SetBool("Flying", true);
             FredAnims.enabled = false;
-              
+            currentTargetWaypoint = targetWaypoint;
             while (distance > distToReachWaypoint)
             {
                 float currentSpeed = Mathf.Lerp(0, maxDistPerSec, AccelerationCurve.Evaluate((Time.time - startAccelerationTime) / AccelerationTime));
                 speed = currentSpeed;
+                currentSpeedMovingBetweenWaypoints = speed;
                 transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
                 distance = Vector3.Distance(transform.position, targetWaypoint.transform.position);
                 yield return null;
@@ -212,12 +462,14 @@ public class FredMovementScript : MonoBehaviour {
             {
                 float currentSpeed = Mathf.Lerp(speed, 0, (Time.time - startSlowTime) / StoppingTime);
                 transform.Translate(moveDirection * currentSpeed * Time.deltaTime, Space.World);
-
+                currentSpeedMovingBetweenWaypoints = currentSpeed;
 
                 yield return null;
             }
 
             //reached waypoint, set as current, add to reached waypoints
+            currentSpeedMovingBetweenWaypoints = 0;
+            currentTargetWaypoint = null;
             if(currentWaypoint != null)
             {
                 lastWaypoint = currentWaypoint;

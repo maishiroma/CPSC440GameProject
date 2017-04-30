@@ -1205,7 +1205,8 @@ MonoBehaviour:
   gemSpawnRadius: 0.75
   gemSpawnHeighOffset: 0.3
   gemSpawnDelay: 1
-  chunkDeathDelay: 4
+  chunkDeathDelay: 2.75
+  gemGroup: {fileID: 0}
   hitsToBreak: 4
   breakForce: 5
   hitColors: []
