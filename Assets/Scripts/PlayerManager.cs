@@ -13,6 +13,19 @@ public class PlayerManager : MonoBehaviour {
     public string MaterialUnits = "g";
     public float collectedMaterial;
     public float startCollectedMaterial = 0;
+    public int scansToFinishLevel = 20;
+    public int currentNumberOfScans = 0;
+
+
+    public void ScanData()
+    {
+        currentNumberOfScans++;
+    }
+    
+
+
+
+
 
 	// Use this for initialization
 	void Start ()

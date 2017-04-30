@@ -25,7 +25,7 @@ Shader "Mobile/Transparent/Vertex Color No Culling" {
 		Pass{
 		ColorMaterial AmbientAndDiffuse
 		Fog{ Mode Off }
-		Lighting On
+		Lighting Off
 		SeparateSpecular Off
 		SetTexture[_MainTex]{
 		Combine texture * primary, texture * primary
