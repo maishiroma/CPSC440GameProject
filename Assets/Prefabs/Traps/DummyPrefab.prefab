@@ -106,8 +106,13 @@ GameObject:
   - component: {fileID: 4177849541631020}
   - component: {fileID: 54075189686108172}
   - component: {fileID: 65288629342120066}
+  - component: {fileID: 65407184257931702}
   - component: {fileID: 95100922462623108}
   - component: {fileID: 114458661796260538}
+  - component: {fileID: 114417338390558398}
+  - component: {fileID: 114279792587701736}
+  - component: {fileID: 114702189122107404}
+  - component: {fileID: 114794036706506812}
   m_Layer: 18
   m_Name: DummyPrefab
   m_TagString: Untagged
@@ -122,7 +127,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1961167210848956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0320549, y: -0.80509573, z: 13.835266}
+  m_LocalPosition: {x: -1.14, y: -0.80509573, z: 9.59}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4999312932929924}
@@ -399,7 +404,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -415,6 +420,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.84, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!65 &65407184257931702
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1961167210848956}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 2, z: 4}
+  m_Center: {x: 0, y: 1.09, z: 0}
 --- !u!95 &95100922462623108
 Animator:
   serializedVersion: 3
@@ -432,6 +449,39 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114279792587701736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1961167210848956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd138d972370b504c92d851b9985864e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  healthRate: 10
+  healthRateMultiplier: 0
+  dead: 0
+  currentHealth: 0
+--- !u!114 &114417338390558398
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1961167210848956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd73f6649c2e73f4097e84e8654e8ed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  cost: 0
+  purchased: 0
+  icon: {fileID: 1303221931700336, guid: aba04165908e5407b88ea15b1b983713, type: 2}
+  trapPrefab: {fileID: 1961167210848956}
+  slot: 0
 --- !u!114 &114458661796260538
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -464,3 +514,33 @@ MonoBehaviour:
   sourceMinDistance: 1
   hrtfEnabled: 1
   audioSource: {fileID: 0}
+--- !u!114 &114702189122107404
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1961167210848956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f6b5207f2f15ca4a8dc12f24bf5ca24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114794036706506812
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1961167210848956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c35915d86a94e4aedb40b38aed81490a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distractedAliens:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  distratedAliensIndex: 0
+  drainHealthMultiplier: 0

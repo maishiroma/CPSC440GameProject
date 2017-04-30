@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 65234233352419378}
   - component: {fileID: 95999103498953880}
   - component: {fileID: 114156386098668138}
+  - component: {fileID: 114760141099521344}
   m_Layer: 18
   m_Name: LandMinePreFab
   m_TagString: Untagged
@@ -211,3 +212,20 @@ MonoBehaviour:
     type: 2}
   explosionSound: {fileID: 1870811987128262, guid: 06f1f8288670140ebb84c68d965a1d82,
     type: 2}
+--- !u!114 &114760141099521344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1877234821352314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd73f6649c2e73f4097e84e8654e8ed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  cost: 0
+  purchased: 0
+  icon: {fileID: 1508287905778830, guid: 1665684e23e984934833f984097fe56d, type: 2}
+  trapPrefab: {fileID: 1877234821352314}
+  slot: 0

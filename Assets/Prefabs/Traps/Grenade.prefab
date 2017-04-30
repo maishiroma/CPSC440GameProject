@@ -277,6 +277,7 @@ MonoBehaviour:
   cost: 0
   purchased: 1
   icon: {fileID: 1626442572152356, guid: 8254c0974163acb44b50659928533158, type: 2}
+  trapPrefab: {fileID: 1213772992599340, guid: ba8d38b861eceab448d9f3baa5800869, type: 2}
   slot: 2
 --- !u!114 &114896302467907630
 MonoBehaviour:

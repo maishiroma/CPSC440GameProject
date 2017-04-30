@@ -8,7 +8,7 @@ public class Trap : MonoBehaviour {
     public float cost;
     public bool purchased;
     public GameObject icon;
-
+	public GameObject trapPrefab;		// Holds a prefab of the Trap to be equipped by the player.
 
     // -1 = not equipped 
     // 1 - left

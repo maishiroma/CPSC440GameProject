@@ -1668,6 +1668,7 @@ MonoBehaviour:
   cost: 0
   purchased: 1
   icon: {fileID: 1526897177407346, guid: fc392830da106514c9b1fcb4bfc59e29, type: 2}
+  trapPrefab: {fileID: 1044124871619802}
   slot: 3
 --- !u!114 &114571144277297402
 MonoBehaviour:
@@ -1693,7 +1694,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 65536
   health: {fileID: 0}
-  deploySound: {fileID: 0}
 --- !u!114 &114589808167033882
 MonoBehaviour:
   m_ObjectHideFlags: 1

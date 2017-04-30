@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 114410705665807688}
   - component: {fileID: 114356995181477364}
   - component: {fileID: 114157867762361338}
+  - component: {fileID: 114099696487761954}
   m_Layer: 18
   m_Name: ThunderRodPrefab
   m_TagString: Untagged
@@ -334,7 +335,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -379,6 +380,23 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114099696487761954
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1133400059069962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd73f6649c2e73f4097e84e8654e8ed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  cost: 0
+  purchased: 0
+  icon: {fileID: 1647671130172680, guid: 7108bd75f574f49549de89053b0c8e92, type: 2}
+  trapPrefab: {fileID: 1133400059069962}
+  slot: 0
 --- !u!114 &114157867762361338
 MonoBehaviour:
   m_ObjectHideFlags: 1

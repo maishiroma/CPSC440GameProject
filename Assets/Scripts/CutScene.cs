@@ -11,18 +11,21 @@ using UnityEngine;
 
 public class CutScene : MonoBehaviour {
 
+	public PlayerState player;				// Used to increment the gameState.
+	public GameObject lightSource;			// Fred's light source. (turns on and off when he's talking)
 	public AudioClip[] cutsceneAudio;		// The array of cutscene audio clips.
 	public bool incrementStateAfterPlaying;	// After this cutscene plays out, should the game state be incremented?
 	public int playOnGameState;				// What game state does this cutscene play on?
 
 	private GvrAudioSource cutsceneSource;	// Used for spatial audio for this object.
-	private PlayerState player;				// Used to increment the gameState.
 	private int currAudioIndex;				// The current index that the array is currently in.
 
 	void Awake()
 	{
 		cutsceneSource = GetComponent<GvrAudioSource>();
-		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>();
+
+		if(player == null)
+			player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>();
 	}
 
 	// If this cutscene has played when is is loaded into the scene, it is automatically destroyed.
@@ -37,8 +40,13 @@ public class CutScene : MonoBehaviour {
 	{
 		if(playOnGameState <= player.currGameState)
 		{
+			if(lightSource.activeInHierarchy == false)
+				lightSource.SetActive(true);
+
 			if(cutsceneSource.isPlaying == false)
 			{
+				lightSource.SetActive(false);
+
 				if(currAudioIndex < cutsceneAudio.Length)
 				{
 					cutsceneSource.PlayOneShot(cutsceneAudio[currAudioIndex]);

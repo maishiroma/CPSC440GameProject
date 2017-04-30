@@ -183,4 +183,5 @@ MonoBehaviour:
   cost: 0
   purchased: 1
   icon: {fileID: 1002845935568296, guid: 2df75285d4a2f0f419a297a6341899d3, type: 2}
+  trapPrefab: {fileID: 1904342659408870}
   slot: 1

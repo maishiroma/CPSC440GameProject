@@ -24,12 +24,21 @@ public class AttackBehavior : StateMachineBehaviour {
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-	    if(Time.time >= HitTime && !hit && (Vector3.Distance(animator.transform.position, _nav.target.transform.position) < _nav.attackDistance))
-        {
-            hit = true;
-            SplashDamage.Hit(animator.gameObject);
-            playerHealth.DealDamage(10);
-        }
+		// Outer if added by Matt as well as extra bool check in second if
+		if(_nav.attackingPlayer == true)
+		{
+			if(Time.time >= HitTime && !hit && (Vector3.Distance(animator.transform.position, _nav.target.transform.position) < _nav.attackDistance))
+			{
+				hit = true;
+				SplashDamage.Hit(animator.gameObject);
+				playerHealth.DealDamage(10);
+			}
+		}
+		else
+		{
+			return;
+		}
+	    
 	}
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
