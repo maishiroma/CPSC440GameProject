@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,7 +33,7 @@ public class TrapCardSpawner : MonoBehaviour {
     {
         Slider = transform.FindChild("TrapCardSlider");
         sliderStartPos = Slider.position;
-		//player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>();
+		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>();
 		for(int i = 0; i < Traps.Length; i++)
         {
   
@@ -190,38 +190,18 @@ public class TrapCardSpawner : MonoBehaviour {
         GameObject _trapCard = (GameObject)Instantiate(TrapCard, pos, transform.rotation, Slider);
         _trapCard.GetComponent<TrapCard>().LoadTrapInSlot(trap);
         TrapCards.Add(_trapCard.GetComponent<TrapCard>());
-        //AssignThrowableTrap(_trapCard);
-
+    
         // Checks if the player has equipped this trap already. If so, it sets this card to the respective trapRadial spot.
-        /*
-		for(int i = 0; i < trapSlots.Length; i++)
-		{
-			int trapIndex = trapSlots[i].representWhichSpot;
-			if(player.currEquippedTraps[trapIndex] != null && player.currEquippedTraps[trapIndex].name == _trapCard.associatedTrap.name)
-			{
-				_trapCard.equipped = true;
-				trapSlots[i].associatedTrapCard = _trapCard;
-				break;
-			}
-
-		}
-        */
+        for(int i = 0; i < trapSlots.Length; i++)
+        {
+          int trapIndex = trapSlots[i].representWhichSpot;
+          if(player.currEquippedTraps[trapIndex] != null && player.currEquippedTraps[trapIndex].name == _trapCard.associatedTrap.name)
+          {
+            _trapCard.equipped = true;
+            trapSlots[i].associatedTrapCard = _trapCard;
+            break;
+          }
+        }
     }
-
-	/*	If the assigned trap is a throwable trap, this method replaces the trap associated with it with the special gameobject
-	 * 	used to use it.
-	 * 	
-	 * 	Positions of each one:
-	 * 	Throwable = 0
-	 */
-	void AssignThrowableTrap(TrapCard currTrapCard)
-	{
-		switch(currTrapCard.associatedTrap.name)
-		{
-			case "Grenade":
-				currTrapCard.associatedTrap = ThrowableTraps[0];
-			break;
-		}
-	}
-
+  
 }

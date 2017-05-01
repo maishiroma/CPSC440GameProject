@@ -13,7 +13,7 @@ public class TrapCard : MonoBehaviour {
     private Color StartColor;
     public bool StartVisible;
 	public static EquipTrapRadial[] trapRadials;	// Refrence to radial buttons. Used to interact with equipTrapRadial
-	public GameObject associatedTrap;	// What Trap prefab is associated to this spot?
+	public GameObject associatedTrap;				// What Trap prefab is associated to this spot?
 
 	// Use this for initialization
 	void Start ()
@@ -103,27 +103,14 @@ public class TrapCard : MonoBehaviour {
 	
     public void LoadTrapInSlot(GameObject trap)
     {
-        GameObject _trap = (GameObject)Instantiate(trap, trapIconPos.position, Quaternion.identity, trapIconPos);
+		GameObject _trap = (GameObject)Instantiate(trap.GetComponent<Trap>().icon, trapIconPos.position, Quaternion.identity, trapIconPos);
         ObjectsToFade.Add(_trap.gameObject.GetComponentInChildren<MeshRenderer>());
-        associatedTrap = trap;
-    }
-
-
+		associatedTrap = trap.GetComponent<Trap>().trapPrefab;
+	  }
 		
 	// Update is called once per frame
 	void Update () {
 
-	}
-
-	// Returns true if this trap name matches one of the names given here.
-	bool CheckIfTrapIsThrowable(string name)
-	{
-		switch(name)
-		{
-			case "Grenade":
-				return true;
-		}
-		return false;
 	}
 
 	// Checks if any of the trapRadials are selected. If so, puts this trap onto there, and sets this trap as equipped.
