@@ -43,10 +43,10 @@ public class TrapButton : MonoBehaviour{
         startColor = btnMat.color;
         marker = GameObject.Find("CircleMarker_Prefab").GetComponent<Marker>();
         playerManager = GameObject.Find("PlayerSpawnLocation").GetComponent<PlayerManager>();        
-		// Assigns the equipped trap from the playerState to this spot.
-
-		if(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>() != null)
-			Trap = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>().currEquippedTraps[representWhatSpot];
+        
+        // Assigns the equipped trap from the playerState to this spot.
+        if(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>() != null)
+          Trap = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>().currEquippedTraps[representWhatSpot];
 	}
 
     void Update()
