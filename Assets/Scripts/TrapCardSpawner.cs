@@ -23,7 +23,6 @@ public class TrapCardSpawner : MonoBehaviour {
     private float minX;
     private float maxX;
     private bool canSlide;
-	public GameObject[] ThrowableTraps;		// This stores the special GameObject that certain traps will need.
 	public EquipTrapRadial[] trapSlots;			// A refrence to the trap slots that store the traps being equipped.
 
 	private PlayerState player;
@@ -188,17 +187,18 @@ public class TrapCardSpawner : MonoBehaviour {
 	void SpawnTrapCard (Vector3 pos, GameObject trap)
     {
         GameObject _trapCard = (GameObject)Instantiate(TrapCard, pos, transform.rotation, Slider);
-        _trapCard.GetComponent<TrapCard>().LoadTrapInSlot(trap);
-        TrapCards.Add(_trapCard.GetComponent<TrapCard>());
+        TrapCard thisTrapCard = _trapCard.GetComponent<TrapCard>();
+	thisTrapCard.LoadTrapInSlot(trap);
+        TrapCards.Add(thisTrapCard);
     
         // Checks if the player has equipped this trap already. If so, it sets this card to the respective trapRadial spot.
         for(int i = 0; i < trapSlots.Length; i++)
         {
           int trapIndex = trapSlots[i].representWhichSpot;
-          if(player.currEquippedTraps[trapIndex] != null && player.currEquippedTraps[trapIndex].name == _trapCard.associatedTrap.name)
+          if(player.currEquippedTraps[trapIndex] != null && player.currEquippedTraps[trapIndex].name == thisTrapCard.associatedTrap.name)
           {
-            _trapCard.equipped = true;
-            trapSlots[i].associatedTrapCard = _trapCard;
+            thisTrapCard.equipped = true;
+            trapSlots[i].associatedTrapCard = thisTrapCard;
             break;
           }
         }
