@@ -38,8 +38,6 @@ public class AlienNavMeshInterface : MonoBehaviour {
     public bool attacking;
     public bool isInAttackPosition = false;
 
-	// Adding for dummy to work
-	public bool attackingPlayer = false;
 
     public void ToggleNavmeshAgent (bool useNavMesh)
     {
@@ -80,9 +78,6 @@ public class AlienNavMeshInterface : MonoBehaviour {
         target = GameObject.Find("PlayerSpawnLocation");
         startDistanceFromPlayer = Vector3.Distance(transform.position, target.transform.position);
         FindAttackPosition();
-
-		// Added by Matt
-		attackingPlayer = true;
 
         /*
         //debug target
@@ -158,8 +153,7 @@ public class AlienNavMeshInterface : MonoBehaviour {
 
     bool InRangeOfTarget()
     {
-		// Vector3.Distance(lastTargetPos, transform.position)
-		if(Vector3.Distance(target.transform.position, transform.position) < stoppingDistFromTarget)
+        if(Vector3.Distance(lastTargetPos, transform.position) < stoppingDistFromTarget)
         {
             return true;
         }
@@ -201,7 +195,7 @@ public class AlienNavMeshInterface : MonoBehaviour {
         }
     }
 
-    public bool FindAttackPosition()
+    bool FindAttackPosition()
     {
         Vector3 foundPosition;
 
@@ -352,8 +346,9 @@ public class AlienNavMeshInterface : MonoBehaviour {
                 
             }
         }
+
+
+
+
     }
-
-
-
 }

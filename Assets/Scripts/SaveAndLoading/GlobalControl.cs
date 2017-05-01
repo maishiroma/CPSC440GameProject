@@ -41,7 +41,7 @@ public class GlobalControl : MonoBehaviour
 	// At the start of the game, the game loads up from the last save point.
 	void Start()
 	{
-		//MenuControl.Instance.LoadGame();
+		MenuControl.Instance.LoadGame();
 	}
 
 	// This is called when the player saves the game.
