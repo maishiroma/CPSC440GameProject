@@ -26,9 +26,9 @@ GameObject:
   - component: {fileID: 54411668108261984}
   - component: {fileID: 65334182242775234}
   - component: {fileID: 114752558756725728}
-  m_Layer: 11
+  m_Layer: 18
   m_Name: ExplosiveBarrelPrefab
-  m_TagString: Alive
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1628171626641240}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.68, y: 1.88, z: 16.3}
+  m_LocalPosition: {x: -7.7130737, y: 1.88, z: 8.232361}
   m_LocalScale: {x: 0.01, y: 0.012, z: 0.01}
   m_Children: []
   m_Father: {fileID: 0}
@@ -135,7 +135,7 @@ MonoBehaviour:
   explosionMask:
     serializedVersion: 2
     m_Bits: 67585
-  impactParticles: {fileID: 1664966848565472, guid: 6f49f68d88344c941bfb14f8288eed43,
+  impactParticles: {fileID: 1623538531801624, guid: cbaca0ab895447749a599456fd039348,
     type: 2}
   explosionParticles: {fileID: 1623538531801624, guid: cbaca0ab895447749a599456fd039348,
     type: 2}
@@ -168,6 +168,5 @@ MonoBehaviour:
   unlocked: 1
   cost: 0
   purchased: 1
-  icon: {fileID: 1661682469621132, guid: f44ea713061584924981081eef446df5, type: 2}
-  trapPrefab: {fileID: 1628171626641240}
+  icon: {fileID: 1002845935568296, guid: 2df75285d4a2f0f419a297a6341899d3, type: 2}
   slot: 0

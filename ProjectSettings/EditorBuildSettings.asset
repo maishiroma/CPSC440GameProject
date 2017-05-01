@@ -23,9 +23,3 @@ EditorBuildSettings:
     path: Assets/Scenes/VR_Main.unity
   - enabled: 1
     path: Assets/Scenes/Boxes.unity
-  - enabled: 1
-    path: Assets/Scenes/Trailer/Trailer_Ship.unity
-  - enabled: 1
-    path: Assets/Scenes/Trailer/Trailer_Level1.unity
-  - enabled: 1
-    path: Assets/Scenes/Trailer/Traler_Level2.unity
