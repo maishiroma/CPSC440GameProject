@@ -9,6 +9,7 @@ public class BearTrapScript : MonoBehaviour {
 	public bool isActive = false;
 	public float minFlinchForce;		// The min amount of force applied vertically
 	public float maxFlinchForce;		// The max amount of force applied vertically
+	public float timeToDissapear;		// How long will this trap stay out after activating?
 	public int trapRange;
 	public GameObject sparkParticles;
 
@@ -29,7 +30,7 @@ public class BearTrapScript : MonoBehaviour {
 			anim.SetTrigger("Triggered");
 
 			MakeAlienFlinch(other.gameObject);
-			Invoke("DestroyTrap",1.5f);
+			Invoke("DestroyTrap",timeToDissapear);
         }
     }
 

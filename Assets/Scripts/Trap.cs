@@ -20,7 +20,8 @@ public class Trap : MonoBehaviour {
 	public void PlaceTrap()
 	{
 		//After releasing the button
-		gameObject.GetComponent<Animator>().SetTrigger("PlaceTrap");
+		if(gameObject.GetComponent<Animator>() != null)
+			gameObject.GetComponent<Animator>().SetTrigger("PlaceTrap");
 	}    
 
 	
