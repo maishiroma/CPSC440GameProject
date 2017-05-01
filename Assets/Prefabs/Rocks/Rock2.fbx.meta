@@ -1,0 +1,145 @@
+fileFormatVersion: 2
+guid: 08caefa68d2ffd64cb48b1a611af3d0f
+timeCreated: 1492928086
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Rock2_Chunk1
+    100004: Rock2_Chunk10
+    100006: Rock2_Chunk2
+    100008: Rock2_Chunk3
+    100010: Rock2_Chunk4
+    100012: Rock2_Chunk5
+    100014: Rock2_Chunk6
+    100016: Rock2_Chunk7
+    100018: Rock2_Chunk8
+    100020: Rock2_Chunk9
+    100022: Rock2_Chunks
+    100024: Rock2Outer
+    400000: //RootNode
+    400002: Rock2_Chunk1
+    400004: Rock2_Chunk10
+    400006: Rock2_Chunk2
+    400008: Rock2_Chunk3
+    400010: Rock2_Chunk4
+    400012: Rock2_Chunk5
+    400014: Rock2_Chunk6
+    400016: Rock2_Chunk7
+    400018: Rock2_Chunk8
+    400020: Rock2_Chunk9
+    400022: Rock2_Chunks
+    400024: Rock2Outer
+    2300000: Rock2_Chunk1
+    2300002: Rock2_Chunk10
+    2300004: Rock2_Chunk2
+    2300006: Rock2_Chunk3
+    2300008: Rock2_Chunk4
+    2300010: Rock2_Chunk5
+    2300012: Rock2_Chunk6
+    2300014: Rock2_Chunk7
+    2300016: Rock2_Chunk8
+    2300018: Rock2_Chunk9
+    2300020: Rock2Outer
+    3300000: Rock2_Chunk1
+    3300002: Rock2_Chunk10
+    3300004: Rock2_Chunk2
+    3300006: Rock2_Chunk3
+    3300008: Rock2_Chunk4
+    3300010: Rock2_Chunk5
+    3300012: Rock2_Chunk6
+    3300014: Rock2_Chunk7
+    3300016: Rock2_Chunk8
+    3300018: Rock2_Chunk9
+    3300020: Rock2Outer
+    4300000: Rock2Outer
+    4300002: Rock2_Chunk1
+    4300004: Rock2_Chunk2
+    4300006: Rock2_Chunk3
+    4300008: Rock2_Chunk4
+    4300010: Rock2_Chunk5
+    4300012: Rock2_Chunk6
+    4300014: Rock2_Chunk7
+    4300016: Rock2_Chunk8
+    4300018: Rock2_Chunk9
+    4300020: Rock2_Chunk10
+    6400000: Rock2_Chunk1
+    6400002: Rock2_Chunk10
+    6400004: Rock2_Chunk2
+    6400006: Rock2_Chunk3
+    6400008: Rock2_Chunk4
+    6400010: Rock2_Chunk5
+    6400012: Rock2_Chunk6
+    6400014: Rock2_Chunk7
+    6400016: Rock2_Chunk8
+    6400018: Rock2_Chunk9
+    6400020: Rock2Outer
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

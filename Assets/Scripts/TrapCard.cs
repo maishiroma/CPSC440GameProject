@@ -105,8 +105,10 @@ public class TrapCard : MonoBehaviour {
     {
         GameObject _trap = (GameObject)Instantiate(trap, trapIconPos.position, Quaternion.identity, trapIconPos);
         ObjectsToFade.Add(_trap.gameObject.GetComponentInChildren<MeshRenderer>());
-	associatedTrap = trap;
-	}
+        associatedTrap = trap;
+    }
+
+
 		
 	// Update is called once per frame
 	void Update () {

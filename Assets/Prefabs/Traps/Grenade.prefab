@@ -122,7 +122,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0f4bf2c90f0f07c4a8e3c3a5c9c00943, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -153,7 +153,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0f4bf2c90f0f07c4a8e3c3a5c9c00943, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -184,7 +184,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 32c908813f3ed834b92cc61b284097ca, type: 2}
+  - {fileID: 2100000, guid: 0f4bf2c90f0f07c4a8e3c3a5c9c00943, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -361,8 +361,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   explosionParticles: {fileID: 1623538531801624, guid: cbaca0ab895447749a599456fd039348,
-    type: 2}
-  explosionSound: {fileID: 1553367528498090, guid: 0e4ef0860c4cc4d52a33377af38da898,
     type: 2}
 --- !u!135 &135890600442746318
 SphereCollider:
