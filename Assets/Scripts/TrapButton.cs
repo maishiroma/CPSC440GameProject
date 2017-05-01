@@ -88,6 +88,10 @@ public class TrapButton : MonoBehaviour{
             GameObject _trap = (GameObject)Instantiate(this.Trap, spawnPos, objectToSpawn.transform.rotation);
             Destroy(objectToSpawn);
             
+			// Makes the placement of the trap play its animation
+			if(_trap.GetComponent<Trap>() != null)
+				_trap.GetComponent<Trap>().PlaceTrap();
+			
             objectToSpawn = null;
             playerManager.IncrementNumTraps(false);
         }

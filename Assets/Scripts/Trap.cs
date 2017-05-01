@@ -16,7 +16,12 @@ public class Trap : MonoBehaviour {
     // 3 - right
     public int slot;
 
-            
+	// Plays the trap placement animation
+	public void PlaceTrap()
+	{
+		//After releasing the button
+		gameObject.GetComponent<Animator>().SetTrigger("PlaceTrap");
+	}    
 
 	
 }
