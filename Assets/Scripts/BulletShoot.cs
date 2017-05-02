@@ -7,6 +7,7 @@ public class BulletShoot : MonoBehaviour {
     Rigidbody rb;
     public float shootForce = 20;
     public ParticleSystem hitParticles;
+    public bool isTurret = false;
 
 	// Use this for initialization
 	void Start ()
@@ -30,7 +31,7 @@ public class BulletShoot : MonoBehaviour {
         
         if(col.gameObject.tag == "Alive")
         {
-            col.gameObject.GetComponent<Health>().dealDamage(damage);
+            col.gameObject.GetComponent<Health>().dealDamage(damage, isTurret);
         }
 
 

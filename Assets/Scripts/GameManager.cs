@@ -4,13 +4,15 @@ using UnityEngine;
 
 /*	This script keeps track of the various stats that the player has acheived.
  * 	It will also have methods that will display respective numbers.
+ * 	
+ * 	For the trailer, only show total kills, deaths by traps, deaths by gunfire, and resources.
  */
 public class GameManager : MonoBehaviour {
 
 	public int overallScore = 0;		// The overall score that the player has.
 	public int overallKillCount = 0;	// The overall number of enemies that the player has killed.
 
-	public int killAggresiveCount = 0;	// The number of enemies that the player killed when the enemy is attacking them.
+	public int killAggressiveCount = 0;	// The number of enemies that the player killed when the enemy is attacking them.
 	public int killEnemyNoTraps = 0;	// The number of enemies that the player killed when they ran out of traps.
 
 	public int killComboGun = 0;		// The number of gun kills the player has gotten without getting hit or if gunComboTime ran out.
@@ -52,6 +54,8 @@ public class GameManager : MonoBehaviour {
 				currTimeCombo = 0f;
 			}
 		}
+
+        overallScore = calculateComboScore();
 	}
 		
 	// This method resets all of the numbers for the next round.
@@ -59,7 +63,7 @@ public class GameManager : MonoBehaviour {
 	{
 		overallScore = 0;
 		overallKillCount = 0;
-		killAggresiveCount = 0;
+		killAggressiveCount = 0;
 		killEnemyNoTraps = 0;
 		killComboGun = 0;
 		killComboTrap = 0;
@@ -68,16 +72,16 @@ public class GameManager : MonoBehaviour {
 	}
 
 	// These next methods are used specifically to increment the counters, since they also increment overallKillCount too.
-	public void incrementKillAgressiveCount()
+	public void incrementKillAggressiveCount()
 	{
-		killAggresiveCount++;
+		killAggressiveCount++;
 		overallKillCount++;
 	}
 
 	public void incrementKillEnemyNoTrapCount()
 	{
 		killEnemyNoTraps++;
-		overallKillCount++;
+		// overallKillCount++;
 	}
 
 	public void incrementKillComboGun()
@@ -88,18 +92,22 @@ public class GameManager : MonoBehaviour {
 		if(killComboGun > 1)
 		{
 			currTimeCombo = gunComboTime;
-		}
-	}
+            obtainTrap();
+        }
+
+    }
 
 	public void incrementKillComboTrap()
 	{
-		killComboTrap++;
+        killComboTrap++;
 		overallKillCount++;
 
 		if(killComboTrap > 1)
 		{
 			currTimeCombo = trapComboTime;
-		}
+            obtainTrap();
+        }
+
 	}
 
 	// This method calculates the combo scores after the level is complete.
@@ -107,4 +115,24 @@ public class GameManager : MonoBehaviour {
 	{
 		return (killComboGun * comboMultiplier) + (killComboTrap * comboMultiplier);
 	}
+
+    public void obtainTrap()
+    {
+        // calculate probability of gaining new trap during a combo
+        // success rate: 40% == 2/5 ; range(1, 6) where 1 is inclusive, 6 is exclusive
+        // only increase if the current number of traps is less than the maximum number of traps
+        int chance = Random.Range(1, 6);
+        if (chance >= 1 && chance <= 2)
+        {
+            // print("Probability: " + chance);
+            if (GameObject.Find("PlayerSpawnLocation").GetComponent<PlayerManager>().CurrentNumTraps < GameObject.Find("PlayerSpawnLocation").GetComponent<PlayerManager>().MaxNumTraps)
+            {
+                // print("Current: " + "Max: " + GameObject.Find("PlayerSpawnLocation").GetComponent<PlayerManager>().MaxNumTraps);
+                // print("Max: " + GameObject.Find("PlayerSpawnLocation").GetComponent<PlayerManager>().MaxNumTraps);
+                GameObject.Find("PlayerSpawnLocation").GetComponent<PlayerManager>().IncrementNumTraps(true);
+            }
+
+        }
+    }
+    
 }
