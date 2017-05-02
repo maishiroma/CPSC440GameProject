@@ -4,6 +4,8 @@ using UnityEngine;
 
 /*	This script keeps track of the various stats that the player has acheived.
  * 	It will also have methods that will display respective numbers.
+ * 	
+ * 	For the trailer, only show total kills, deaths by traps, deaths by gunfire, and resources.
  */
 public class GameManager : MonoBehaviour {
 
