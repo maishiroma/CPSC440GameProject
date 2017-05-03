@@ -10,6 +10,7 @@ TagManager:
   - Alien
   - SoundEffects
   - Unlockables
+  - GameManager
   layers:
   - Default
   - TransparentFX
@@ -36,7 +37,6 @@ TagManager:
   - Waypoints
   - FRED
   - Gems
-  - 
   - 
   - 
   - 

@@ -26,7 +26,7 @@ public class LandMine : MonoBehaviour {
 	{
 		if (other.tag == "Alien")
 		{
-			other.transform.parent.GetComponent<Health>().dealDamage(30f);
+			other.transform.parent.GetComponent<Health>().dealDamage(30f, true);
 			other.transform.parent.GetComponent<SmallAlienPhysicsManager>().impactFlash();
 			Explode();
 

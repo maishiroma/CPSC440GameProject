@@ -130,6 +130,7 @@ public class TurretScript : MonoBehaviour {
     void Shoot ()
     {
         GameObject _bullet = (GameObject)Instantiate(bullet, shootPosition.position, shootPosition.rotation);
+        _bullet.GetComponent<BulletShoot>().isTurret = true;
 	}
 
     void resetShoot()

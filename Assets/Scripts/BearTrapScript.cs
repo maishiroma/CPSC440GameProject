@@ -5,7 +5,7 @@ using UnityEngine;
 // This script does the functionality of a basic Bear trap.
 
 public class BearTrapScript : MonoBehaviour {
-    
+
 	public bool isActive = false;
 	public float minFlinchForce;		// The min amount of force applied vertically
 	public float maxFlinchForce;		// The max amount of force applied vertically
@@ -19,7 +19,7 @@ public class BearTrapScript : MonoBehaviour {
 	void Start () {
         anim = GetComponent<Animator>();
     }
-    
+
 	// When the alien enters this, the trap is triggered.
 	void OnTriggerEnter(Collider other)
     {
@@ -29,8 +29,10 @@ public class BearTrapScript : MonoBehaviour {
 			isActive = true;
 			anim.SetTrigger("Triggered");
 
-			MakeAlienFlinch(other.gameObject);
-			Invoke("DestroyTrap",timeToDissapear);
+			other.transform.parent.GetComponent<Health>().dealDamage(20f, true);
+      MakeAlienFlinch(other.gameObject);
+      Invoke("DestroyTrap",timeToDissapear);
+
         }
     }
 

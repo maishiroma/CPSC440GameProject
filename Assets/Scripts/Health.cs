@@ -50,11 +50,24 @@ public class Health : MonoBehaviour {
         healthRateMultiplier++;
     }
 
-    public void dealDamage(float damage)
+    public void dealDamage(float damage, bool deathByTrap = false)
     {
         currentHealth -= damage;
         if(currentHealth <= 0 && !dead)
         {
+            if (deathByTrap == true)
+            {
+                GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().incrementKillComboTrap();
+            }
+            else
+            {
+                GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().incrementKillComboGun();
+
+                if (GameObject.Find("PlayerSpawnLocation").GetComponent<PlayerManager>().CurrentNumTraps == 0)
+                {
+                    GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().incrementKillEnemyNoTrapCount();
+                }
+            }
             Die();
         }
     }

@@ -8567,6 +8567,60 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300174, guid: 645ecde6d27220943a9d1ef5b22646b3, type: 3}
+--- !u!1 &521213324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 521213326}
+  - component: {fileID: 521213325}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: GameManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &521213325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 521213324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7abf218635144a3a1f50e3d0931d2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overallScore: 0
+  overallKillCount: 0
+  killAggressiveCount: 0
+  killEnemyNoTraps: 0
+  killComboGun: 0
+  killComboTrap: 0
+  highestKillCombo: 0
+  gunComboTime: 10
+  trapComboTime: 10
+  resourceCount: 0
+  smallAlienPoints: 100
+  bigAlienPoints: 200
+  comboMultiplier: 300
+  currTimeCombo: 0
+--- !u!4 &521213326
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 521213324}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 38
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &523569122
 GameObject:
   m_ObjectHideFlags: 0
@@ -10560,7 +10614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxNumTraps: 10
-  StartingNumTraps: 10
+  StartingNumTraps: 3
   CurrentNumTraps: 0
   NumberOfTraps: {fileID: 1631076790}
   MaterialName: Triphosphite
@@ -15332,7 +15386,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &714167206
 Transform:
   m_ObjectHideFlags: 0
@@ -19121,6 +19175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6788e8e1b3f7447db6657ef0959d3ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  directRender: 1
   keepStereoUpdated: 0
   stereoMultiplier: 1
   matchMonoFOV: 0
@@ -20108,6 +20163,12 @@ Prefab:
       propertyPath: ContextualScreen
       value: 
       objectReference: {fileID: 1604148845}
+    - target: {fileID: 114178031244383694, guid: 7ecfd14bd00089f45b58626dd35663cd,
+        type: 2}
+      propertyPath: Trap
+      value: 
+      objectReference: {fileID: 1150062854257082, guid: 49f744ab6ba4da44a91d5ec25bf9e36b,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7ecfd14bd00089f45b58626dd35663cd, type: 2}
   m_IsPrefabParent: 0
