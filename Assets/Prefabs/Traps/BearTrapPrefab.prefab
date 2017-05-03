@@ -484,7 +484,8 @@ MonoBehaviour:
   maxFlinchForce: 3
   timeToDissapear: 0.8
   trapRange: 1
-  sparkParticles: {fileID: 0}
+  sparkParticles: {fileID: 1648177554959384, guid: f31e33ec2de3ed54982fb47b5b338246,
+    type: 2}
 --- !u!114 &114949332298189182
 MonoBehaviour:
   m_ObjectHideFlags: 1

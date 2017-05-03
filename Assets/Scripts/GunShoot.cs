@@ -24,6 +24,7 @@ public class GunShoot : MonoBehaviour {
 
     public AmmoClip currentClip;
     public Animator currentClipAnims;
+	public GameObject lowAmmoParticle;
 
 	// Google VR sounds
 	public AudioClip gunFireSound;
@@ -172,6 +173,14 @@ public class GunShoot : MonoBehaviour {
 			gunAnims.SetTrigger("Shoot");
             currentAmmo -= ammoPerShoot;
             currentClip.ResizeClip(currentAmmo, maxAmmo);
+
+			// Low ammo indicator
+			if(currentAmmo < 15)
+			{
+				GameObject _lowAmmoParticle = (GameObject)Instantiate(lowAmmoParticle, shootPoint.position, Quaternion.LookRotation(shootDir), gameObject.transform);
+				_lowAmmoParticle.transform.localScale = new Vector3(0.3f,0.3f,0.3f);
+			}
+
             if(currentAmmo <= 0 && currentClip != null && !outOfAmmo)
             {
                 outOfAmmo = true;

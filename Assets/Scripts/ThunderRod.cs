@@ -7,6 +7,8 @@ using UnityEngine;
 public class ThunderRod : MonoBehaviour {
 
 	public float damageRate = 1f;		// How much damage does this trap do while the enemy is in the trap's range?
+	public GameObject thunderRodParticle;	// What Particle is here?
+	public GameObject particlePosition;		// The position the particle is made
 
 	private Health trapHealth;			// How long does this trap stay out?
 
@@ -20,6 +22,9 @@ public class ThunderRod : MonoBehaviour {
 	{
 		if(other.tag == "Alien")
 		{
+			GameObject createdParticle = (GameObject)Instantiate(thunderRodParticle, particlePosition.transform.position, Quaternion.identity, gameObject.transform);
+			createdParticle.transform.localScale = new Vector3(0.3f,0.3f,0.3f);
+
 			other.transform.parent.GetComponent<SmallAlienHealth>().healthRateMultiplier = damageRate;
 		}
 

@@ -30,16 +30,18 @@ public class BearTrapScript : MonoBehaviour {
 			anim.SetTrigger("Triggered");
 
 			other.transform.parent.GetComponent<Health>().dealDamage(20f, true);
-      MakeAlienFlinch(other.gameObject);
-      Invoke("DestroyTrap",timeToDissapear);
-
+		    MakeAlienFlinch(other.gameObject);
+		    Invoke("DestroyTrap",timeToDissapear);
         }
     }
 
 	// "Slightly" flings the alien into the air, to simulate the alien stopping.
 	void MakeAlienFlinch(GameObject Obj)
 	{
-		//GameObject _explosionParticles = (GameObject)Instantiate(explosionParticles, transform.position, Quaternion.identity);
+		GameObject _sparks = (GameObject)Instantiate(sparkParticles, transform.position, Quaternion.identity);
+		_sparks.transform.localScale = gameObject.transform.lossyScale;
+		_sparks.transform.parent = gameObject.transform;
+		_sparks.transform.position = gameObject.transform.position;
 
 		Vector3 myPos = transform.position;
 		myPos.Set(myPos.x, 0, myPos.z);

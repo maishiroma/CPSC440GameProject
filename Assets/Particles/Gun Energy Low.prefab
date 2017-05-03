@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4009027185925846}
   - component: {fileID: 198299552064177444}
   - component: {fileID: 199687776523248112}
+  - component: {fileID: 114623902908100000}
   m_Layer: 0
   m_Name: Gun Energy Low
   m_TagString: Untagged
@@ -41,6 +42,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -177.926, y: 20.248993, z: -0.76498413}
+--- !u!114 &114623902908100000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1696485156356242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0166f4d1660c4458591c8634c9b5e2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToDestroy: 1
 --- !u!198 &198299552064177444
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -17,7 +17,7 @@ public class loadScene : MonoBehaviour {
     public void LoadScene ()
     {
 		// If the current scene is the Main Menu, the game autosaves.
-		if(SceneManager.GetActiveScene().name == "Main Menu")
+		//if(SceneManager.GetActiveScene().name == "Main Menu")
 			//MenuControl.Instance.SaveGame();
 
 		screenFade.gameObject.SetActive(true);

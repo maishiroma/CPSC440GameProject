@@ -9,8 +9,10 @@ public class Trap : MonoBehaviour {
     public bool purchased;
     public GameObject icon;
 	public GameObject trapPrefab;		// Holds a prefab of the Trap to be equipped by the player.
+	public GameObject throwLocation;	// If this trap is a thrown one
+	public GameObject tempTrap;			// For Grenade.
 
-    // -1 = not equipped 
+	// -1 = not equipped 
     // 1 - left
     // 2 - top
     // 3 - right

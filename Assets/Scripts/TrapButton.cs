@@ -46,7 +46,22 @@ public class TrapButton : MonoBehaviour{
         
         // Assigns the equipped trap from the playerState to this spot.
         if(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>() != null)
-          Trap = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>().currEquippedTraps[representWhatSpot];
+		{
+			// Added by matt
+			PlayerState player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>();
+			Trap currTrap = player.currEquippedTraps[representWhatSpot].GetComponent<Trap>();
+
+			// If the trap has an associated thrown location, this trap must be a thrown one.
+			if(currTrap.throwLocation != null)
+			{
+				Trap = currTrap.throwLocation;
+				TempTrap = currTrap.tempTrap;
+			}
+			else
+			{
+				Trap = player.GetComponent<PlayerState>().currEquippedTraps[representWhatSpot];
+			}
+		}
 	}
 
     void Update()
