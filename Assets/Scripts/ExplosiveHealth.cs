@@ -52,7 +52,7 @@ public class ExplosiveHealth : Health
             if (go.layer == 16)
             {
                 go.transform.parent.GetComponent<SmallAlienPhysicsManager>().InAir(true);
-                go.transform.parent.GetComponent<SmallAlienHealth>().dealDamage(30f);
+                go.transform.parent.GetComponent<SmallAlienHealth>().dealDamage(30f, true);
                 AddExplosiveForce(go.transform.parent.gameObject, Vector3.Scale(dir, new Vector3(.25f,7,.25f)), force * 1.33f);
             }
             else

@@ -50,7 +50,7 @@ public class SmallAlienHealth : Health {
             dead = true;
             GameObject.Find("AlienSpawners").GetComponent<test_AlienSpawner>().currSpawendAliens--;
             GameObject.Find("AlienSpawners").GetComponent<test_AlienSpawner>().LiveAliens.Remove(this.gameObject);
-        }  
+        }
     }
 
     void disableCollider()
