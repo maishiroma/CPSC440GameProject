@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
-using System.Collections;
+// using System.Collections;
 
 public class TrapButton : MonoBehaviour{
     private Marker marker;
@@ -32,10 +32,10 @@ public class TrapButton : MonoBehaviour{
     
     public Material tempMaterial;
 
-	public int representWhatSpot;		// What spot does this section represent?
+	public int representWhatSpot;       // What spot does this section represent?
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         btnAnimator = gameObject.GetComponent<Animator>();
         highlighted = false;
@@ -51,13 +51,13 @@ public class TrapButton : MonoBehaviour{
 
     void Update()
     {
-        if(highlightedTime > Time.time)
+        if (highlightedTime > Time.time)
         {
             //Debug.Log("Fading");
             btnMat.color = Color.Lerp(startColor, highlightedColor, Time.time / highlightedTime);
         }
 
-        if( unhighlightedTime > Time.time)
+        if (unhighlightedTime > Time.time)
         {
             btnMat.color = Color.Lerp(highlightedColor, startColor, Time.time / unhighlightedTime);
         }
@@ -99,55 +99,60 @@ public class TrapButton : MonoBehaviour{
 
     public void spawnTrap()
     {
+        // only spawn traps if they are made available
+        int current_numTraps = GameObject.Find("PlayerSpawnLocation").GetComponent<PlayerManager>().CurrentNumTraps;
 
-        if(Trap != null)
+        if (current_numTraps > 0)
         {
-            //Debug.Log("Spawned");
-
-            Vector3 spawnLocation;
-
-            //Debug.Log(Trap.GetComponent<MeshRenderer>().bounds.extents.y);
-            spawnLocation = marker.transform.position + Vector3.up * (Trap.GetComponent<Collider>().bounds.extents.y + .05f);
-
-            Vector3 rotationDir = (Camera.main.transform.forward);
-            rotationDir.Set(-rotationDir.x, 0, -rotationDir.z);
-            GameObject _trap;
-
-            if (TempTrap != null)
+            if (Trap != null)
             {
-                _trap = (GameObject)Instantiate(this.TempTrap, spawnLocation, Quaternion.LookRotation(rotationDir));
-                objectToSpawn = _trap;
-            }
-            else
-            {
-                _trap = (GameObject)Instantiate(this.Trap, spawnLocation, Quaternion.LookRotation(rotationDir));
-                objectToSpawn = _trap;
-            }
+                //Debug.Log("Spawned");
 
-            if (_trap.GetComponent<Renderer>())
-            {
-                _trap.GetComponent<Renderer>().material = tempMaterial;
-            }
+                Vector3 spawnLocation;
 
-            if (_trap.GetComponent<Health>())
-            {
-                _trap.GetComponent<Health>().dead = true;
-            }
+                //Debug.Log(Trap.GetComponent<MeshRenderer>().bounds.extents.y);
+                spawnLocation = marker.transform.position + Vector3.up * (Trap.GetComponent<Collider>().bounds.extents.y + .05f);
 
-            if (_trap.GetComponent<PlayerThrowableObject>())
-            {
-                _trap.GetComponent<PlayerThrowableObject>().ready = false;
-            }
+                Vector3 rotationDir = (Camera.main.transform.forward);
+                rotationDir.Set(-rotationDir.x, 0, -rotationDir.z);
+                GameObject _trap;
 
-            Transform[] children = _trap.GetComponentsInChildren<Transform>();
-            foreach (Transform t in children)
-            {
-                if (t.gameObject.GetComponent<Renderer>())
+                if (TempTrap != null)
                 {
-                    t.GetComponent<Renderer>().material = tempMaterial;
+                    _trap = (GameObject)Instantiate(this.TempTrap, spawnLocation, Quaternion.LookRotation(rotationDir));
+                    objectToSpawn = _trap;
                 }
+                else
+                {
+                    _trap = (GameObject)Instantiate(this.Trap, spawnLocation, Quaternion.LookRotation(rotationDir));
+                    objectToSpawn = _trap;
+                }
+
+                if (_trap.GetComponent<Renderer>())
+                {
+                    _trap.GetComponent<Renderer>().material = tempMaterial;
+                }
+
+                if (_trap.GetComponent<Health>())
+                {
+                    _trap.GetComponent<Health>().dead = true;
+                }
+
+                if (_trap.GetComponent<PlayerThrowableObject>())
+                {
+                    _trap.GetComponent<PlayerThrowableObject>().ready = false;
+                }
+
+                Transform[] children = _trap.GetComponentsInChildren<Transform>();
+                foreach (Transform t in children)
+                {
+                    if (t.gameObject.GetComponent<Renderer>())
+                    {
+                        t.GetComponent<Renderer>().material = tempMaterial;
+                    }
+                }
+
             }
-            
         }
         
     }
