@@ -6,10 +6,10 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: blinn1
-  m_Shader: {fileID: 4800000, guid: 48dca5b99d113b8d11006bab44295342, type: 3}
-  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _EMISSION _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
-  m_LightmapFlags: 0
+  m_Name: phongE3
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
   m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
@@ -69,34 +69,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _Ramp
-      second:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - first:
-        name: _SpecGlossMap
-      second:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - first:
-        name: _ToonShade
-      second:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - first:
-        name: PixelSnap
-      second: 0
     - first:
         name: _BumpScale
       second: 1
-    - first:
-        name: _ColorMask
-      second: 15
     - first:
         name: _Cutoff
       second: 0.5
@@ -105,25 +81,22 @@ Material:
       second: 1
     - first:
         name: _DstBlend
-      second: 10
+      second: 0
     - first:
         name: _GlossMapScale
       second: 1
     - first:
         name: _Glossiness
-      second: 0.069
+      second: 0.5
     - first:
         name: _GlossyReflections
-      second: 0
-    - first:
-        name: _InvFade
       second: 1
     - first:
         name: _Metallic
-      second: 0.304
+      second: 0
     - first:
         name: _Mode
-      second: 3
+      second: 0
     - first:
         name: _OcclusionStrength
       second: 1
@@ -131,57 +104,24 @@ Material:
         name: _Parallax
       second: 0.02
     - first:
-        name: _Shininess
-      second: 0.078125
-    - first:
         name: _SmoothnessTextureChannel
       second: 0
     - first:
         name: _SpecularHighlights
-      second: 0
+      second: 1
     - first:
         name: _SrcBlend
       second: 1
     - first:
-        name: _Stencil
-      second: 0
-    - first:
-        name: _StencilComp
-      second: 8
-    - first:
-        name: _StencilOp
-      second: 0
-    - first:
-        name: _StencilReadMask
-      second: 255
-    - first:
-        name: _StencilWriteMask
-      second: 255
-    - first:
         name: _UVSec
       second: 0
     - first:
-        name: _UseUIAlphaClip
-      second: 0
-    - first:
         name: _ZWrite
-      second: 0
+      second: 1
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.86764705, g: 0.86764705, b: 0.86764705, a: 0.441}
-    - first:
-        name: _EmisColor
-      second: {r: 0.7058823, g: 0.96348894, b: 1, a: 0.328}
+      second: {r: 0.37349397, g: 0.37349397, b: 0.37349397, a: 1}
     - first:
         name: _EmissionColor
-      second: {r: 0.029080883, g: 0.09910993, b: 0.113, a: 1}
-    - first:
-        name: _SpecColor
-      second: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - first:
-        name: _Specular
-      second: {r: 0, g: 0, b: 0, a: 0}
-    - first:
-        name: _TintColor
-      second: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+      second: {r: 0, g: 0, b: 0, a: 1}
