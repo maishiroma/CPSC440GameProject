@@ -6,6 +6,7 @@ using UnityEngine;
 public class test_AlienSpawner : MonoBehaviour {
 
     public GameObject alienPrefab;
+	public GameObject alienSpawnParticles;
     public float minUpdate = 3;
     public float maxUpdate = 6;
     public float maxNumAliens = 4;
@@ -33,9 +34,14 @@ public class test_AlienSpawner : MonoBehaviour {
 
     void spawn()
     {
-        int randomSpawn = Random.Range(0, SpawnPoints.Length);
+		int randomSpawn = Random.Range(0, SpawnPoints.Length);
         GameObject smallAlien = Instantiate(alienPrefab, SpawnPoints[randomSpawn].transform.position, SpawnPoints[randomSpawn].transform.rotation, GameObject.Find("SpawnedAliens").transform);
-        LiveAliens.Add(smallAlien);
+        
+		// Added by matt
+		GameObject _particles = Instantiate(alienSpawnParticles, smallAlien.transform.position, alienSpawnParticles.transform.localRotation);
+		_particles.transform.localScale = new Vector3(0.3f,0.3f,0.3f);
+
+		LiveAliens.Add(smallAlien);
         Radar.StartCoroutine(Radar.CreateEnemyIcon(smallAlien));
         currSpawendAliens++;
     }

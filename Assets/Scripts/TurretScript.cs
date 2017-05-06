@@ -14,6 +14,7 @@ public class TurretScript : MonoBehaviour {
     private bool opened = false;
 
     public List<GameObject> targets = new List<GameObject>();
+	public AudioClip turretFireSound;
     public GameObject currentTarget;
     public float range = 12;
 
@@ -131,6 +132,7 @@ public class TurretScript : MonoBehaviour {
     {
         GameObject _bullet = (GameObject)Instantiate(bullet, shootPosition.position, shootPosition.rotation);
         _bullet.GetComponent<BulletShoot>().isTurret = true;
+		deploySound.PlayOneShot(turretFireSound,0.3f);
 	}
 
     void resetShoot()

@@ -6780,7 +6780,7 @@ Transform:
   - {fileID: 842822950}
   - {fileID: 1004575316}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &265133840
 MonoBehaviour:
@@ -6794,6 +6794,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alienPrefab: {fileID: 1933553262101548, guid: c33779e1f48386249a13f5de00bf851b,
+    type: 2}
+  alienSpawnParticles: {fileID: 1575162697386122, guid: aa37b05d35e07894e90ae31569f644bc,
     type: 2}
   minUpdate: 4
   maxUpdate: 6
@@ -37384,7 +37386,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4925520896747532, guid: c33779e1f48386249a13f5de00bf851b, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114363191357607118, guid: c33779e1f48386249a13f5de00bf851b,
         type: 2}
@@ -39580,7 +39582,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6ca44374e28d7cf48afaf53aa0d662bc, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 6ca44374e28d7cf48afaf53aa0d662bc, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -50171,7 +50173,7 @@ Transform:
   m_Children:
   - {fileID: 617047201}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2136864992
 Prefab:

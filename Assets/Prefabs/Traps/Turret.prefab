@@ -1669,6 +1669,8 @@ MonoBehaviour:
   purchased: 1
   icon: {fileID: 1526897177407346, guid: fc392830da106514c9b1fcb4bfc59e29, type: 2}
   trapPrefab: {fileID: 1044124871619802}
+  throwLocation: {fileID: 0}
+  tempTrap: {fileID: 0}
   slot: 3
 --- !u!114 &114571144277297402
 MonoBehaviour:
@@ -1688,6 +1690,7 @@ MonoBehaviour:
   bullet: {fileID: 1000013753647018, guid: 765529aea65d1b74387ad855e948f828, type: 2}
   fireRate: 1
   targets: []
+  turretFireSound: {fileID: 8300000, guid: 08590a2a6e8594f3a8b223046c93adcd, type: 3}
   currentTarget: {fileID: 0}
   range: 12
   targetLayers:
